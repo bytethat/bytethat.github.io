@@ -1,0 +1,10 @@
+{
+    "scripts": {
+        "postinstall": "cd site-theme && npm install && cd ../eleventy && npm install",
+        "build": "cd site-theme && npm run build && cd ../eleventy && npm run build",
+        "dev": "concurrently \"cd site-theme && npm run dev\" \"cd eleventy && npm run dev\""
+    },
+    "devDependencies": {
+        "concurrently": "^9.2.1"
+    }
+}

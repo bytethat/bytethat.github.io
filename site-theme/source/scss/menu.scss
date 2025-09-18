@@ -1,0 +1,94 @@
+.menu {
+    display: flex;
+    align-items: center;
+
+    .menu-list{
+        display: flex;
+        align-items: center;
+        list-style: none;
+    }
+
+    .menu-item {
+        a {
+            padding: 0.5em 0.75em;
+        }
+        
+        &.active {
+            a {
+                color: var(--#{$prefix}link-hover-color);
+                text-decoration: var(--#{$prefix}link-hover-decoration);
+            }
+        }
+    }
+
+    .menu-toggle {
+        position: relative;
+        display: block;
+        width: 2em;
+        height: 2em;
+
+        > .icon, > .icon:before, > .icon:after {
+            display: block;
+            width: 100%;
+            height: 3px;
+            border-radius: 2px;
+            background: var(--#{$prefix}link-color);
+        }
+
+        > .icon {
+            position: relative;
+            transition: background-color .15s ease;
+
+            &:before, &:after {
+                content: "";
+                position: absolute;
+                right: 0;
+                transition: top .15s linear .15s,bottom .15s linear .15s,transform .15s ease;
+            }
+            &:before {
+                top: -10px;
+            }
+
+            &:after {
+                bottom: -10px;
+            }
+        }
+    }
+
+    &.menu-expand {
+        .menu-list {
+            display: none;
+
+            @media (min-width: 992px) {
+                display: flex;
+            }
+        }
+
+        .menu-toggle {
+            @media (min-width: 992px) {
+                display: none;
+            }
+        }
+
+        &.expanded {
+            .menu-toggle {
+                
+                > .icon {
+                    background: rgba($color: #000000, $alpha: 0);
+
+                    &:before, &:after {
+                        transition: top .15s ease,bottom .15s ease,transform .15s linear .15s;
+                    }
+                    &:before {
+                        top: 0;
+                        transform: rotate(45deg);
+                    }
+                    &:after {
+                        bottom: 0;
+                        transform: rotate(-45deg);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+
+.container-xl,
+.container-fluid {
+    --bt-gutter-x: 1.5rem;
+    --bt-gutter-y: 0;
+
+    width: 100%;
+    margin: 0 auto;
+
+    padding-left: calc(var(--bt-gutter-x) * 0.5);
+    padding-right: calc(var(--bt-gutter-x) * 0.5);
+}
+
+@media (min-width: 1400px) {
+  .container-xl {
+    max-width: 1320px;
+  }
+}

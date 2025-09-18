@@ -1,0 +1,35 @@
+{
+  "name": "bytethat",
+  "private": true,
+  "workspaces": [
+    "source/ts/packages/*"
+  ],
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build:ts": "npx webpack --mode=production",
+    "watch:ts": "npx webpack --watch --progress",
+    "build:scss": "sass --load-path=node_modules --quiet-deps source/scss/main.scss dist/main.css --no-source-map && postcss dist/main.css -u autoprefixer cssnano -o dist/main.css",
+    "watch:scss": "sass --watch --load-path=node_modules --quiet-deps source/scss/main.scss dist/main.css",
+    "build": "npm run build:ts && npm run build:scss",
+    "dev": "npm run watch:ts & npm run watch:scss",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/jquery": "^3.5.33",
+    "autoprefixer": "^10.4.21",
+    "bootstrap": "^5.3.8",
+    "cssnano": "^7.1.1",
+    "glob": "^11.0.3",
+    "jquery": "^3.7.1",
+    "mini-css-extract-plugin": "^2.9.4",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "rfs": "^10.0.0",
+    "sass": "^1.92.1",
+    "swiper": "^12.0.2",
+    "ts-loader": "^9.5.4",
+    "tsconfig-paths-webpack-plugin": "^4.2.0",
+    "webpack": "^5.101.3"
+  }
+}
