@@ -103,6 +103,10 @@
     p { margin: 0; }
 }
 
+.swiper {
+    --swiper-theme-color: #{$primary};
+}
+
 .main-slider {
     position: relative;
     height: calc(100vh - 4em);
@@ -146,6 +150,7 @@
         z-index: 1;
 
         color: var(--#{$prefix}default-font-color);
+        text-shadow: 1px 1px 1px $primary;
     }
 }
 
