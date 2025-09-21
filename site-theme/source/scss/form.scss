@@ -1,0 +1,88 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        padding: .375rem 1.75rem .375rem .75rem;
+        box-sizing: border-box;
+        
+        border: 1px solid rgba(var(--#{$prefix}default-font-color-rgb), 1);
+        border-radius: 4px;
+
+        &:focus {
+            box-shadow: 0 0 .25rem rgba(var(--#{$prefix}default-font-color-rgb), 1);
+        }
+    }
+
+    .form-label {
+        display: inline-block;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-feedback {
+        .feedback {
+            display: none;
+            font-size: 0.875em;
+
+            &.invalid {
+                color: $red;
+            }
+
+            &.valid {
+                color: $green;
+            }
+        }
+    }
+    
+    &.validated {
+        .form-control {
+            &:valid {
+                &:focus {
+                    box-shadow: 0 0 .25rem $green;
+                }
+
+                border-color: $green;
+            }
+
+            &:invalid {
+                &:focus {
+                    box-shadow: 0 0 .25rem $red;
+                }
+                
+                outline-color: $red;
+                border-color: $red;
+            }
+        }
+
+        .form-feedback {
+            .feedback {
+                &.visible {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    button {
+        align-self: flex-start;
+        background-color: $primary;
+        color: $light;
+        border: none;
+        padding: 0.5em 1em;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: darken($primary, 10%);
+        }
+    }
+}

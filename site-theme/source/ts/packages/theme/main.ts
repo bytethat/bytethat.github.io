@@ -1,5 +1,7 @@
 import { IModule, IServiceCollection, IServiceProvider, ScriptService } from '@bytethat/core';
 
+import formScript from './form';
+
 import $ from 'jquery';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
@@ -74,6 +76,7 @@ const sliderScript = ScriptService.create(() => {
 class ThemeModule implements IModule {
     configureServices(services: IServiceCollection): void {
         services.add(ScriptService, () => menuScript);
+        services.add(ScriptService, () => formScript);
         services.add(ScriptService, () => sliderScript);
     }
 

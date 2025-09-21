@@ -97,6 +97,20 @@
         //     height: 4em;
         // }
     }
+
+    .contact-form-container {
+        .title-container {
+            text-align: center;
+        }
+        
+        .contact-form {
+            margin: 4rem auto 0 auto;
+
+            @media (min-width: 768px) {
+                max-width: 600px;
+            }
+        }
+    }
 }
 
 .copyright { text-align: center; font-size: $font-size-sm;

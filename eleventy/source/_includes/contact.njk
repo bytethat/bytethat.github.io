@@ -1,0 +1,59 @@
+<div class="contact-form-container">
+    <div class="title-container">
+        <h4>We’re excited to hear your story.</h4>
+        <h2>Ready to bring your project to life?</h2>
+    </div>
+    <form class="form contact-form validate" novalidate>
+        <div class="form-group">
+            <div class="input-wrapper">
+                <label for="name" class="form-label">Name / Surname</label>
+                <input name="name" id="name" type="text" class="form-control" placeholder="John Doe"
+                    required 
+                    minlength="3"
+                    maxlength="5"
+                    data-validate="minlength(-1),maxlength(100)"
+                />
+            </div>
+            <div class="form-feedback">
+                <span class="feedback valid name">This is a valid name!</span>
+
+                <span class="feedback invalid name name-required">Please enter your Name / Surname</span>
+                <span class="feedback invalid name name-min-length">min-length: X</span>
+                <span class="feedback invalid name name-max-length">max-length: Y</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-wrapper">
+                <label for="email" class="form-label">Email address</label>
+                <input name="email" id="email" type="text" class="form-control" placeholder="name@example.com" required data-validate="email" />
+            </div>
+            <div class="form-feedback">
+                <span class="feedback valid email">This is a valid Email!</span>
+
+                <span class="feedback invalid email email-required">Please enter your Email</span>
+                <span class="feedback invalid email email-email">Invalid Email</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-wrapper">
+                <label for="phone" class="form-label">Telephone</label>
+                <input name="phone" id="phone" type="text" class="form-control" placeholder="+306949028294"
+                    required 
+                    minlength="3"
+                    maxlength="5"
+                    data-validate="minlength(-1),maxlength(100)"
+                />
+            </div>
+            <div class="form-feedback">
+                <span class="feedback valid phone">This is a valid telephone!</span>
+
+                <span class="feedback invalid phone phone-required">Please enter your telephone</span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div> 
