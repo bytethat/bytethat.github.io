@@ -73,11 +73,50 @@ const sliderScript = ScriptService.create(() => {
     });
 });
 
+
+const footercontactFormScript = ScriptService.create(() => {
+
+    const toggleLabel = (control: HTMLInputElement | HTMLTextAreaElement) => {
+        const currentValue = control.value;
+
+        const label : HTMLLabelElement | null = control.closest('.form-group')?.querySelector('.form-label');
+
+        if(!label) {
+            return;
+        }
+
+        if(currentValue === '') {
+            label.style.top = '';
+            label.style.fontSize = '';
+
+            return;
+        }
+
+        label.style.top = '0';
+        label.style.fontSize = '0.7em';
+    };
+
+    const contactForm = document.querySelector('.contact-form');
+
+    if(!contactForm) {
+        return;
+    }
+
+    const controls = contactForm.querySelectorAll('.form-control');
+
+    Array.from(controls).forEach((control: HTMLInputElement | HTMLTextAreaElement) => {
+        toggleLabel(control);
+        
+        control.addEventListener('input', () => toggleLabel(control));
+    });
+});
+
 class ThemeModule implements IModule {
     configureServices(services: IServiceCollection): void {
         services.add(ScriptService, () => menuScript);
         services.add(ScriptService, () => formScript);
         services.add(ScriptService, () => sliderScript);
+        services.add(ScriptService, () => footercontactFormScript);
     }
 
     configure(services: IServiceProvider): void {

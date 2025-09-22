@@ -39,8 +39,34 @@ class MaxLengthValidator implements IValidator {
     }
 }
 
+class RequiredValidator implements IValidator {
+    public test(context: IValidationContext): IValidationResult {
+        const value = context.value;
+        const valid = !(value === null || value === undefined || (typeof value === 'string' && value.trim().length === 0));
+        return {
+            valid,
+            errors: valid ? [] : ['required']
+        };
+    }
+}
+
+class PatternValidator implements IValidator {
+    constructor(private pattern: RegExp, private errorKey: string = 'pattern') {}
+
+    public test(context: IValidationContext): IValidationResult {
+        const value = context.value == null ? '' : String(context.value);
+        const valid = this.pattern.test(value);
+        return {
+            valid,
+            errors: valid ? [] : [this.errorKey]
+        };
+    }
+}
+
 export {
     EmailValidator,
     MinLengthValidator,
-    MaxLengthValidator
+    MaxLengthValidator,
+    RequiredValidator,
+    PatternValidator
 }

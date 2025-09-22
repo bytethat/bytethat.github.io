@@ -8,6 +8,16 @@
   box-sizing: border-box;
 }
 
+
+// Root
+//
+// Ability to the value of the root font sizes, affecting the value of `rem`.
+// null by default, thus nothing is generated.
+
+:root {
+    @include font-size(var(--#{$prefix}default-font-size));
+}
+
 body { 
   // color: var(--#{$prefix}default-font-color);
   color: rgba(var(--#{$prefix}default-font-color-rgb), 1);
@@ -142,6 +152,10 @@ button, input, optgroup, select, textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+}
+
+textarea {
+  resize: vertical;
 }
 // Button
 

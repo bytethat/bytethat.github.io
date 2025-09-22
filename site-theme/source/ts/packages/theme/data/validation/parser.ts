@@ -1,5 +1,5 @@
 import { IValidator } from './abstractions';
-import { EmailValidator, MinLengthValidator, MaxLengthValidator } from './validators';
+import { EmailValidator, MinLengthValidator, MaxLengthValidator, PatternValidator } from './validators';
 
 // Parse a string like: MaxLengthValidator(10)  |  RequiredValidator()  | EmailValidator
 // Whitespace tolerant. Arguments are comma separated. Strings can be quoted with single or double quotes.
@@ -48,6 +48,10 @@ class ValidatorParser {
         this.register({ name: 'email', factory: () => new EmailValidator() });
         this.register({ name: 'minlength', factory: ([min]) => new MinLengthValidator(parseInt(min, 10)) });
         this.register({ name: 'maxlength', factory: ([max]) => new MaxLengthValidator(parseInt(max, 10)) });
+        this.register({ name: 'pattern', factory: ([regex, errorKey]) => !!errorKey 
+            ? new PatternValidator(new RegExp(regex), errorKey)
+            : new PatternValidator(new RegExp(regex)) 
+        });
     }
 
     public static create(): ValidatorParser {

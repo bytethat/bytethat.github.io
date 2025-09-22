@@ -23,6 +23,7 @@
 
     --#{$prefix}heading-color: #{$headings-color};
 
+    // link
     --#{$prefix}link-color: #{$link-color};
     --#{$prefix}link-color-rgb: #{to-rgb($link-color)};
     --#{$prefix}link-decoration: #{$link-decoration};
@@ -34,4 +35,9 @@
         --#{$prefix}link-hover-decoration: #{$link-hover-decoration};
     }
 
+    // button
+    --#{$prefix}button-color: #{$button-color};
+    --#{$prefix}button-bg: #{$button-bg};
+    --#{$prefix}button-hover-bg: #{$button-hover-bg};
+    --#{$prefix}button-hover-bg-rgb: #{to-rgb($button-hover-bg)};
 }

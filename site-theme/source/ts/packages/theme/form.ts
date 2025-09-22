@@ -210,7 +210,7 @@ const buildForm = (form: Form) => {
     });
 };
 
-const menuScript = ScriptService.create(() => {
+const formScript = ScriptService.create(() => {
     const forms = document.querySelectorAll('.form');
 
     forms.forEach((form) => {
@@ -220,4 +220,4 @@ const menuScript = ScriptService.create(() => {
     });
 });
 
-export default menuScript;
+export default formScript;

@@ -132,3 +132,8 @@ $link-decoration:                         none !default;
 $link-shade-percentage:                   20% !default;
 $link-hover-color:                        shift-color($link-color, $link-shade-percentage) !default;
 $link-hover-decoration:                   underline !default;
+
+// button
+$button-color:               $light !default;
+$button-bg:                  $primary !default;
+$button-hover-bg:            shift-color($button-bg, $link-shade-percentage) !default;
