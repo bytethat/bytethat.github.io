@@ -165,21 +165,57 @@
         <div class="form-group">
             <div class="input-wrapper">
                 <label for="phone" class="form-label">Telephone</label>
-                <input name="phone" id="phone" type="text" class="form-control" placeholder="+306949028294"
+                <input name="phone" id="phone" type="text" class="form-control" placeholder="+3069XXXXXXXX"
                     required 
-                    minlength="3"
-                    maxlength="5"
-                    data-validate="minlength(-1),maxlength(100)"
+                    maxlength="20"
+                    data-validate="pattern(^(?:\+|00)?\d+$)"
                 />
             </div>
             <div class="form-feedback">
                 <span class="feedback valid phone">This is a valid telephone!</span>
 
                 <span class="feedback invalid phone phone-required">Please enter your telephone</span>
+                <span class="feedback invalid phone phone-pattern">Please enter a valid telephone</span>
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-group">
+            <div class="input-wrapper">
+                <label for="message" class="form-label">Your message</label>
+                <textarea name="message" id="message" type="text" class="form-control" placeholder="your message"
+                    required 
+                    minlength="1"
+                    maxlength="1000"
+                    data-validate="minlength(1),maxlength(1000)"
+                ></textarea>
+            </div>
+            <div class="form-feedback">
+
+                <span class="feedback invalid message message-required">Please enter your message</span>
+            </div>
+        </div>
+
+        <div class="lower-area">
+
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <input name="consent" id="consent" type="checkbox" class="form-check"
+                        required 
+                        data-validate=""
+                    />
+                    <label for="consent" class="form-label">
+                        You have to accept the privacy policy terms. <a class="view-terms" href="#terms-popup">Read the terms</a>
+                    </label>
+                </div>
+                <div class="form-feedback">
+                    <span class="feedback valid consent">This is a valid consent!</span>
+
+                    <span class="feedback invalid consent consent-required">You have to accept the terms before you proceed</span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
     </form>
 
 </div> 
