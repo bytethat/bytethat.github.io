@@ -146,6 +146,18 @@
                 }
             }
 
+            &.validated {
+                .form-control, .form-check {
+                    &:valid {
+                        border-color: var(--#{$prefix}form-valid-color);
+                    }
+
+                    &:invalid {
+                        border-color: var(--#{$prefix}form-invalid-color);
+                    }
+                }
+            }
+
             .view-terms {
                 text-decoration: underline;
             }
