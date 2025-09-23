@@ -1,7 +1,5 @@
-import { WebHostBuilder } from '@bytethat/core';
-import themeModule from 'packages/theme/main';
-
-import $ from 'jquery';
+import { Events, WebHostBuilder } from '@bytethat/core';
+import themeModule from '@bytethat/theme';
 
 const system = WebHostBuilder.create()
     .registerModule(themeModule)
@@ -9,8 +7,6 @@ const system = WebHostBuilder.create()
 
 system.initialize();
 
-$(document).ready(() => {
-
+Events.document.onReady(() => {
     system.run();
-
 });

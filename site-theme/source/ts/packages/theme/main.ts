@@ -2,7 +2,6 @@ import { IModule, IServiceCollection, IServiceProvider, ScriptService } from '@b
 
 import formScript from './form';
 
-import $ from 'jquery';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 
@@ -16,35 +15,34 @@ const debounce = (func: Function, wait: number) => {
 };
 
 const menuScript = ScriptService.create(() => {
-    const $menus = $('.menu.menu-expand');
+    const menus = document.querySelectorAll('.menu.menu-expand');
 
-    $menus.each((index, menu) => {
-        const $menu = $(menu);
+    Array.from(menus).forEach(menu => {
+        const menuButton = menu.querySelector('.menu-toggle');
 
-        const $menuButton = $menu.find('.menu-toggle');
+        if (!menuButton) {
+            return;
+        }
 
-        $menuButton.on('click', () => {
-            $menu.toggleClass('expanded');
+        menuButton.addEventListener('click', () => {
+            menu.classList.toggle('expanded');
         });
-
-        $(window).on('resize', debounce(() => {
-            if ($(window).width() < 768) {
+        
+        window.addEventListener('resize', debounce(() => {
+            if (window.innerWidth < 768) {
                 return;
             }
-
-            $menu.removeClass('expanded');
-
+            
+            menu.classList.remove('expanded');
         }, 100));
     });
 })
 
 const sliderScript = ScriptService.create(() => {
-    const $sliders = $('.swiper');
+    const sliders = document.querySelectorAll('.swiper');
 
-    $sliders.each((index, slider) => {
-        const $slider = $(slider);
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const swiper = new Swiper($slider[0], {
+    Array.from(sliders).forEach((slider :HTMLElement) => {
+        const swiper = new Swiper(slider, {
             modules: [Navigation, Pagination],
             
             // Optional parameters
@@ -75,7 +73,6 @@ const sliderScript = ScriptService.create(() => {
 
 
 const footercontactFormScript = ScriptService.create(() => {
-
     const toggleLabel = (control: HTMLInputElement | HTMLTextAreaElement) => {
         const currentValue = control.value;
 
@@ -108,6 +105,32 @@ const footercontactFormScript = ScriptService.create(() => {
         toggleLabel(control);
         
         control.addEventListener('input', () => toggleLabel(control));
+
+        if(control instanceof HTMLTextAreaElement) {
+            const calculateHeight = () => {
+                control.style.height = 'auto';
+                
+                const lineHeight = parseFloat(window.getComputedStyle(control).lineHeight);
+                const paddingTop = parseFloat(window.getComputedStyle(control).paddingTop);
+                const paddingBottom = parseFloat(window.getComputedStyle(control).paddingBottom);
+
+                const minHeight = lineHeight + paddingTop + paddingBottom;
+
+                let height = control.scrollHeight;
+
+                control.style.height = height + 'px';
+            };
+
+            control.rows = 1;
+            control.style.overflowY = 'hidden';
+            control.style.resize = 'none';
+
+            calculateHeight();
+
+            control.addEventListener('input', () => {
+                calculateHeight();
+            });
+        }
     });
 });
 
@@ -123,4 +146,6 @@ class ThemeModule implements IModule {
     }
 }
 
-export default new ThemeModule();
+const themeModule : IModule = new ThemeModule();
+
+export default themeModule;

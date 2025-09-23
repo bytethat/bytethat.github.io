@@ -136,7 +136,6 @@ const buildControl = (ctl: FormControl) => {
             const error = ctl.form.querySelector(`.feedback.invalid.${ctl.name}.${ctl.name}-${errorType}`);
             
             error?.classList?.add('visible');
-
         }
 
         return result.valid;

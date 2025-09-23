@@ -50,7 +50,10 @@
             }
 
             .menu-item {
-                a { padding: 1em 1.5em; }
+                a { 
+                    display: flex;
+                    padding: 1em 1.5em; 
+                }
 
                 @media (min-width: 768px) {
                     a { font-size: 1.5rem; }
@@ -63,12 +66,6 @@
                 .menu-list {
                     left: 0;
                     opacity: 1;
-                }
-
-                .menu-item {
-                    a {
-                        display: flex;
-                    }
                 }
             }
         }
