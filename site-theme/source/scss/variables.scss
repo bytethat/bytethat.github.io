@@ -137,3 +137,13 @@ $link-hover-decoration:                   underline !default;
 $button-color:               $light !default;
 $button-bg:                  $primary !default;
 $button-hover-bg:            shift-color($button-bg, $link-shade-percentage) !default;
+
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;

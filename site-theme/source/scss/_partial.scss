@@ -35,7 +35,7 @@
 .main-menu {
     &.menu-expand {
 
-        @media (max-width: 992px) {
+        @media (max-width: map-get($grid-breakpoints, lg)) {
             .menu-list {
                     position: fixed;
                     display: block;
@@ -55,7 +55,7 @@
                     padding: 1em 1.5em; 
                 }
 
-                @media (min-width: 768px) {
+                @media (min-width: map-get($grid-breakpoints, md)) {
                     a { font-size: 1.5rem; }
                     // padding: 1.5em 2em;
                 }
@@ -70,6 +70,64 @@
             }
         }
     }
+}
+
+.projects {
+    --foo : var(--#{$prefix}container-xxl-breakpoint);
+
+    display: grid;
+    // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 100%;
+    gap: 0.5em;
+
+    @media (min-width: map-get($grid-breakpoints, md)) {
+        grid-template-columns: 50% 50%;
+    }
+
+    @media (min-width: map-get($grid-breakpoints, xxl)) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .project {
+        --#{$prefix}card-spacer-x: 1rem;
+        --#{$prefix}card-spacer-y: 1rem;
+
+        --#{$prefix}card-border-width: 0;
+
+        transition: all 0.3s ease;
+
+        .card-body {
+            --#{$prefix}default-font-color: #ffffff;
+            --#{$prefix}default-font-color-rgb: 255, 255, 255;
+
+            --#{$prefix}link-color: #{$gray-200};
+            --#{$prefix}link-color-rgb: #{to-rgb($gray-200)};
+            --#{$prefix}link-hover-color: #{$gray-500};
+            --#{$prefix}link-hover-color-rgb: #{to-rgb($gray-500)};
+
+            position: absolute;
+            bottom: 0;
+            z-index: 1;
+
+            color: var(--#{$prefix}default-font-color);
+            @include text-outline(rgba($black, 0.3));
+        }
+
+        &:hover {
+            .card-body {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.theme-bg-dark {
+    --#{$prefix}default-font-color: $white;
+    --#{$prefix}default-font-color-rgb: #{to-rgb($white)};
+
+
+    color: rgba(var(--#{$prefix}default-font-color-rgb), 1);
+    background-color: var(--#{$prefix}primary);
 }
 
 .footer-container {
@@ -172,7 +230,7 @@
                 }
             }
 
-            @media (min-width: 768px) {
+            @media (min-width: map-get($grid-breakpoints, md)) {
                 max-width: 600px;
             }
         }
@@ -231,7 +289,7 @@
         z-index: 1;
 
         color: var(--#{$prefix}default-font-color);
-        text-shadow: 1px 1px 1px $primary;
+        @include text-outline(rgba($black, 0.3));
     }
 }
 
@@ -251,4 +309,149 @@
         text-decoration: none;
         background-color: var(--#{$prefix}button-hover-bg);
     }
+}
+
+// ========================
+// Testimonial Cards
+// ========================
+// Assumed HTML structure (adjust selectors if your markup differs):
+// <section class="testimonials">
+//   <article class="testimonial-card">
+//     <header class="testimonial-header">
+//       <img class="company-logo" src="logo.png" alt="Company" />
+//       <div class="company-meta">
+//         <span class="company-name">Company</span>
+//       </div>
+//     </header>
+//     <blockquote class="testimonial-text">Lorem ipsum...</blockquote>
+//     <footer class="testimonial-footer">
+//       <div class="author">
+//         <span class="author-name">Jane Doe</span>
+//         <span class="author-role">CTO</span>
+//       </div>
+//     </footer>
+//   </article>
+// </section>
+
+.testimonials {
+    --#{$prefix}testimonial-bg: #{$light};
+    --#{$prefix}testimonial-border: rgba(var(--#{$prefix}default-font-color-rgb), .1);
+    --#{$prefix}testimonial-radius: 1rem;
+    --#{$prefix}testimonial-logo-size: 3rem; // control logo size here
+    --#{$prefix}testimonial-text-color: var(--#{$prefix}default-font-color);
+    --#{$prefix}testimonial-accent: #{$primary};
+    display: grid;
+    gap: 4rem;
+
+    @media (min-width: map-get($grid-breakpoints, lg)) {
+        grid-template-columns: 50% 50%;
+    }
+    
+    .testimonial {
+        flex-direction: column;
+
+        gap: 1.25rem;
+        padding: 2rem 2rem 2.25rem;
+        background: var(--#{$prefix}testimonial-bg);
+        border: 1px solid var(--#{$prefix}testimonial-border);
+        border-radius: var(--#{$prefix}testimonial-radius);
+        box-shadow: 0 4px 8px rgba(0,0,0,.04), 0 2px 4px rgba(0,0,0,.06);
+        isolation: isolate;
+        transition: box-shadow .25s ease, transform .25s ease;
+
+        margin: 0 auto;
+
+        &:hover {
+            box-shadow: 0 6px 14px rgba(0,0,0,.08), 0 3px 6px rgba(0,0,0,.10);
+            transform: translateY(-2px);
+        }
+
+
+        @media (min-width: map-get($grid-breakpoints, sm)) {
+            flex-direction: row;
+        }
+
+        .card-image { max-width: 10rem; }
+
+        // Main testimonial text emphasized: bigger, readable line-height
+        .quote {
+            position: relative;
+            margin: 0;
+            font-size: clamp(1.05rem, 1rem + 0.6vw, 1.4rem); // larger text
+            line-height: 1.55;
+            font-weight: 400;
+            color: var(--#{$prefix}testimonial-text-color);
+            font-style: italic;
+
+            &:before, &:after {
+                font-size: 2.5rem;
+                line-height: 0;
+                font-weight: 700;
+                font-style: normal;
+                color: var(--#{$prefix}testimonial-accent);
+                opacity: .15;
+            }
+
+            &:before {
+                content: '“';
+                position: absolute;
+                top: -.75rem;
+                left: -.5rem;
+            }
+
+            &:after {
+                content: '”';
+                position: absolute;
+                bottom: -.5rem;
+                right: -.25rem;
+            }
+        }
+
+        .author {
+            flex: 1;
+            justify-content: flex-end;
+
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+
+            .name {
+                font-weight: 600;
+            }
+
+            .role {
+                opacity: .7;
+                font-size: .8rem;
+            }
+
+            .name {
+                font-weight: 600;
+                line-height: 1.2;
+                color: var(--#{$prefix}testimonial-accent);
+            }
+        }
+    }
+
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: var(--#{$prefix}testimonial-logo-size);
+}
+
+.testimonial-header .company-logo {
+    width: var(--#{$prefix}testimonial-logo-size);
+    height: var(--#{$prefix}testimonial-logo-size);
+    object-fit: contain;
+    object-position: center;
+    flex: 0 0 var(--#{$prefix}testimonial-logo-size);
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,.15));
+}
+
+.testimonial-header .company-meta {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
 }

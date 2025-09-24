@@ -1,6 +1,5 @@
-
-.container-xl,
-.container-fluid {
+@mixin container($name, $breakpoint) {
+  .container-#{$name} {
     --bt-gutter-x: 1.5rem;
     --bt-gutter-y: 0;
 
@@ -9,10 +8,17 @@
 
     padding-left: calc(var(--bt-gutter-x) * 0.5);
     padding-right: calc(var(--bt-gutter-x) * 0.5);
+  }
+
+  @if $breakpoint > 0 {
+    @media (min-width: $breakpoint) {
+      .container-#{$name} {
+        max-width: $breakpoint;
+      }
+    }
+  }
 }
 
-@media (min-width: 1400px) {
-  .container-xl {
-    max-width: 1320px;
-  }
+@each $name, $breakpoint in $grid-breakpoints {
+  @include container($name, $breakpoint);
 }
