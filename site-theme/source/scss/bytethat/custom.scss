@@ -1,3 +1,37 @@
+.services {
+    --#{$prefix}default-font-color: #{$font-color};
+    --#{$prefix}default-font-color-rgb: #{to-rgb($font-color)};
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem 0;
+    color: rgba(var(--#{$prefix}default-font-color-rgb), 1);
+
+    @media (min-width: map-get($grid-breakpoints, md)) {
+        flex-direction: row;
+    }
+
+    .service {
+        background-color: #{$light};
+        border-bottom: 0.25em solid $red;
+
+        @media (min-width: map-get($grid-breakpoints, md)) {
+            flex: 1 1 calc(50% - 1rem);
+        }
+
+        @media (min-width: map-get($grid-breakpoints, xl)) {
+            flex: 1 1 calc(25% - 1rem);
+        }
+
+        .card-body {
+            display: flex;
+
+            > p { margin: auto 0 0 0; }
+        }
+    }
+}
 .projects {
     --foo : var(--#{$prefix}container-xxl-breakpoint);
 
@@ -119,6 +153,9 @@
 }
 
 .testimonials {
+    --#{$prefix}default-font-color: #{$font-color};
+    --#{$prefix}default-font-color-rgb: #{to-rgb($font-color)};
+
     --#{$prefix}testimonial-bg: #{$light};
     --#{$prefix}testimonial-border: rgba(var(--#{$prefix}default-font-color-rgb), .1);
     --#{$prefix}testimonial-radius: 1rem;
@@ -128,6 +165,7 @@
     display: grid;
     gap: 4rem;
     margin: 1rem 0;
+    color: rgba(var(--#{$prefix}default-font-color-rgb), 1);
 
     @media (min-width: map-get($grid-breakpoints, lg)) {
         grid-template-columns: calc(50% - 2rem) calc(50% - 2rem);

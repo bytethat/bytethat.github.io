@@ -1,5 +1,5 @@
 {
-  "services": [
+  "banners": [
     {
       "url": "#",
       "title": "Slide 1 Heading",
@@ -11,6 +11,32 @@
       "title": "Slide 2 Heading",
       "image": "/uploads/images/hero-slider/2.jpg",
       "description": "This is a description for Slide 2. It can be a bit longer to provide more context."
+    }
+  ],
+  "services": [
+    {
+      "url": "#",
+      "title": "E-Commerce Solutions",
+      "image": "/uploads/images/services/1.jpg",
+      "description": "We design and build secure, high-performing online stores with seamless payments, inventory, shipping, and analytics to maximize conversion."
+    },
+    {
+      "url": "#",
+      "title": "Digital Transformation Consulting",
+      "image": "/uploads/images/services/2.jpg",
+      "description": "We assess your processes and tech stack and deliver a prioritized roadmap and quick wins to modernize operations and drive measurable results."
+    },
+    {
+      "url": "#",
+      "title": "Custom .NET Web Development",
+      "image": "/uploads/images/services/2.jpg",
+      "description": "We specialize in building custom web applications, ensuring scalability, security, and performance."
+    },
+    {
+      "url": "#",
+      "title": "Custom Web Design (Responsive UI/UX)",
+      "image": "/uploads/images/services/2.jpg",
+      "description": "We craft human-centered, responsive interfaces—grounded in research and UX best practices—that look great on every device and boost engagement."
     }
   ],
   "projects": [

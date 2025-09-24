@@ -3,7 +3,7 @@
         padding: 0;
     }
 
-    .region-area-two {
+    .region-area-two, .region-area-four {
         @include dark-bg();
     }
 }
