@@ -36,18 +36,22 @@
   ],
   "testimonials": [
     {
-      "name": "John Doe",
-      "role": "Head of IT Operations",
-      "company": "Contoso Ltd.",
-      "image": "/uploads/images/testimonials/contoso.jpg",
+      "author": {
+        "name": "John Doe",
+        "role": "Head of IT Operations",
+        "company": "Contoso Ltd."
+      },
+      "image": "/uploads/images/testimonials/contoso.png",
       "quote": "Bytethat has been a dependable partner throughout our project. Their professionalism, technical know-how, and adaptability ensured smooth cooperation and excellent results."
     },
     {
-      "name": "Jane Smith",
-      "role": "Director of Digital Strategy",
-      "company": "Contoso Ltd.",
-      "image": "/uploads/images/testimonials/contoso.jpg",
-      "quote": "Working with DotSee was seamless. The team’s commitment, expertise, and responsiveness helped us achieve a high-quality solution on time."
+      "author": {
+        "name": "Jane Smith",
+        "role": "Director of Digital Strategy",
+        "company": "Contoso Ltd."
+      },
+      "image": "/uploads/images/testimonials/contoso.png",
+      "quote": "Working with Bytethat was seamless. The team’s commitment, expertise, and responsiveness helped us achieve a high-quality solution on time."
     }
   ]
 }

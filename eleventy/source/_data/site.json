@@ -1,9 +1,10 @@
 {
     "title": "ByteThat",
+    "slogan": "Your need to develop",
     "description": "ByteThat is a software development company specializing in web and mobile applications.",
-    "url": "https://bytethat.com",
+    "url": "https://bytethat.gr",
     "author": {
         "name": "ByteThat",
-        "email": "info@bytethat.com"
+        "email": "info@bytethat.gr"
     }
 }

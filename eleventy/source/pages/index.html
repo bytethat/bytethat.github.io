@@ -66,37 +66,24 @@ permalink: /
             <h2>What our clients say</h2>
 
             <div class="testimonials">
+
+                {% for testimonial in testimonials %}
                 <div class="card testimonial">
                     <figure class="card-image">
-                        <img src="assets/images/contoso-logo.png" alt="Contoso Logo" />
+                        <img src="{{ testimonial.image }}" alt="{{ testimonial.name }}" />
                     </figure>
                     <figure class="card-body">
                         <blockquote class="quote">
-                            Bytethat has been a dependable partner throughout our project. Their professionalism, technical know-how, and adaptability ensured smooth cooperation and excellent results.
+                            {{ testimonial.quote }}
                         </blockquote>
                         <figcaption class="author">
-                            <span class="name">Jane Doe</span>
-                            <span class="role">Head of IT Operations</span>
-                            <span class="company">Contoso Ltd.</span>
+                            <span class="name">{{ testimonial.author.name }}</span>
+                            <span class="role">{{ testimonial.author.role }}</span>
+                            <span class="company">{{ testimonial.author.company }}</span>
                         </figcaption>
                     </figure>
                 </div>
-            
-                <div class="card testimonial">
-                    <figure class="card-image">
-                        <img src="assets/images/contoso-logo.png" alt="Contoso Logo" />
-                    </figure>
-                    <figure class="card-body">
-                        <blockquote class="quote">
-                            Working with DotSee was seamless. The team’s commitment, expertise, and responsiveness helped us achieve a high-quality solution on time.
-                        </blockquote>
-                        <figcaption class="author">
-                            <span class="name">Jane Smith</span>
-                            <span class="role">Director of Digital Strategy</span>
-                            <span class="company">Global Manufacturing Firm</span>
-                        </figcaption>
-                    </figure>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

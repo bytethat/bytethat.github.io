@@ -22,3 +22,5 @@
 @each $name, $breakpoint in $grid-breakpoints {
   @include container($name, $breakpoint);
 }
+
+@include container('fluid', 0);
