@@ -189,7 +189,8 @@
 
 .main-slider {
     position: relative;
-    height: calc(100vh - 4em);
+    height: calc(100vh - 4em); // fallback for browsers that do not support svh
+    height: calc(100svh - 4em);
 
     .slide-image {
         position: absolute;
