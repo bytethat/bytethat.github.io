@@ -5,6 +5,7 @@
     // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-columns: 100%;
     gap: 0.5em;
+    margin: 1rem 0;
 
     @media (min-width: map-get($grid-breakpoints, md)) {
         grid-template-columns: 50% 50%;
@@ -126,6 +127,7 @@
     --#{$prefix}testimonial-accent: #{$primary};
     display: grid;
     gap: 4rem;
+    margin: 1rem 0;
 
     @media (min-width: map-get($grid-breakpoints, lg)) {
         grid-template-columns: calc(50% - 2rem) calc(50% - 2rem);
@@ -134,7 +136,7 @@
     .testimonial {
         flex-direction: column;
 
-        gap: 1.25rem;
+        // gap: 1.25rem;
         padding: 2rem 2rem 2.25rem;
         background: var(--#{$prefix}testimonial-bg);
         border: 1px solid var(--#{$prefix}testimonial-border);
@@ -209,5 +211,4 @@
             }
         }
     }
-
 }

@@ -9,6 +9,7 @@
     background-color: var(--#{$prefix}primary);
 }
 
+@import 'global';
 @import 'header';
 @import 'footer';
 @import 'pages/home';

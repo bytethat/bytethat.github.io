@@ -1,0 +1,8 @@
+.page-container {
+    .region-area {
+        --#{$prefix}region-gutter-x: 0;
+        --#{$prefix}region-gutter-y: 2rem;
+
+        padding: var(--#{$prefix}region-gutter-y) var(--#{$prefix}region-gutter-x);
+    }
+}
