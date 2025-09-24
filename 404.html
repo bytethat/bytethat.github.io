@@ -1,0 +1,36 @@
+<section class="error-page">
+  <div class="container-xl">
+    <div class="error-content">
+      <div class="logo-wrap">
+        <img src="/assets/images/logo-white.png" alt="ByteThat" class="logo" height="48" />
+      </div>
+      <h1 class="code">404</h1>
+      <p class="message">Sorry we couldn't find that page.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  body { background-color: #180048;}
+  .error-page {
+    padding: 6rem 0;
+    text-align: center;
+  }
+  .error-page .logo-wrap { margin-bottom: 1.5rem; }
+  .error-page .logo { display: inline-block; height: 48px; width: auto; }
+  .error-page .code {
+    margin: 0 0 0.5rem 0;
+    font-weight: 700;
+    line-height: 1;
+    /* big, fluid size */
+    font-size: clamp(5rem, 12vw, 12rem);
+    color: #fff;
+  }
+  .error-page .message {
+    margin: 0 auto 1.5rem auto;
+    max-width: 40ch;
+    font-size: clamp(1rem, 2.2vw, 1.5rem);
+    color: #fff;
+  }
+  .error-page .actions { margin-top: 1rem; }
+</style>
