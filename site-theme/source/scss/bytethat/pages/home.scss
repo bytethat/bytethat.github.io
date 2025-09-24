@@ -1,0 +1,16 @@
+.page-home {
+    --#{$prefix}region-gutter-x: 4em;
+    --#{$prefix}region-gutter-y: 4em;
+    
+    .region-area {
+        padding: var(--#{$prefix}region-gutter-y) var(--#{$prefix}region-gutter-x);
+    }
+
+    .region-area-one {
+        padding: 0;
+    }
+
+    .region-area-two {
+        @include dark-bg();
+    }
+}

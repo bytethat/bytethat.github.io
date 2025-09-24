@@ -18,7 +18,7 @@
     <div class="site-container">
         {% include "header.njk" %}
         
-        <div class="page-container {{ foo }}">
+        <div class="page-container page-{{ page.fileSlug }}">
             {{ content | safe }}
         </div>
 

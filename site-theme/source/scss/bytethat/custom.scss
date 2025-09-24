@@ -1,0 +1,213 @@
+.projects {
+    --foo : var(--#{$prefix}container-xxl-breakpoint);
+
+    display: grid;
+    // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 100%;
+    gap: 0.5em;
+
+    @media (min-width: map-get($grid-breakpoints, md)) {
+        grid-template-columns: 50% 50%;
+    }
+
+    @media (min-width: map-get($grid-breakpoints, xxl)) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .project {
+        --#{$prefix}card-spacer-x: 1rem;
+        --#{$prefix}card-spacer-y: 1rem;
+
+        --#{$prefix}card-border-width: 0;
+
+        transition: all 0.3s ease;
+
+        .card-body {
+            --#{$prefix}default-font-color: #ffffff;
+            --#{$prefix}default-font-color-rgb: 255, 255, 255;
+
+            --#{$prefix}link-color: #{$gray-200};
+            --#{$prefix}link-color-rgb: #{to-rgb($gray-200)};
+            --#{$prefix}link-hover-color: #{$gray-500};
+            --#{$prefix}link-hover-color-rgb: #{to-rgb($gray-500)};
+
+            position: absolute;
+            bottom: 0;
+            z-index: 1;
+
+            color: var(--#{$prefix}default-font-color);
+            @include text-outline(rgba($black, 0.3));
+        }
+
+        &:hover {
+            .card-body {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.swiper {
+    --swiper-theme-color: #{$primary};
+}
+
+.main-slider {
+    position: relative;
+    height: calc(100vh - 4em); // fallback for browsers that do not support svh
+    height: calc(100svh - 4em);
+
+    .slide-image {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        picture {
+            display: block;
+            width: 100%;
+            height: 100%;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+    }
+
+    .slide-content { 
+        --#{$prefix}default-font-color: #ffffff;
+        --#{$prefix}default-font-color-rgb: 255, 255, 255;
+
+        --#{$prefix}link-color: #{$gray-200};
+        --#{$prefix}link-color-rgb: #{to-rgb($gray-200)};
+        --#{$prefix}link-hover-color: #{$gray-500};
+        --#{$prefix}link-hover-color-rgb: #{to-rgb($gray-500)};
+        
+        position: relative;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding: 4em;
+        justify-content: flex-end;
+        flex-direction: column;
+        z-index: 1;
+
+        color: var(--#{$prefix}default-font-color);
+        @include text-outline(rgba($black, 0.3));
+    }
+}
+
+.button {
+    display: inline-block;
+    padding: 0.75em 1.5em;
+    border: none;
+    border-radius: 4px;
+
+    background-color: var(--#{$prefix}button-bg);
+    color: var(--#{$prefix}button-color);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: none;
+        background-color: var(--#{$prefix}button-hover-bg);
+    }
+}
+
+.testimonials {
+    --#{$prefix}testimonial-bg: #{$light};
+    --#{$prefix}testimonial-border: rgba(var(--#{$prefix}default-font-color-rgb), .1);
+    --#{$prefix}testimonial-radius: 1rem;
+    --#{$prefix}testimonial-logo-size: 3rem; // control logo size here
+    --#{$prefix}testimonial-text-color: var(--#{$prefix}default-font-color);
+    --#{$prefix}testimonial-accent: #{$primary};
+    display: grid;
+    gap: 4rem;
+
+    @media (min-width: map-get($grid-breakpoints, lg)) {
+        grid-template-columns: calc(50% - 2rem) calc(50% - 2rem);
+    }
+    
+    .testimonial {
+        flex-direction: column;
+
+        gap: 1.25rem;
+        padding: 2rem 2rem 2.25rem;
+        background: var(--#{$prefix}testimonial-bg);
+        border: 1px solid var(--#{$prefix}testimonial-border);
+        border-radius: var(--#{$prefix}testimonial-radius);
+        box-shadow: 0 4px 8px rgba(0,0,0,.04), 0 2px 4px rgba(0,0,0,.06);
+        isolation: isolate;
+        transition: box-shadow .25s ease, transform .25s ease;
+
+        margin: 0 auto;
+
+        @media (min-width: map-get($grid-breakpoints, sm)) {
+            flex-direction: row;
+        }
+
+        .card-image { max-width: 10rem; }
+
+        // Main testimonial text emphasized: bigger, readable line-height
+        .quote {
+            position: relative;
+            margin: 0;
+            font-size: clamp(1.05rem, 1rem + 0.6vw, 1.4rem); // larger text
+            line-height: 1.55;
+            font-weight: 400;
+            color: var(--#{$prefix}testimonial-text-color);
+            font-style: italic;
+
+            &:before, &:after {
+                font-size: 2.5rem;
+                line-height: 0;
+                font-weight: 700;
+                font-style: normal;
+                color: var(--#{$prefix}testimonial-accent);
+                opacity: .15;
+            }
+
+            &:before {
+                content: '“';
+                position: absolute;
+                top: -.75rem;
+                left: -.5rem;
+            }
+
+            &:after {
+                content: '”';
+                position: absolute;
+                bottom: -.5rem;
+                right: -.25rem;
+            }
+        }
+
+        .author {
+            flex: 1;
+            justify-content: flex-end;
+
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+
+            .name {
+                font-weight: 600;
+            }
+
+            .role {
+                opacity: .7;
+                font-size: .8rem;
+            }
+
+            .name {
+                font-weight: 600;
+                line-height: 1.2;
+                color: var(--#{$prefix}testimonial-accent);
+            }
+        }
+    }
+
+}
