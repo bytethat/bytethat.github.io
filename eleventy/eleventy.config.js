@@ -7,6 +7,8 @@ const __dirname = path.resolve();
 export default async function (eleventyConfig) {
     files(eleventyConfig);
 
+    eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+
     return {
         dir: {
             input: "source",

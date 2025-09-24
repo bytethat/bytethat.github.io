@@ -5,7 +5,7 @@
 			<div class="inner-area inner-area-one">
 				<div class="logo-container">
 					<a class="navbar-brand" href="/">
-						<img src="assets/images/logo.png" alt="ByteThat" height="32" class="d-inline-block align-text-top">
+						<img src="{{ '/assets/images/logo.png' | url }}" alt="{{ site.name }}" height="32" class="d-inline-block align-text-top">
 					</a>
 				</div>
 
@@ -15,18 +15,11 @@
 						</button>
 
 						<ul class="menu-list menu-collapse">
-							<li class="menu-item active">
-								<a href="#">Home</a>
+						{% for item in main_menu.items %}
+							<li class="menu-item {% if item.url === page.url %}active{% endif %}">
+								<a href="{{ item.url }}">{{ item. title }}</a>
 							</li>
-							<li class="menu-item">
-								<a href="#">About us</a>
-							</li>
-							<li class="menu-item">
-								<a href="#">What we do</a>
-							</li>
-							<li class="menu-item">
-								<a href="#">Contact</a>
-							</li>
+						{% endfor %}
 						</ul>
 				</nav>
 			</div>

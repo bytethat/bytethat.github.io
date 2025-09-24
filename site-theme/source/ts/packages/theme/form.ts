@@ -122,15 +122,11 @@ const buildControl = (ctl: FormControl) => {
         nodes.forEach(n => n.classList.remove('visible'));
 
         if(ctl.validationResult.valid) {
-            console.log(`Control [${ctl.name}] valid`);
-
             const success = document.querySelector(`.feedback.valid.${ctl.name}`);
 
             success?.classList?.add('visible');
         }
         else {
-            console.log(`Control [${ctl.name}] invalid: issues: ${ctl.validationResult.errors.join(', ')}`);
-
             const errorType = result.errors[0];
 
             const error = ctl.form.querySelector(`.feedback.invalid.${ctl.name}.${ctl.name}-${errorType}`);

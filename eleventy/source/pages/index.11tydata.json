@@ -1,0 +1,53 @@
+{
+  "foo": "bar",
+  "services": [
+    {
+      "url": "#",
+      "title": "Slide 1 Heading",
+      "image": "/uploads/images/hero-slider/1.jpg",
+      "description": "This is a description for Slide 1. It can be a bit longer to provide more context."
+    },
+    {
+      "url": "#",
+      "title": "Slide 2 Heading",
+      "image": "/uploads/images/hero-slider/2.jpg",
+      "description": "This is a description for Slide 2. It can be a bit longer to provide more context."
+    }
+  ],
+  "projects": [
+    {
+      "url": "#",
+      "title": "Project 1",
+      "image": "/uploads/images/project-1/list.jpg",
+      "description": "This is a description for Project 1."
+    },
+    {
+      "url": "#",
+      "title": "Project 2",
+      "image": "/uploads/images/project-2/list.jpg",
+      "description": "This is a description for Project 2."
+    },
+    {
+      "url": "#",
+      "title": "Project 3",
+      "image": "/uploads/images/project-3/list.jpg",
+      "description": "This is a description for Project 3."
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "John Doe",
+      "role": "Head of IT Operations",
+      "company": "Contoso Ltd.",
+      "image": "/uploads/images/testimonials/contoso.jpg",
+      "quote": "Bytethat has been a dependable partner throughout our project. Their professionalism, technical know-how, and adaptability ensured smooth cooperation and excellent results."
+    },
+    {
+      "name": "Jane Smith",
+      "role": "Director of Digital Strategy",
+      "company": "Contoso Ltd.",
+      "image": "/uploads/images/testimonials/contoso.jpg",
+      "quote": "Working with DotSee was seamless. The team’s commitment, expertise, and responsiveness helped us achieve a high-quality solution on time."
+    }
+  ]
+}

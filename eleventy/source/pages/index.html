@@ -1,42 +1,27 @@
 ---
-layout: main.njk
-title: HI
+permalink: /
 ---
 <div class="region-area region-area-one">
     <div class="inner-area inner-area-one">
             <div class="main-slider swiper">
                 <div class="swiper-wrapper">
+                    {% for service in services %}
                     <div class="swiper-slide">
                         <figure class="slide-image">
                             <picture>
-                                <img src="assets/images/hero-slider-1.jpg" alt="Slide 1" />
+                                <img src="{{ service.image }}" alt="{{ service.title }}" />
                             </picture>
                         </figure>
 
                         <div class="slide-content">
-                            <h2>Slide 1 Heading</h2>
-                            <p>This is a description for Slide 1. It can be a bit longer to provide more context.</p>
+                            <h2>{{ service.title }}</h2>
+                            <p>{{ service.description }}</p>
                             <div class="button-wrapper">
-                                <a href="#" class="button">Learn More</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="swiper-slide">
-                        <figure class="slide-image">
-                            <picture>
-                                <img src="assets/images/hero-slider-2.jpg" alt="Slide 2" />
-                            </picture>
-                        </figure>
-
-                        <div class="slide-content">
-                            <h2>Slide 2 Heading</h2>
-                            <p>This is a description for Slide 2. It can be a bit longer to provide more context.</p>
-                            <div class="button-wrapper">
-                                <a href="#" class="button">Learn More</a>
+                                <a href="{{ service.url }}" class="button">Learn More</a>
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
                 <!-- Add Pagination -->
                 <div class="swiper-pagination"></div>
@@ -48,6 +33,7 @@ title: HI
             </div>
     </div>
 </div>
+
 <div class="region-area region-area-two theme-bg-dark">
     <div class="container-xxl">
         <div class="inner-area inner-area-one">
@@ -56,36 +42,18 @@ title: HI
             <h2>Your need to develop</h2>
 
             <div class="projects">
-                <a href="#" class="card project">
+
+                {% for project in projects %}
+                <a href="{{ project.url }}" class="card project">
                     <figure class="card-image">
-                        <img src="assets/images/project-list.jpg" alt="Project 1" />
+                        <img src="{{ project.image }}" alt="{{ project.title }}" />
                     </figure>
                     <div class="card-body">
-                        <h3 class="card-title">Project 1</h3>
-                        <p>This is a brief description of Project 1. It highlights the main features and technologies used.</p>
+                        <h3 class="card-title">{{ project.title }}</h3>
+                        <p>{{ project.description }}</p>
                     </div>
                 </a>
-
-                <a href="#" class="card project">
-                    <figure class="card-image">
-                        <img src="assets/images/project-list.jpg" alt="Project 2" />
-                    </figure>
-                    <div class="card-body">
-                        <h3 class="card-title">Project 2</h3>
-                        <p>This is a brief description of Project 2. It highlights the main features and technologies used.</p>
-                    </div>
-                </a>
-
-                <a href="#" class="card project">
-                    <figure class="card-image">
-                        <img src="assets/images/project-list.jpg" alt="Project 3" />
-                    </figure>
-                    <div class="card-body">
-                        <h3 class="card-title">Project 3</h3>
-                        <p>This is a brief description of Project 3. It highlights the main features and technologies used.</p>
-                    </div>
-                </a>
-
+                {% endfor %}
             </div>
         </div>
 
