@@ -1,0 +1,57 @@
+// Contact page specific styles
+
+.page-contact {
+    .region-area-one {
+        padding: 0;
+    }
+}
+
+.stores-container {
+    position: relative;
+    height: calc(100vh - 4em); // fallback for browsers that do not support svh
+    height: calc(100svh - 4em);
+
+    display: flex;
+    flex-direction: column;
+
+    .map {
+        flex: 1;
+    }
+}
+
+
+.contact-split {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+
+    @media (min-width: map-get($grid-breakpoints, md)) {
+        flex-direction: row;
+        align-items: stretch;
+    }
+}
+
+.contact-info, .contact-map {
+    flex: 1 1 50%;
+}
+
+.contact-info {
+    font-size: 1rem;
+    line-height: 1.5;
+
+    h2 { margin-bottom: 1rem; }
+    p { margin-bottom: .75rem; }
+}
+
+.contact-map {
+    min-height: 320px;
+    #map {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        min-height: 320px;
+        border-radius: .5rem;
+        box-shadow: 0 0.25rem 1rem rgba(0,0,0,.1);
+    }
+}

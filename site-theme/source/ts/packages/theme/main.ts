@@ -71,7 +71,6 @@ const sliderScript = ScriptService.create(() => {
     });
 });
 
-
 const footercontactFormScript = ScriptService.create(() => {
     const toggleLabel = (control: HTMLInputElement | HTMLTextAreaElement) => {
         const currentValue = control.value;
@@ -134,12 +133,111 @@ const footercontactFormScript = ScriptService.create(() => {
     });
 });
 
+const mapScript = ScriptService.create(() => {
+    
+    const storesContainers = document.querySelectorAll('.stores-container');
+
+    Array.from(storesContainers).forEach((storesContainer :HTMLElement) => {
+
+        const mapElement = storesContainer.querySelector('.map');
+        const stores = Array.from(storesContainer.querySelectorAll('.store'))
+            .map(x => {
+                const title = x.getAttribute('data-title') || '';
+                const address = x.getAttribute('data-address') || '';
+                const area = x.getAttribute('data-area') || '';
+                const city = x.getAttribute('data-city') || '';
+                const zip = x.getAttribute('data-zip') || '';
+                const phone = x.getAttribute('data-phone') || '';
+                const email = x.getAttribute('data-email') || '';
+                const latitude = parseFloat(x.getAttribute('data-lat') || '0');
+                const longitude = parseFloat(x.getAttribute('data-lng') || '0');
+
+                return { title, address, area, city, zip, phone, email, latitude, longitude };
+            });
+
+        const defaultStore = stores[0];
+
+        const fitBounds = (map: google.maps.Map, positions: google.maps.LatLngLiteral[], defaultZoom = 16) => {
+            const bounds = new google.maps.LatLngBounds();
+            positions.forEach(position => bounds.extend(position));
+
+            if(bounds.isEmpty()) {
+                return;
+            }
+
+            if(positions.length === 1) {
+                map.setZoom(defaultZoom);
+                map.setCenter(positions[0]);
+                
+                return;
+            }
+
+            map.fitBounds(bounds);
+        };
+
+        // Initialize and add the map
+        const buildMap = async function(): Promise<void> {
+            const { Map } = await google.maps.importLibrary("maps") as google.maps.MapsLibrary;
+            const { AdvancedMarkerElement } = await google.maps.importLibrary("marker") as google.maps.MarkerLibrary;
+
+            const initialPosition = { lat: defaultStore.latitude, lng: defaultStore.longitude };
+
+            const map = new Map(
+                mapElement as HTMLElement,
+                {
+                zoom: 16,
+                center: initialPosition,
+                mapId: 'DEMO_MAP_ID',
+                }
+            );
+
+            stores.forEach(store => {
+                const position = { lat: store.latitude, lng: store.longitude };
+                
+                // Create an info window
+                const infoWindow = new google.maps.InfoWindow({
+                    content: `<div>
+                    <strong>${store.title}</strong>
+                    <p>${store.address}</p>
+                    <p>${store.area}, ${store.city}, ${store.zip}</p>
+                    <p>Phone: ${store.phone}</p>
+                    <p>Email: ${store.email}</p>
+                    </div>`,
+                });
+                // The marker, positioned at Uluru
+                const marker = new AdvancedMarkerElement({
+                    map: map,
+                    position: position,
+                    title: store.title
+                });
+
+                marker.addListener('click', () => {
+                    infoWindow.open({
+                        anchor: marker,
+                        map,
+                    });
+                });
+            });
+
+            const positions = stores
+                .filter(store => !isNaN(store.latitude) && !isNaN(store.longitude) && (store.latitude !== 0 || store.longitude !== 0))
+                .map(store => ({ lat: store.latitude, lng: store.longitude } as google.maps.LatLngLiteral));
+
+            fitBounds(map, positions);
+
+        }
+
+        buildMap();
+    });
+});
+
 class ThemeModule implements IModule {
     configureServices(services: IServiceCollection): void {
         services.add(ScriptService, () => menuScript);
         services.add(ScriptService, () => formScript);
         services.add(ScriptService, () => sliderScript);
         services.add(ScriptService, () => footercontactFormScript);
+        services.add(ScriptService, () => mapScript);
     }
 
     configure(services: IServiceProvider): void {

@@ -1,0 +1,26 @@
+{
+    "stores": [
+        {
+            "title": "Main Store",
+            "address": "Solonos 44",
+            "area": "Kallithea",
+            "city": "Athens",
+            "zip": "176 74",
+            "phone": "30 210 94 31 646",
+            "email": "info@bytethat.gr",
+            "latitude": 37.94651483022272,
+            "longitude": 23.697613320596563
+        },
+        {
+            "title": "Second Store",
+            "address": "Ermou 10",
+            "area": "Monastiraki",
+            "city": "Athens",
+            "zip": "105 63",
+            "phone": "30 210 32 16 256",
+            "email": "info@bytethat.gr",
+            "latitude": 37.97704907119617,
+            "longitude": 23.724465069268735
+        }
+    ]
+}
