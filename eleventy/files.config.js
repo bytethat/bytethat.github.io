@@ -5,7 +5,7 @@ const __dirname = path.resolve();
 const files_config = {
     copy: [
         { source: "source/robots.txt", destination: "robots.txt" },
-        { source: "source/assets/images", destination: "assets/images" },
+        { source: "source/assets", destination: "assets" },
         { source: "source/uploads", destination: "uploads" },
 
         { source: "../site-theme/dist/main.js", destination: "assets/js/main.js" },
