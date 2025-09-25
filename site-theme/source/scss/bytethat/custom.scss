@@ -84,6 +84,17 @@
 
 .swiper {
     --swiper-theme-color: #{$primary};
+
+    .swiper-button-prev, .swiper-button-next {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    @media (min-width: map-get($grid-breakpoints, md)) {
+        .swiper-button-prev, .swiper-button-next {
+            opacity: 1;
+        }
+    }
 }
 
 .main-slider {

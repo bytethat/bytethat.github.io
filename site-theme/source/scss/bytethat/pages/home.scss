@@ -3,7 +3,13 @@
         padding: 0;
     }
 
-    .region-area-two, .region-area-four {
+    .region-area-two {
+        h1 { margin-bottom: 1rem; }
+
+        p { line-height: $line-height-lg; }
+    }
+
+    .region-area-three, .region-area-five {
         @include dark-bg();
     }
 }

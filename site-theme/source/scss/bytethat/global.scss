@@ -1,8 +1,15 @@
 .page-container {
     .region-area {
         --#{$prefix}region-gutter-x: 0;
-        --#{$prefix}region-gutter-y: 2rem;
+        --#{$prefix}region-gutter-y: 4rem;
 
         padding: var(--#{$prefix}region-gutter-y) var(--#{$prefix}region-gutter-x);
+    }
+}
+
+
+@media (min-width: map-get($grid-breakpoints, xxl)) {
+    body { 
+        font-size: $font-size-lg;
     }
 }

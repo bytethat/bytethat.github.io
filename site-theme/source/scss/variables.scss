@@ -93,11 +93,11 @@ $font-weight-normal:          400 !default;
 $font-weight-medium:          500 !default;
 $font-weight-semibold:        600 !default;
 $font-weight-bold:            700 !default;
-$font-weight-base:            $font-weight-normal !default;
+$font-weight-base:            $font-weight-light !default;
 
 $line-height-base:            1.5 !default;
 $line-height-sm:              1.25 !default;
-$line-height-lg:              2 !default;
+$line-height-lg:              1.8 !default;
 
 $h1-font-size:                $font-size-base * 2.5 !default;
 $h2-font-size:                $font-size-base * 2 !default;

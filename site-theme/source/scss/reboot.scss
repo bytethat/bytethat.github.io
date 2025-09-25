@@ -37,7 +37,7 @@ body {
 
 %heading {
   margin-top: 0;
-  margin-bottom: $headings-margin-bottom;
+  margin-bottom: #{$headings-margin-bottom}rem;
   font-family: $headings-font-family;
   font-style: $headings-font-style;
   font-weight: $headings-font-weight;
