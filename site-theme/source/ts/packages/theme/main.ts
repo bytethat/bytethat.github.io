@@ -1,9 +1,10 @@
-import { IModule, IServiceCollection, IServiceProvider, ScriptService } from '@bytethat/core';
+import {IModule, IServiceCollection, IServiceProvider, ScriptService} from '@bytethat/core';
 
 import formScript from './form';
 
 import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
+import {Navigation, Pagination} from 'swiper/modules';
+import {mapScript} from "packages/theme/mapScript";
 
 const debounce = (func: Function, wait: number) => {
     let timeout: NodeJS.Timeout;
@@ -27,12 +28,12 @@ const menuScript = ScriptService.create(() => {
         menuButton.addEventListener('click', () => {
             menu.classList.toggle('expanded');
         });
-        
+
         window.addEventListener('resize', debounce(() => {
             if (window.innerWidth < 768) {
                 return;
             }
-            
+
             menu.classList.remove('expanded');
         }, 100));
     });
@@ -41,10 +42,10 @@ const menuScript = ScriptService.create(() => {
 const sliderScript = ScriptService.create(() => {
     const sliders = document.querySelectorAll('.swiper');
 
-    Array.from(sliders).forEach((slider :HTMLElement) => {
+    Array.from(sliders).forEach((slider: HTMLElement) => {
         const swiper = new Swiper(slider, {
             modules: [Navigation, Pagination],
-            
+
             // Optional parameters
             loop: true,
             autoplay: {
@@ -75,13 +76,13 @@ const footercontactFormScript = ScriptService.create(() => {
     const toggleLabel = (control: HTMLInputElement | HTMLTextAreaElement) => {
         const currentValue = control.value;
 
-        const label : HTMLLabelElement | null = control.closest('.form-group')?.querySelector('.form-label');
+        const label: HTMLLabelElement | null = control.closest('.form-group')?.querySelector('.form-label');
 
-        if(!label) {
+        if (!label) {
             return;
         }
 
-        if(currentValue === '') {
+        if (currentValue === '') {
             label.style.top = '';
             label.style.fontSize = '';
 
@@ -94,7 +95,7 @@ const footercontactFormScript = ScriptService.create(() => {
 
     const contactForm = document.querySelector('.contact-form');
 
-    if(!contactForm) {
+    if (!contactForm) {
         return;
     }
 
@@ -102,13 +103,13 @@ const footercontactFormScript = ScriptService.create(() => {
 
     Array.from(controls).forEach((control: HTMLInputElement | HTMLTextAreaElement) => {
         toggleLabel(control);
-        
+
         control.addEventListener('input', () => toggleLabel(control));
 
-        if(control instanceof HTMLTextAreaElement) {
+        if (control instanceof HTMLTextAreaElement) {
             const calculateHeight = () => {
                 control.style.height = 'auto';
-                
+
                 const lineHeight = parseFloat(window.getComputedStyle(control).lineHeight);
                 const paddingTop = parseFloat(window.getComputedStyle(control).paddingTop);
                 const paddingBottom = parseFloat(window.getComputedStyle(control).paddingBottom);
@@ -139,153 +140,19 @@ const AnchorScrollToScript = ScriptService.create(() => {
     Array.from(links).forEach((link: HTMLElement) => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            
+
             const selector = link.getAttribute('js-scroll-to') || '';
-            if(!!!selector) {
+            if (!!!selector) {
                 return;
             }
-            
+
             const target = document.querySelector(selector);
-            if(!target) {
+            if (!target) {
                 return;
             }
-            
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            target.scrollIntoView({behavior: 'smooth', block: 'start'});
         });
-    });
-});
-
-const mapScript = ScriptService.create(() => {
-    
-    const storesContainers = document.querySelectorAll('.stores-container');
-
-    Array.from(storesContainers).forEach((storesContainer :HTMLElement) => {
-
-        const mapElement = storesContainer.querySelector('.map');
-        const stores = Array.from(storesContainer.querySelectorAll('.store'))
-            .map(x => {
-                const id = x.getAttribute('data-id') || '';
-                const title = x.getAttribute('data-title') || '';
-                const address = x.getAttribute('data-address') || '';
-                const area = x.getAttribute('data-area') || '';
-                const city = x.getAttribute('data-city') || '';
-                const zip = x.getAttribute('data-zip') || '';
-                const phone = x.getAttribute('data-phone') || '';
-                const email = x.getAttribute('data-email') || '';
-                const latitude = parseFloat(x.getAttribute('data-lat') || '0');
-                const longitude = parseFloat(x.getAttribute('data-lng') || '0');
-
-                return { id, title, address, area, city, zip, phone, email, latitude, longitude };
-            });
-
-        const defaultStore = stores[0];
-
-
-
-        type Marker = { 
-            store: typeof stores[number]; 
-            marker: InstanceType<typeof google.maps.marker.AdvancedMarkerElement>; 
-            infoWindow: google.maps.InfoWindow 
-        };
-
-        const fitBounds = (map: google.maps.Map, positions: google.maps.LatLngLiteral[], defaultZoom = 16) => {
-            const bounds = new google.maps.LatLngBounds();
-            positions.forEach(position => bounds.extend(position));
-
-            if(bounds.isEmpty()) {
-                return;
-            }
-
-            if(positions.length === 1) {
-                map.setZoom(defaultZoom);
-                map.setCenter(positions[0]);
-                
-                return;
-            }
-
-            map.fitBounds(bounds);
-        };
-
-        // Initialize and add the map
-        const buildMap = async function(): Promise<void> {
-            const { Map } = await google.maps.importLibrary("maps") as google.maps.MapsLibrary;
-            const { AdvancedMarkerElement } = await google.maps.importLibrary("marker") as google.maps.MarkerLibrary;
-
-            const initialPosition = { lat: defaultStore.latitude, lng: defaultStore.longitude };
-
-            const map = new Map(
-                mapElement as HTMLElement,
-                {
-                zoom: 16,
-                center: initialPosition,
-                mapId: 'DEMO_MAP_ID',
-                }
-            );
-
-            const markerData : Marker[] = stores
-                .map((store) => {
-                    const position = { lat: store.latitude, lng: store.longitude };
-                    
-                    // Create an info window
-                    const infoWindow = new google.maps.InfoWindow({
-                        content: `<div>
-                        <strong>${store.title}</strong>
-                        <p>${store.address}</p>
-                        <p>${store.area}, ${store.city}, ${store.zip}</p>
-                        <p>Phone: ${store.phone}</p>
-                        <p>Email: ${store.email}</p>
-                        </div>`,
-                    });
-                    // The marker, positioned at Uluru
-                    const marker = new AdvancedMarkerElement({
-                        map: map,
-                        position: position,
-                        title: store.title
-                    });
-
-                    marker.addListener('click', () => {
-                        infoWindow.open({
-                            anchor: marker,
-                            map,
-                        });
-                    });
-
-                    return { store, marker, infoWindow };
-                });
-
-            const positions = stores
-                .filter(store => !isNaN(store.latitude) && !isNaN(store.longitude) && (store.latitude !== 0 || store.longitude !== 0))
-                .map(store => ({ lat: store.latitude, lng: store.longitude } as google.maps.LatLngLiteral));
-
-            fitBounds(map, positions);
-
-            // Wire up "Show in map" anchors
-            const showLinks = storesContainer.querySelectorAll('.show-in-map');
-            Array.from(showLinks).forEach((link: HTMLElement) => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const id = link.closest('.store')?.getAttribute('data-id') || '';
-
-                    if(!!!id) {
-                        return;
-                    }
-
-                    const { store, marker, infoWindow } = markerData.find(x => x.store.id === id);
-                    const center = { lat: store.latitude, lng: store.longitude };
-
-                    map.setCenter(center);
-                    map.setZoom(16);
-
-                    infoWindow.open({ anchor: marker, map });
-
-                    // Optional UX: scroll map into view
-                    (mapElement as HTMLElement)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                });
-            });
-
-        }
-
-        buildMap();
     });
 });
 
@@ -303,6 +170,6 @@ class ThemeModule implements IModule {
     }
 }
 
-const themeModule : IModule = new ThemeModule();
+const themeModule: IModule = new ThemeModule();
 
 export default themeModule;

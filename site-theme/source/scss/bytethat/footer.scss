@@ -1,111 +1,141 @@
-
 .footer-container {
-    --#{$prefix}default-font-color: #ffffff;
-    --#{$prefix}default-font-color-rgb: 255, 255, 255;
+  --#{$prefix}default-font-color: #ffffff;
+  --#{$prefix}default-font-color-rgb: 255, 255, 255;
 
-    --#{$prefix}link-color: #{$gray-200};
-    --#{$prefix}link-color-rgb: #{to-rgb($gray-200)};
-    --#{$prefix}link-hover-color: #{$gray-500};
-    --#{$prefix}link-hover-color-rgb: #{to-rgb($gray-500)};
+  --#{$prefix}link-color: #{$gray-200};
+  --#{$prefix}link-color-rgb: #{to-rgb($gray-200)};
+  --#{$prefix}link-hover-color: #{$gray-500};
+  --#{$prefix}link-hover-color-rgb: #{to-rgb($gray-500)};
 
-    // button
-    --#{$prefix}button-bg: #{$light};
-    --#{$prefix}button-color: #{$primary};
-    --#{$prefix}button-hover-bg: #{shift-color($light, $link-shade-percentage)};
-    
-    padding: 1em 0;
-    background-color: $primary;
-    color: var(--#{$prefix}default-font-color);
+  // button
+  --#{$prefix}button-bg: #{$light};
+  --#{$prefix}button-color: #{$primary};
+  --#{$prefix}button-hover-bg: #{shift-color($light, $link-shade-percentage)};
 
-        
-    .region-area {
-        // .inner-area-one {
-        //     display: flex;
-        //     align-items: center;
-        //     gap: 1em;
-        //     height: 4em;
-        // }
+  padding: 1em 0;
+  background-color: $primary;
+  color: var(--#{$prefix}default-font-color);
+
+
+  .region-area {
+    margin: 1rem 0 0 0;
+  }
+
+  .region-area-two {
+    .inner-area-one {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 1rem;
+
+      @media (min-width: map-get($grid-breakpoints, sm)) {
+        flex-direction: row;
+      }
+
+      .menu {
+        flex: 1;
+      }
+    }
+  }
+
+  .contact-form-container {
+    .title-container {
+      text-align: center;
     }
 
-    .contact-form-container {
-        .title-container {
-            text-align: center;
+    .contact-form {
+      margin: 4rem auto 0 auto;
+
+      .form-group {
+        .input-wrapper {
+          position: relative;
         }
 
-        .contact-form {
-            margin: 4rem auto 0 auto;
+        .form-control, .form-check {
+          --#{$prefix}gutter-top: 0.875rem;
+          --#{$prefix}gutter-left: 0rem;
 
-            .form-group {
-                .input-wrapper {
-                    position: relative;
-                }
+          background: transparent;
+          border: none;
+          border-radius: 0;
+          border-bottom: 0.2rem solid rgba(var(--#{$prefix}default-font-color-rgb), 0.7);
+          outline: none;
+          color: var(--#{$prefix}default-font-color);
 
-                .form-control, .form-check {
-                    --#{$prefix}gutter-top: 0.875rem;
-                    --#{$prefix}gutter-left: 0rem;
+          &::placeholder {
+            color: transparent;
+          }
 
-                    background: transparent;
-                    border: none;
-                    border-radius: 0;
-                    border-bottom: 0.2rem solid rgba(var(--#{$prefix}default-font-color-rgb), 0.7);
-                    outline: none;
-                    color: var(--#{$prefix}default-font-color);
+          &:focus {
+            box-shadow: none;
+            border-bottom: 0.2rem solid rgba(var(--#{$prefix}default-font-color-rgb), 1);
+          }
 
-                    &::placeholder {
-                        color: transparent;
-                    }
-
-                    &:focus {
-                        box-shadow: none;
-                        border-bottom: 0.2rem solid rgba(var(--#{$prefix}default-font-color-rgb), 1);
-                    }
-
-                    &#consent ~ .form-label {
-                        position: initial;
-                    }
-                }
-
-                .form-label {
-                    position: absolute;
-                    top: 0.875rem;
-                    left: 0;
-                    color: rgba(var(--#{$prefix}default-font-color-rgb), 1);
-                }
-            }
-
-            &.validated {
-                .form-control, .form-check {
-                    &:valid {
-                        border-color: var(--#{$prefix}form-valid-color);
-                    }
-
-                    &:invalid {
-                        border-color: var(--#{$prefix}form-invalid-color);
-                    }
-                }
-            }
-
-            .view-terms {
-                text-decoration: underline;
-            }
-
-            .lower-area {
-                display: flex;
-                align-items: center;
-                gap: 0.5em;
-
-                .form-group {
-                    flex: 1;
-                }
-            }
-
-            @media (min-width: map-get($grid-breakpoints, md)) {
-                max-width: 600px;
-            }
+          &#consent ~ .form-label {
+            position: initial;
+          }
         }
+
+        .form-label {
+          position: absolute;
+          top: 0.875rem;
+          left: 0;
+          color: rgba(var(--#{$prefix}default-font-color-rgb), 1);
+        }
+      }
+
+      &.validated {
+        .form-control, .form-check {
+          &:valid {
+            border-color: var(--#{$prefix}form-valid-color);
+          }
+
+          &:invalid {
+            border-color: var(--#{$prefix}form-invalid-color);
+          }
+        }
+      }
+
+      .view-terms {
+        text-decoration: underline;
+      }
+
+      .lower-area {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+
+        .form-group {
+          flex: 1;
+        }
+      }
+
+      @media (min-width: map-get($grid-breakpoints, md)) {
+        max-width: 600px;
+      }
     }
+  }
+
+  .social-icons {
+
+    a {
+      color: var(--#{$prefix}default-font-color);
+      margin: 0 0.5rem;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+
+      &:hover {
+        color: var(--#{$prefix}link-hover-color);
+      }
+    }
+  }
 }
 
-.copyright { text-align: center; font-size: $font-size-sm;
-    p { margin: 0; }
+.copyright {
+  text-align: center;
+  font-size: $font-size-sm;
+
+  p {
+    margin: 0;
+  }
 }

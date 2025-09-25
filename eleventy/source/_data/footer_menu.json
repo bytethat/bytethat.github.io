@@ -1,6 +1,6 @@
 {
     "items": [
-        { "title": "Legal", "url": "/legal/" },
+        { "title": "Cookie Policy", "url": "/cookie-policy-settings/" },
         { "title": "Privacy Policy", "url": "/privacy-policy/" }
     ]
 }

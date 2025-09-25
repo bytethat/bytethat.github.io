@@ -6,5 +6,15 @@
     "author": {
         "name": "ByteThat",
         "email": "info@bytethat.gr"
+    },
+    "social": {
+      "facebook": "TODO",
+      "twitter": "TODO",
+      "linkedin": "TODO",
+      "github": "https://github.com/bytethat",
+      "instagram": "TODO",
+      "youtube": "TODO",
+      "tiktok": "TODO"
     }
+
 }
