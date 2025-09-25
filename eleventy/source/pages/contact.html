@@ -7,6 +7,10 @@ title: contact
         <div class="stores-container">
             <div class="stores">
                 <h1>Contact us</h1>
+                <div class="contact-info">
+                    <p><strong><span class="icon-phone"></span></strong> <a href="tel:{{ site.contact.phone }}">{{ site.contact.phone }}</a></p>
+                    <p><strong><span class="icon-envelope-o"></span></strong> <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></p>
+                </div>
                 <p><a href="#" class="button" js-scroll-to=".footer-container .contact-form-container">Contact form</a></p>
 
                 <h2>Our Office</h2>
@@ -23,8 +27,8 @@ title: contact
                     data-email="{{ store.email }}"
                     data-lat="{{ store.latitude }}" 
                     data-lng="{{ store.longitude }}">
-                    <p><strong>{{ store.title }}</strong></p>
-                    <p>{{ store.address }}<br/>{{ store.area }}, {{ store.city }}, {{ store.zip }}</p>
+<!--                    <p><strong>{{ store.title }}</strong></p>-->
+                    <p><span class="icon-map-marker"></span> {{ store.address }}<br/>{{ store.area }}, {{ store.city }}, {{ store.zip }}</p>
                     <p><a href="#" class="button show-in-map">Show in map</a></p>
                 </div>
                 {% endfor %}

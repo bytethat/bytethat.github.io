@@ -3,9 +3,10 @@
     "slogan": "Your need to develop",
     "description": "ByteThat is a software development company specializing in web and mobile applications.",
     "url": "https://bytethat.gr",
-    "author": {
+    "contact": {
         "name": "ByteThat",
-        "email": "info@bytethat.gr"
+        "email": "info@bytethat.gr",
+        "phone": "+30 210 94 31 646"
     },
     "social": {
       "facebook": "TODO",
