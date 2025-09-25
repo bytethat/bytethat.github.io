@@ -1,6 +1,7 @@
 {
     "stores": [
         {
+            "id": "main-store",
             "title": "Main Store",
             "address": "Solonos 44",
             "area": "Kallithea",
@@ -12,6 +13,7 @@
             "longitude": 23.697613320596563
         },
         {
+            "id": "second-store",
             "title": "Second Store",
             "address": "Ermou 10",
             "area": "Monastiraki",
