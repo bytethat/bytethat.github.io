@@ -7,10 +7,13 @@ title: contact
         <div class="stores-container">
             <div class="stores">
                 <h1>Contact us</h1>
+                <p><a href="#" class="button" js-scroll-to=".footer-container .contact-form-container">Contact form</a></p>
+
                 <h2>Our Office</h2>
 
                 {% for store in stores %}
                 <div class="store" 
+                    data-id="{{ store.id }}"
                     data-title="{{ store.title }}" 
                     data-address="{{ store.address }}"
                     data-area="{{ store.area }}"
@@ -22,6 +25,7 @@ title: contact
                     data-lng="{{ store.longitude }}">
                     <p><strong>{{ store.title }}</strong></p>
                     <p>{{ store.address }}<br/>{{ store.area }}, {{ store.city }}, {{ store.zip }}</p>
+                    <p><a href="#" class="button show-in-map">Show in map</a></p>
                 </div>
                 {% endfor %}
             </div>
