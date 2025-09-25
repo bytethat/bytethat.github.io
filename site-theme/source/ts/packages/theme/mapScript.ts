@@ -63,6 +63,11 @@ export const mapScript = ScriptService.create(() => {
                 zoom: 16,
                 center: initialPosition,
                 mapId: 'DEMO_MAP_ID',
+                disableDefaultUI: true,
+                streetViewControl: false,
+                fullscreenControl: true,
+                mapTypeControl: false,
+                zoomControl: true,
             });
 
             const markerData: Marker[] = stores
