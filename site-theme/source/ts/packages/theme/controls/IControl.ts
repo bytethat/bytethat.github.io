@@ -1,4 +1,6 @@
-export interface IControl {
+import {IDisposable} from "@bytethat/core";
+
+export interface IControl extends IDisposable{
     build(): void;
 
     render(): void;
