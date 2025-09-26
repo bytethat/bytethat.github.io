@@ -1,2 +1,18 @@
 .cookies {
+  .accordion-item {
+    .accordion-header {
+      padding: 0;
+
+      > * {
+        padding: var(--prefixaccordion-padding-y) var(--prefixaccordion-padding-x);
+      }
+    }
+  }
+
+  .table .table-header .table-cell,
+  .table .table-row .table-cell {
+    &.name { flex: 1; }
+    &.description { flex: 4; }
+    &.provider { flex: 1; }
+  }
 }

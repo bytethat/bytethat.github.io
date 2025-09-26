@@ -14,56 +14,81 @@ title: Cookies Policy
         </div>
 
         <div class="inner-area inner-area-two">
-            <div class="accordion allow-multiple collapse">
 
-                {% for group in cookies.groups %}
+            <form class="form contact-form validate" novalidate>
 
-                <div class="accordion-item {{group.id}}">
-                    <div class="accordion-header">
+                <div class="accordion allow-multiple collapse cookies">
 
-                        <div class="accordion-title">
+                    {% for group in cookies.groups %}
 
-                            {% if 'necessary' == group.id %}
-                            <span class="icon-power-off"></span>
-                            {% endif %}
+                    <div class="accordion-item {{group.id}}">
+                        <div class="accordion-header">
 
-                            {% if 'statistics' == group.id %}
-                            <span class="icon-line-chart"></span>
-                            {% endif %}
+                            <div class="accordion-title">
 
-                            {% if 'marketing' == group.id %}
-                            <span class="icon-pie-chart"></span>
-                            {% endif %}
+                                {% if 'necessary' == group.id %}
+                                <span class="icon-power-off"></span>
+                                {% endif %}
 
-                            {% if 'functional' == group.id %}
-                            <span class="icon-server"></span>
-                            {% endif %}
+                                {% if 'statistics' == group.id %}
+                                <span class="icon-line-chart"></span>
+                                {% endif %}
 
-                            {{ group.title }}
-                        </div>
-                        <span class="accordion-icon-up icon-chevron-up"></span>
-                        <span class="accordion-icon-down icon-chevron-down"></span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="table cookies">
-                            <div class="table-header">
-                                <div class="table-cell name">Cookie name</div>
-                                <div class="table-cell description">Cookie description</div>
-                                <div class="table-cell provider">Provider</div>
+                                {% if 'marketing' == group.id %}
+                                <span class="icon-pie-chart"></span>
+                                {% endif %}
+
+                                {% if 'functional' == group.id %}
+                                <span class="icon-server"></span>
+                                {% endif %}
+
+                                {{ group.title }}
                             </div>
-                            {% for cookie in group.items %}
-                            <div class="table-row cookie-item {{ cookie.id }}">
-                                <div class="table-cell name">{{ cookie.title }}</div>
-                                <div class="table-cell description">{{ cookie.description }}</div>
-                                <div class="table-cell provider">{{ cookie.provider }}</div>
+
+                            <div class="form-group">
+                                <div class="input-wrapper">
+                                    <label for="{{group.id}}" class="form-label">
+                                        Active:
+                                    </label>
+                                    {% if group.required %}
+
+                                    <input name="{{group.id}}" type="checkbox" checked style="display: none;"/>
+                                    {% endif %}
+                                    <input name="{{group.id}}" id="{{group.id}}" type="checkbox" class="form-check switch" {% if group.required %} checked disabled {% endif %} />
+                                </div>
                             </div>
-                            {% endfor %}
+
+                            <div class="collapse-toggle">
+                                <span class="accordion-icon-up icon-chevron-up"></span>
+                                <span class="accordion-icon-down icon-chevron-down"></span>
+                            </div>
+                        </div>
+                        <div class="accordion-body">
+                            <p>{{ group.description }}</p>
+
+                            <div class="table cookies">
+                                <div class="table-header">
+                                    <div class="table-cell name">Cookie name</div>
+                                    <div class="table-cell description">Cookie description</div>
+                                    <div class="table-cell provider">Provider</div>
+                                </div>
+                                {% for cookie in group.items %}
+                                <div class="table-row cookie-item {{ cookie.id }}">
+                                    <div class="table-cell name">{{ cookie.title }}</div>
+                                    <div class="table-cell description">{{ cookie.description }}</div>
+                                    <div class="table-cell provider">{{ cookie.provider }}</div>
+                                </div>
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
+                    {% endfor %}
+
                 </div>
-                {% endfor %}
 
-            </div>
+                <button type="submit" class="btn btn-primary">Save cookie preferences</button>
+            </form>
+
         </div>
     </div>
 </div>
