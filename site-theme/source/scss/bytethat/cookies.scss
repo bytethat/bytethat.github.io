@@ -9,10 +9,16 @@
     }
   }
 
-  .table .table-header .table-cell,
-  .table .table-row .table-cell {
-    &.name { flex: 1; }
-    &.description { flex: 4; }
-    &.provider { flex: 1; }
+  .cookies-table {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+
+    .table-header { display: contents; }
+    .table-row { display: contents;
+      .table-cell {
+        border-top: var(--bt-table-border-width) solid var(--bt-table-border-color);
+      }
+    }
+
   }
 }
