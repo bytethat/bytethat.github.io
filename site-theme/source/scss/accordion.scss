@@ -45,6 +45,9 @@
     .accordion-item {
       .accordion-header { display: flex;
         .accordion-title { flex: 1; }
+      }
+
+      .collapse-toggle {
         cursor: pointer;
       }
 
