@@ -19,6 +19,12 @@
 
     .table-cell {
       flex: 1 1 0;
+
+      border-right: var(--#{$prefix}table-border-width) solid var(--#{$prefix}table-border-color);
+
+      &:last-of-type {
+        border-right: none;
+      }
     }
   }
 
@@ -30,13 +36,5 @@
 
   .table-row {
     border-top: var(--#{$prefix}table-border-width) solid var(--#{$prefix}table-border-color);
-
-    .table-cell {
-      border-right: var(--#{$prefix}table-border-width) solid var(--#{$prefix}table-border-color);
-
-      &:last-of-type {
-        border-right: none;
-      }
-    }
   }
 }
