@@ -1,10 +1,10 @@
-import {IModule, IServiceCollection, IServiceProvider, ScriptService} from '@bytethat/core';
+import {IModule, IServiceCollection, IServiceProvider, ScriptService, Cookies} from '@bytethat/core';
 
 import Swiper from 'swiper';
 import {Navigation, Pagination} from 'swiper/modules';
 
 import {mapScript} from "./mapScript";
-import {AccordionControl, FormControl, IControl} from "packages/theme/controls";
+import {AccordionControl, Controls, FormControl, IControl} from "./controls";
 
 const debounce = (func: Function, wait: number) => {
     let timeout: NodeJS.Timeout;
@@ -176,6 +176,47 @@ const AnchorScrollToScript = ScriptService.create(() => {
     });
 });
 
+const cookiesPolicyScript = ScriptService.create(() => {
+    const cookiesPolicyForms = document.querySelectorAll('form.cookies-policy-form');
+
+    Array.from(cookiesPolicyForms).forEach((form: HTMLFormElement) => {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const formControl = Controls.from(e.target, FormControl);
+
+            let result: any = {};
+            formControl.controls.forEach(x => result[x.name()] = x.value());
+
+            Cookies.set('cconsent', JSON.stringify(result), 365);
+        });
+
+        const rawConsents = Cookies.get('cconsent');
+
+        if (!rawConsents) {
+            return;
+        }
+
+        const formControl = Controls.from(form, FormControl);
+
+        if (!formControl) {
+            return;
+        }
+
+        const consents = JSON.parse(rawConsents);
+
+        formControl.controls.forEach(x => {
+            if (x.element.name in consents) {
+                if (x.element.type === 'checkbox') {
+                    (x.element as HTMLInputElement).checked = consents[x.element.name] === true || consents[x.element.name] === 'true';
+                } else {
+                    x.value = consents[x.element.name];
+                }
+            }
+        });
+    });
+});
+
 class ThemeModule implements IModule {
     configureServices(services: IServiceCollection): void {
         services.add(ScriptService, () => menuScript);
@@ -184,6 +225,7 @@ class ThemeModule implements IModule {
         services.add(ScriptService, () => footerContactFormScript);
         services.add(ScriptService, () => mapScript);
         services.add(ScriptService, () => AnchorScrollToScript);
+        services.add(ScriptService, () => cookiesPolicyScript);
     }
 
     configure(services: IServiceProvider): void {

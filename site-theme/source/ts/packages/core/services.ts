@@ -65,7 +65,7 @@ class ServiceProvider implements IServiceProvider {
             }
         })();
 
-        return this.factories.get(Symbol.for(name))?.map(factory => factory(this)) as T[] || [];
+        return (this.factories.get(Symbol.for(name))?.map(factory => factory(this)) as T[] || []).reverse();
     }
 
 

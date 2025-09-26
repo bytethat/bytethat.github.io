@@ -63,6 +63,44 @@ export class FormFieldControl extends BaseControl<HTMLInputElement | HTMLSelectE
         return result;
     }
 
+    public name(): string {
+        return this.element.name;
+    }
+
+    public value(): string | number | boolean | null {
+        const rawValue = this.element.value;
+
+        if (this.element instanceof HTMLInputElement) {
+            if (this.element.type === 'checkbox') {
+                return this.element.checked;
+            }
+
+            if (this.element.type === 'radio') {
+                const checked = (this.element.form?.elements.namedItem(this.element.name) as RadioNodeList)?.value;
+
+                return checked || null;
+            }
+
+            if (this.element.type === 'number') {
+                const num = parseFloat(rawValue);
+
+                return isNaN(num) ? null : num;
+            }
+
+            return rawValue || null;
+        }
+
+        if (this.element instanceof HTMLSelectElement) {
+            return rawValue || null;
+        }
+
+        if (this.element instanceof HTMLTextAreaElement) {
+            return rawValue || null;
+        }
+
+        return null;
+    }
+
     private _validate(): IValidationResult {
 
         const getErrorType = (validity: ValidityState): Array<string> => {
