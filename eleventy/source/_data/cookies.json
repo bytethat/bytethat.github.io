@@ -4,13 +4,13 @@
       "id": "necessary",
       "title": "Necessary Cookies",
       "description": "Strictly necessary cookies power the core features of this site and can’t be turned off in our systems. They’re set only in response to actions you take that request a service—like saving your privacy preferences, signing in, or submitting a form. These cookies do not contain information that directly identifies you.",
+      "required": true,
       "items": [
         {
           "id": "cconsent",
           "title": "cconsent",
           "description": "It retains the user's cookie consent preference.",
-          "provider": "ByteThat",
-          "required": true
+          "provider": "ByteThat"
         }
       ]
     },
@@ -18,27 +18,25 @@
       "id": "statistics",
       "title": "Statistics Cookies",
       "description": "These cookies tell us about how you use the site and they help us to make it better. For example these cookies count the number of visitors to our website and see how visitors move around when they are using it. This helps us to improve the way our site works, for example, by ensuring that users find what they are looking for easily. Our website uses Google Analytics for statistics reporting.",
+      "required": false,
       "items": [
         {
           "id": "_ga",
           "title": "_ga",
           "description": "Registers a unique ID that is used to generate statistical data on how the visitor uses the website.",
-          "provider": "Google",
-          "required": false
+          "provider": "Google"
         },
         {
           "id": "_gid",
           "title": "_gid",
           "description": "Registers a unique ID that is used to generate statistical data on how the visitor uses the website.",
-          "provider": "Google",
-          "required": false
+          "provider": "Google"
         },
         {
           "id": "_gat",
           "title": "_gat",
           "description": "Used by Google Analytics to throttle request rate.",
-          "provider": "Google",
-          "required": false
+          "provider": "Google"
         }
       ]
     }
