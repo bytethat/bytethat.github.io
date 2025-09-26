@@ -1,0 +1,81 @@
+.accordion {
+  --#{prefix}accordion-border-size: 1px;
+  --#{prefix}accordion-border-color: #{$gray-500};
+  --#{prefix}accordion-border-radius: 0.5rem;
+
+  --#{prefix}accordion-padding-x: 1rem;
+  --#{prefix}accordion-padding-y: 1rem;
+
+
+  .accordion-item {
+    border: var(--#{prefix}accordion-border-size) solid var(--#{prefix}accordion-border-color);
+
+    &:first-of-type {
+      border-top-left-radius: var(--#{prefix}accordion-border-radius);
+      border-top-right-radius: var(--#{prefix}accordion-border-radius);
+    }
+
+    &:last-of-type {
+      border-bottom-left-radius: var(--#{prefix}accordion-border-radius);
+      border-bottom-right-radius: var(--#{prefix}accordion-border-radius);
+    }
+
+    &:not(:first-of-type) {
+      border-top: none;
+    }
+
+    .accordion-header {
+      border-bottom: var(--#{prefix}accordion-border-size) solid var(--#{prefix}accordion-border-color);
+
+      padding: var(--#{prefix}accordion-padding-y) var(--#{prefix}accordion-padding-x);
+    }
+
+    .accordion-body {
+      padding: var(--#{prefix}accordion-padding-y) var(--#{prefix}accordion-padding-x);
+      overflow: hidden;
+    }
+
+    .accordion-icon-up, .accordion-icon-down {
+      display: none;
+    }
+  }
+
+
+  &.collapse {
+    .accordion-item {
+      .accordion-header { display: flex;
+        .accordion-title { flex: 1; }
+        cursor: pointer;
+      }
+
+      .accordion-body {
+        height: 0;
+        padding: 0;
+      }
+
+
+      .accordion-icon-up {
+        display: none;
+      }
+
+      .accordion-icon-down {
+        display: inline-block;
+      }
+
+      &.show {
+        .accordion-body {
+          height: auto;
+          padding: var(--#{prefix}accordion-padding-y) var(--#{prefix}accordion-padding-x);
+        }
+
+        .accordion-icon-up {
+          display: inline-block;
+        }
+
+        .accordion-icon-down {
+          display: none;
+        }
+      }
+    }
+  }
+}

@@ -4,7 +4,9 @@ import formScript from './form';
 
 import Swiper from 'swiper';
 import {Navigation, Pagination} from 'swiper/modules';
-import {mapScript} from "packages/theme/mapScript";
+
+import {mapScript} from "./mapScript";
+import {accordionScript} from "./accordion"
 
 const debounce = (func: Function, wait: number) => {
     let timeout: NodeJS.Timeout;
@@ -164,6 +166,7 @@ class ThemeModule implements IModule {
         services.add(ScriptService, () => footercontactFormScript);
         services.add(ScriptService, () => mapScript);
         services.add(ScriptService, () => AnchorScrollToScript);
+        services.add(ScriptService, () => accordionScript);
     }
 
     configure(services: IServiceProvider): void {

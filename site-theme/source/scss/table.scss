@@ -1,0 +1,42 @@
+.table {
+  --#{$prefix}table-border-width: 1px;
+  --#{$prefix}table-border-color: #{$gray-500};
+  --#{$prefix}table-border-radius: 0.5rem;
+
+  --#{$prefix}table-padding-x: 1rem;
+  --#{$prefix}table-padding-y: 1rem;
+
+  --#{$prefix}table-header-font-weight: 700;
+
+  border: var(--#{$prefix}table-border-width) solid var(--#{$prefix}table-border-color);
+
+  .table-cell {
+    padding: var(--#{$prefix}table-padding-y) var(--#{$prefix}table-padding-x);
+  }
+
+  .table-header, .table-row {
+    display: flex;
+
+    .table-cell {
+      flex: 1 1 0;
+    }
+  }
+
+  .table-header {
+    .table-cell {
+      font-weight: var(--#{$prefix}table-header-font-weight);
+    }
+  }
+
+  .table-row {
+    border-top: var(--#{$prefix}table-border-width) solid var(--#{$prefix}table-border-color);
+
+    .table-cell {
+      border-right: var(--#{$prefix}table-border-width) solid var(--#{$prefix}table-border-color);
+
+      &:last-of-type {
+        border-right: none;
+      }
+    }
+  }
+}
