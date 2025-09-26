@@ -1,12 +1,10 @@
 import {IModule, IServiceCollection, IServiceProvider, ScriptService} from '@bytethat/core';
 
-import formScript from './Form';
-
 import Swiper from 'swiper';
 import {Navigation, Pagination} from 'swiper/modules';
 
 import {mapScript} from "./mapScript";
-import {accordionScript} from "./accordion"
+import {AccordionControl, FormControl, IControl} from "packages/theme/controls";
 
 const debounce = (func: Function, wait: number) => {
     let timeout: NodeJS.Timeout;
@@ -71,6 +69,26 @@ const sliderScript = ScriptService.create(() => {
                 el: '.swiper-scrollbar',
             },
         });
+    });
+});
+
+const controlBootstrapScript = ScriptService.create(() => {
+    const controls: Array<IControl> = [];
+
+    Array.from(document.querySelectorAll('.form'))
+        .filter(x => x instanceof HTMLFormElement)
+        .filter(x => x.classList.contains('validate'))
+        .map((x: HTMLFormElement) => new FormControl(x))
+        .forEach(x => controls.push(x));
+
+    Array.from(document.querySelectorAll('.accordion'))
+        .map((accordion: HTMLElement) => new AccordionControl(accordion))
+        .forEach(x => controls.push(x));
+
+    controls.forEach(c => {
+        c.build();
+        c.render();
+        c.bind();
     });
 });
 
@@ -161,12 +179,11 @@ const AnchorScrollToScript = ScriptService.create(() => {
 class ThemeModule implements IModule {
     configureServices(services: IServiceCollection): void {
         services.add(ScriptService, () => menuScript);
-        services.add(ScriptService, () => formScript);
+        services.add(ScriptService, () => controlBootstrapScript);
         services.add(ScriptService, () => sliderScript);
         services.add(ScriptService, () => footerContactFormScript);
         services.add(ScriptService, () => mapScript);
         services.add(ScriptService, () => AnchorScrollToScript);
-        services.add(ScriptService, () => accordionScript);
     }
 
     configure(services: IServiceProvider): void {
