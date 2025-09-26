@@ -1,6 +1,6 @@
 import {IModule, IServiceCollection, IServiceProvider, ScriptService} from '@bytethat/core';
 
-import formScript from './form';
+import formScript from './Form';
 
 import Swiper from 'swiper';
 import {Navigation, Pagination} from 'swiper/modules';
@@ -74,7 +74,7 @@ const sliderScript = ScriptService.create(() => {
     });
 });
 
-const footercontactFormScript = ScriptService.create(() => {
+const footerContactFormScript = ScriptService.create(() => {
     const toggleLabel = (control: HTMLInputElement | HTMLTextAreaElement) => {
         const currentValue = control.value;
 
@@ -95,7 +95,7 @@ const footercontactFormScript = ScriptService.create(() => {
         label.style.fontSize = '0.7em';
     };
 
-    const contactForm = document.querySelector('.contact-form');
+    const contactForm = document.querySelector('.footer-container .contact-form');
 
     if (!contactForm) {
         return;
@@ -163,7 +163,7 @@ class ThemeModule implements IModule {
         services.add(ScriptService, () => menuScript);
         services.add(ScriptService, () => formScript);
         services.add(ScriptService, () => sliderScript);
-        services.add(ScriptService, () => footercontactFormScript);
+        services.add(ScriptService, () => footerContactFormScript);
         services.add(ScriptService, () => mapScript);
         services.add(ScriptService, () => AnchorScrollToScript);
         services.add(ScriptService, () => accordionScript);
