@@ -145,24 +145,6 @@
     }
 }
 
-.button {
-    display: inline-block;
-    padding: 0.75em 1.5em;
-    border: none;
-    border-radius: 4px;
-
-    background-color: var(--#{$prefix}button-bg);
-    color: var(--#{$prefix}button-color);
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-
-    &:hover {
-        text-decoration: none;
-        background-color: var(--#{$prefix}button-hover-bg);
-    }
-}
-
 .testimonials {
     --#{$prefix}default-font-color: #{$font-color};
     --#{$prefix}default-font-color-rgb: #{to-rgb($font-color)};

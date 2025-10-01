@@ -18,6 +18,7 @@
 
   .center-container {
     display: flex;
+    flex-direction: column;
   }
 
   .content-container { padding-right: var(--#{$prefix}modal-gutter-y);
@@ -29,9 +30,19 @@
     flex-direction: column;
     gap: 0.5rem;
 
+    width: 100%;
     margin: auto;
 
-    .button { min-width: 12rem; text-align: center; }
+    .button { text-align: center;
+      &.reject {
+        --#{$prefix}button-color: #{$primary};
+        --#{$prefix}button-bg: #{$light};
+        --#{$prefix}button-hover-bg: #{shift-color($light, $link-shade-percentage)};
+        --#{$prefix}button-hover-bg-rgb: #{to-rgb($button-hover-bg)};
+
+        border: 1px solid $primary;
+      }
+    }
 
     .learn-more { width: 100%; text-align: center; }
   }
@@ -40,6 +51,17 @@
 
   @media (min-width: map-get($grid-breakpoints, sm)) {
     font-size: 1rem;
+
+    .center-container {
+      flex-direction: row;
+    }
+    .actions {
+      width: auto;
+
+      .button {
+        min-width: 12rem;
+      }
+    }
   }
 
   @media (min-width: map-get($grid-breakpoints, md)) {

@@ -36,6 +36,9 @@
     }
 
     // button
+    --#{$prefix}button-gutter-x: 1.5rem;
+    --#{$prefix}button-gutter-y: 0.75rem;
+
     --#{$prefix}button-color: #{$button-color};
     --#{$prefix}button-bg: #{$button-bg};
     --#{$prefix}button-hover-bg: #{$button-hover-bg};

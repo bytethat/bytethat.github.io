@@ -1,0 +1,17 @@
+.button {
+  display: inline-block;
+  padding: var(--#{$prefix}button-gutter-y) var(--#{$prefix}button-gutter-x);
+  border: none;
+  border-radius: 4px;
+
+  background-color: var(--#{$prefix}button-bg);
+  color: var(--#{$prefix}button-color);
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+    background-color: var(--#{$prefix}button-hover-bg);
+  }
+}
