@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('/assets/fonts/icomoon/icomoon.eot?wgh0n6');
-  src:  url('/assets/fonts/icomoon/icomoon.eot?wgh0n6#iefix') format('embedded-opentype'),
-  url('/assets/fonts/icomoon/icomoon.ttf?wgh0n6') format('truetype'),
-  url('/assets/fonts/icomoon/icomoon.woff?wgh0n6') format('woff'),
-  url('/assets/fonts/icomoon/icomoon.svg?wgh0n6#icomoon') format('svg');
+  src:  url('/assets/fonts/icomoon/icomoon.eot?jwc2qi');
+  src:  url('/assets/fonts/icomoon/icomoon.eot?jwc2qi#iefix') format('embedded-opentype'),
+  url('/assets/fonts/icomoon//assets/fonts/icomoon/icomoon.ttf?jwc2qi') format('truetype'),
+  url('/assets/fonts/icomoon/icomoon.woff?jwc2qi') format('woff'),
+  url('/assets/fonts/icomoon/icomoon.svg?jwc2qi#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -28,6 +28,24 @@
 .icon-power-off:before {
   content: "\f011";
 }
+.icon-chevron-left:before {
+  content: "\f053";
+}
+.icon-chevron-right:before {
+  content: "\f054";
+}
+.icon-arrow-left:before {
+  content: "\f060";
+}
+.icon-arrow-right:before {
+  content: "\f061";
+}
+.icon-arrow-up:before {
+  content: "\f062";
+}
+.icon-arrow-down:before {
+  content: "\f063";
+}
 .icon-chevron-up:before {
   content: "\f077";
 }
@@ -39,6 +57,12 @@
 }
 .icon-bar-chart-o:before {
   content: "\f080";
+}
+.icon-long-arrow-left:before {
+  content: "\f177";
+}
+.icon-long-arrow-right:before {
+  content: "\f178";
 }
 .icon-pie-chart:before {
   content: "\f200";

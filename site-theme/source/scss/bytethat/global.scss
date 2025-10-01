@@ -7,6 +7,9 @@
     }
 }
 
+body {
+  background-color: #F5F5F5;
+}
 
 @media (min-width: map-get($grid-breakpoints, xxl)) {
     body { 

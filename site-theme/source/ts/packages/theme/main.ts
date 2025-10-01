@@ -73,6 +73,10 @@ const sliderScript = ScriptService.builder(() => {
                 delay: 5000,
             },
 
+            keyboard: {
+                enabled: true,
+            },
+
             // If we need pagination
             pagination: {
                 el: '.swiper-pagination',
@@ -81,6 +85,7 @@ const sliderScript = ScriptService.builder(() => {
 
             // Navigation arrows
             navigation: {
+                addIcons: false,
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
