@@ -329,19 +329,25 @@ const googleAnalyticsScript = ScriptService.builder((services) => {
         script.async = true;
 
         script.setAttribute('src', `https://www.googletagmanager.com/gtag/js?id=${trackingId}`);
-        script.onload = () => {
-            debugger;
+        // script.onload = () => {
+        //     window.dataLayer = window.dataLayer || [];
+        //     window.gtag = (...args: unknown[]) => { window.dataLayer.push(args); };
+        //
+        //     window.gtag('js', new Date());
+        //     window.gtag('config', trackingId);
+        // }
 
-            window.dataLayer = window.dataLayer || [];
-            window.gtag = (...args: unknown[]) => { window.dataLayer.push(args); };
+        const inlineScript = document.createElement('script');
 
-            window.gtag('js', new Date());
-            window.gtag('config', trackingId);
-        }
+        inlineScript.innerHTML = `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
 
-        debugger;
+gtag('config', '${trackingId}');`;
 
         document.body.appendChild(script);
+        document.body.appendChild(inlineScript);
     });
 
 });
