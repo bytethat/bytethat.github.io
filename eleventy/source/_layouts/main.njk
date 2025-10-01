@@ -16,6 +16,8 @@
         <meta name="robots" content="noindex, nofollow">
     </head>
     <body>
+        <div class="overlay"></div>
+
         <div class="site-container">
             {% include "header.njk" %}
 
@@ -25,6 +27,9 @@
 
             {% include "footer.njk" %}
         </div>
+
+        {% include "cookie.njk" %}
+
         <!--<script src="{{ '/assets/js/bootstrap.js' | url }}" type="text/javascript"></script>-->
         <script src="{{ '/assets/js/main.js' | url }}" type="text/javascript"></script>
     </body>

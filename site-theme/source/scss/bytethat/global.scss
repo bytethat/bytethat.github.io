@@ -13,3 +13,24 @@
         font-size: $font-size-lg;
     }
 }
+
+
+.overlay {
+    --#{$prefix}overlay-bg: rgba(0, 0, 0, 0.5);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--#{$prefix}overlay-bg);
+    z-index: 100;
+
+    display: none;
+
+    &.visible { display: block; }
+}
+
+.no-scroll {
+    overflow: hidden;
+}

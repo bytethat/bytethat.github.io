@@ -1,0 +1,13 @@
+<div class="cookie-consent-modal" settings="[{% for group in cookies.groups %} {{ ',' if not loop.first }}  { &quot;id&quot;: &quot;{{group.id}}&quot;, &quot;required&quot;: {{ 'true' if group.required else 'false' }} } {% endfor %}]">
+    <div class="container-md center-container">
+        <div class="content-container">
+            <span class="title">Cookie Policy & Settings</span>
+            <p class="content">To make things work smoothly, we use cookies and similar technologies to guide navigation, gather your feedback, understand product and service usage, improve our marketing, and serve content from third parties..</p>
+        </div>
+        <div class="actions">
+            <button class="button accept">Accept</button>
+            <button class="button reject">Accept necessary</button>
+            <a class="learn-more" href="/cookies-policy/" class="learn-more">Learn more</a>
+        </div>
+    </div>
+</div>

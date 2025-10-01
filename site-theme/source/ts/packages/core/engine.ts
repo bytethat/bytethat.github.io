@@ -1,4 +1,5 @@
-import { IServiceCollection, IServiceProvider, ServiceCollection } from "./services";
+import {IServiceCollection, IServiceProvider, IServiceSupplier, ServiceCollection} from "./services";
+import { MessageBus } from "./messagebus"
 
 interface IModule {
     configureServices(services: IServiceCollection): void;
@@ -10,24 +11,25 @@ interface IHost {
     run(): void;
 }
 
-
-
 class ScriptService {
-    callback: () => void;
+    private readonly _services: IServiceProvider;
+    private readonly _callback: (services: IServiceProvider) => void;
     
-    constructor(callback: () => void) {
-        this.callback = callback;
+    constructor(services: IServiceProvider, callback: (services: IServiceProvider) => void) {
+        this._services = services;
+        this._callback = callback;
     }
 
-    public static create(callback: () => void): ScriptService {
-        return new ScriptService(callback);
+    public static builder(callback: (services: IServiceProvider) => void): IServiceSupplier<ScriptService> {
+        return (services: IServiceProvider) => {
+            return new ScriptService(services, callback);
+        };
     }
 
     execute(): void {
-        this.callback();
+        this._callback(this._services);
     }
 }
-
 
 class WebHostBuilder {
     private _modules: IModule[] = [];
@@ -62,7 +64,9 @@ class WebHost implements IHost {
     }
 
     public initialize(): void {
-        var serviceCollection = new ServiceCollection();
+        const serviceCollection = new ServiceCollection();
+
+        serviceCollection.add(MessageBus, new MessageBus());
 
         this._modules.forEach(module => {
             module.configureServices(serviceCollection);

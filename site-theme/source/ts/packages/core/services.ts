@@ -5,8 +5,8 @@ type Constructor<T> = {
 }
 
 interface IServiceCollection {
-    add<T>(name: string, factory: IServiceSupplier<T>): void;
-    add<T>(constructor: Constructor<T>, factory: IServiceSupplier<T>): void;
+    add<T>(identifier: string | Constructor<T>, instance: T): void;
+    add<T>(identifier: string | Constructor<T>, factory: IServiceSupplier<T>): void;
     build(): IServiceProvider;
 }
 
@@ -26,9 +26,9 @@ interface IServiceSupplier<T>{
 class ServiceCollection {
     private factories: Map<Symbol, IServiceSupplier<any>[]> = new Map();
 
-    public add<T>(constructor: Constructor<T>, factory: IServiceSupplier<T>): void;
-    public add<T>(name: string, factory:  IServiceSupplier<T>): void;
-    public add<T>(identifier: Constructor<T> | string, factory:  IServiceSupplier<T>): void {
+    add<T>(identifier: string | Constructor<T>, instance: T): void;
+    add<T>(identifier: string | Constructor<T>, factory: IServiceSupplier<T>): void;
+    public add<T>(identifier: Constructor<T> | string, registration:  IServiceSupplier<T> | T): void {
         const name = (() => {
             switch (typeof identifier) {
                 case 'string': return identifier as string;
@@ -37,6 +37,10 @@ class ServiceCollection {
                     throw new Error('Identifier must be a string or a constructor.');
             }
         })();
+
+        const factory = typeof registration !== 'function'
+            ? () => registration
+            : registration as IServiceSupplier<T>;
 
         this.factories.set(Symbol.for(name), [factory, ...(this.factories.get(Symbol.for(name)) ?? [])]);
     }

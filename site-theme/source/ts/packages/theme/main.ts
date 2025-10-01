@@ -1,10 +1,20 @@
-import {IModule, IServiceCollection, IServiceProvider, ScriptService, Cookies} from '@bytethat/core';
+import {
+    IModule,
+    IServiceCollection,
+    IServiceProvider,
+    ScriptService,
+    Cookies,
+    MessageBus
+} from '@bytethat/core';
 
 import Swiper from 'swiper';
 import {Navigation, Pagination} from 'swiper/modules';
 
 import {mapScript} from "./mapScript";
 import {AccordionControl, Controls, FormControl, IControl} from "./controls";
+import {OverlayMessage} from "./messages";
+import {OverlayControl} from "packages/theme/controls/OverlayControl";
+
 
 const debounce = (func: Function, wait: number) => {
     let timeout: NodeJS.Timeout;
@@ -15,7 +25,27 @@ const debounce = (func: Function, wait: number) => {
     }
 };
 
-const menuScript = ScriptService.create(() => {
+const OverlayScript = ScriptService.builder((services) => {
+    const overlayElement = document.querySelector('.overlay');
+    const messages = services.get(MessageBus);
+
+    if (!messages) {
+        return;
+    }
+
+    if (!overlayElement) {
+        return;
+    }
+
+    const control = new OverlayControl(messages, overlayElement as HTMLElement);
+
+    control.build();
+    control.render();
+    control.bind();
+});
+
+
+const menuScript = ScriptService.builder(() => {
     const menus = document.querySelectorAll('.menu.menu-expand');
 
     Array.from(menus).forEach(menu => {
@@ -37,9 +67,9 @@ const menuScript = ScriptService.create(() => {
             menu.classList.remove('expanded');
         }, 100));
     });
-})
+});
 
-const sliderScript = ScriptService.create(() => {
+const sliderScript = ScriptService.builder(() => {
     const sliders = document.querySelectorAll('.swiper');
 
     Array.from(sliders).forEach((slider: HTMLElement) => {
@@ -72,7 +102,7 @@ const sliderScript = ScriptService.create(() => {
     });
 });
 
-const controlBootstrapScript = ScriptService.create(() => {
+const controlBootstrapScript = ScriptService.builder(() => {
     const controls: Array<IControl> = [];
 
     Array.from(document.querySelectorAll('.form'))
@@ -92,7 +122,7 @@ const controlBootstrapScript = ScriptService.create(() => {
     });
 });
 
-const footerContactFormScript = ScriptService.create(() => {
+const footerContactFormScript = ScriptService.builder(() => {
     const toggleLabel = (control: HTMLInputElement | HTMLTextAreaElement) => {
         const currentValue = control.value;
 
@@ -154,7 +184,7 @@ const footerContactFormScript = ScriptService.create(() => {
     });
 });
 
-const AnchorScrollToScript = ScriptService.create(() => {
+const AnchorScrollToScript = ScriptService.builder(() => {
     const links = document.querySelectorAll('a[js-scroll-to]');
 
     Array.from(links).forEach((link: HTMLElement) => {
@@ -176,7 +206,7 @@ const AnchorScrollToScript = ScriptService.create(() => {
     });
 });
 
-const cookiesPolicyScript = ScriptService.create(() => {
+const cookiesPolicyScript = ScriptService.builder(() => {
     const cookiesPolicyForms = document.querySelectorAll('form.cookies-policy-form');
 
     Array.from(cookiesPolicyForms).forEach((form: HTMLFormElement) => {
@@ -217,15 +247,89 @@ const cookiesPolicyScript = ScriptService.create(() => {
     });
 });
 
+const cookiesModalScript = ScriptService.builder((services) => {
+
+    const messages = services.get(MessageBus);
+
+    const hasCookie = !!Cookies.get('cconsent');
+
+    if (hasCookie) {
+        return;
+    }
+
+    const cookiesModals = document.querySelectorAll('.cookie-consent-modal');
+    if (!cookiesModals) {
+        return;
+    }
+
+    Array.from(cookiesModals).forEach((cookiesModal: HTMLElement) => {
+        const setingsJSON = cookiesModal.getAttribute('settings');
+        if (!setingsJSON) {
+            return;
+        }
+
+        const settings : Array<{id: string, required: boolean}> = JSON.parse(setingsJSON);
+        if (!settings || !settings.length) {
+            return;
+        }
+
+        const acceptButtons = cookiesModal.querySelectorAll('.button.accept');
+        const rejectButtons = cookiesModal.querySelectorAll('.button.reject');
+
+        const show = () => {
+            messages.publishAsync(OverlayMessage.topic, new OverlayMessage(cookiesModal, {
+                show: true
+            }));
+
+            cookiesModal.classList.add('visible');
+        }
+
+        const hide = () => {
+            messages.publishAsync(OverlayMessage.topic, new OverlayMessage(cookiesModal, {
+                show: false
+            }));
+
+            cookiesModal.classList.remove('visible');
+        }
+
+        Array.from(acceptButtons).forEach((acceptButton) => {
+            acceptButton.addEventListener('click', () => {
+                const cookieValue= {};
+                settings.forEach(x => cookieValue[x.id] = true);
+
+                Cookies.set('cconsent', JSON.stringify(cookieValue), 365);
+
+                hide();
+            });
+        });
+
+        Array.from(rejectButtons).forEach((rejectButton) => {
+            rejectButton.addEventListener('click', () => {
+                const cookieValue= {};
+                settings.forEach(x => cookieValue[x.id] = x.required);
+
+                Cookies.set('cconsent', JSON.stringify(cookieValue), 365);
+
+                hide();
+            });
+        });
+
+        show();
+    });
+
+});
+
 class ThemeModule implements IModule {
     configureServices(services: IServiceCollection): void {
-        services.add(ScriptService, () => menuScript);
-        services.add(ScriptService, () => controlBootstrapScript);
-        services.add(ScriptService, () => sliderScript);
-        services.add(ScriptService, () => footerContactFormScript);
-        services.add(ScriptService, () => mapScript);
-        services.add(ScriptService, () => AnchorScrollToScript);
-        services.add(ScriptService, () => cookiesPolicyScript);
+        services.add(ScriptService, OverlayScript);
+        services.add(ScriptService, menuScript);
+        services.add(ScriptService, controlBootstrapScript);
+        services.add(ScriptService, sliderScript);
+        services.add(ScriptService, footerContactFormScript);
+        services.add(ScriptService, mapScript);
+        services.add(ScriptService, AnchorScrollToScript);
+        services.add(ScriptService, cookiesPolicyScript);
+        services.add(ScriptService, cookiesModalScript);
     }
 
     configure(services: IServiceProvider): void {

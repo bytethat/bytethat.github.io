@@ -13,9 +13,10 @@
 @import 'global';
 @import 'header';
 @import 'footer';
-@import "cookies";
+@import 'cookies-modal';
 
 @import 'pages/home';
 @import 'pages/contact';
+@import "pages/cookies";
 
 @import 'custom';

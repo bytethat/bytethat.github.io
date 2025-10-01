@@ -1,6 +1,6 @@
 import {ScriptService} from "@bytethat/core";
 
-export const mapScript = ScriptService.create(() => {
+export const mapScript = ScriptService.builder(() => {
     const storesContainers = document.querySelectorAll('.stores-container');
 
     Array.from(storesContainers).forEach((storesContainer: HTMLElement) => {
