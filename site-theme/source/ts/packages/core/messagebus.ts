@@ -1,3 +1,4 @@
+import {Service} from "@bytethat/core/services";
 
 interface Message<T> {
     sender: any;
@@ -10,6 +11,7 @@ type Registration<X, T extends Message<X>> = {
     callback: (data?: T) => void;
 }
 
+@Service("MessageBus")
 class MessageBus {
     private subscribers: Map<Symbol, Registration<any, Message<any>>[]> = new Map();
 

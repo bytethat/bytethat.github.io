@@ -1,3 +1,15 @@
+import "reflect-metadata";
+
+function Service(identifier: Symbol | string): ClassDecorator {
+
+    if(typeof identifier === 'string') {
+        identifier = Symbol.for(identifier);
+    }
+
+    return constructor => {
+        Reflect.defineMetadata('dependency_injection:name', identifier, constructor);
+    };
+}
 
 type Constructor<T> = {
     new(...args: any[]): T;
@@ -23,20 +35,27 @@ interface IServiceSupplier<T>{
     (services: IServiceProvider): T
 }
 
+const getName = (identifier: string | Constructor<any>) => {
+    switch (typeof identifier) {
+        case 'string': return identifier as string;
+        case 'function':
+            return Reflect.getMetadata('dependency_injection:name', identifier)?.description || '';
+        default:
+            throw new Error('Identifier must be a string or a constructor.');
+    }
+};
+
 class ServiceCollection {
     private factories: Map<Symbol, IServiceSupplier<any>[]> = new Map();
 
     add<T>(identifier: string | Constructor<T>, instance: T): void;
     add<T>(identifier: string | Constructor<T>, factory: IServiceSupplier<T>): void;
     public add<T>(identifier: Constructor<T> | string, registration:  IServiceSupplier<T> | T): void {
-        const name = (() => {
-            switch (typeof identifier) {
-                case 'string': return identifier as string;
-                case 'function': return (identifier as Constructor<T>).name;
-                default:
-                    throw new Error('Identifier must be a string or a constructor.');
-            }
-        })();
+        const name = getName(identifier);
+
+        if(!!!name || name === '') {
+            throw new Error('Service must have a valid name.');
+        }
 
         const factory = typeof registration !== 'function'
             ? () => registration
@@ -59,15 +78,7 @@ class ServiceProvider implements IServiceProvider {
     getAll<T>(name: string): T[];
     getAll<T>(type: Constructor<T>): T[];
     getAll<T>(identifier: Constructor<T> | string): T[] {
-
-        const name = (() => {
-            switch (typeof identifier) {
-                case 'string': return identifier as string;
-                case 'function': return (identifier as Constructor<T>).name;
-                default:
-                    throw new Error('Identifier must be a string or a constructor.');
-            }
-        })();
+        const name = getName(identifier);
 
         return (this.factories.get(Symbol.for(name))?.map(factory => factory(this)) as T[] || []).reverse();
     }
@@ -76,15 +87,7 @@ class ServiceProvider implements IServiceProvider {
     public get<T>(name: string): T | undefined;
     public get<T>(type: Constructor<T>): T | undefined;
     public get<T>(identifier: Constructor<T> | string): T | undefined {
-
-        const name = (() => {
-            switch (typeof identifier) {
-                case 'string': return identifier as string;
-                case 'function': return (identifier as Constructor<T>).name;
-                default:
-                    throw new Error('Identifier must be a string or a constructor.');
-            }
-        })();
+        const name = getName(identifier);
 
         const suppliers = this.factories.get(Symbol.for(name));
 
@@ -96,4 +99,4 @@ class ServiceProvider implements IServiceProvider {
     }
 }
 
-export { IServiceCollection, IServiceProvider, IServiceSupplier, ServiceCollection };
+export { Service, IServiceCollection, IServiceProvider, IServiceSupplier, ServiceCollection };

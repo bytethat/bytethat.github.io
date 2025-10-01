@@ -1,4 +1,4 @@
-import {IControl} from "packages/theme/controls/IControl";
+import {IControl} from "@bytethat/theme/controls/IControl";
 
 export class BaseControl<T extends HTMLElement> implements IControl {
     private readonly _element: T;

@@ -1,5 +1,5 @@
-import {BaseControl} from "packages/theme/controls/BaseControl";
-import {IControl} from "packages/theme/controls/IControl";
+import {BaseControl} from "@bytethat/theme/controls/BaseControl";
+import {IControl} from "@bytethat/theme/controls/IControl";
 
 export class ContainerControl<T extends HTMLElement, TChildren extends IControl> extends BaseControl<T> {
     private readonly _children: Array<TChildren> = [];

@@ -11,10 +11,8 @@ import Swiper from 'swiper';
 import {Navigation, Pagination} from 'swiper/modules';
 
 import {mapScript} from "./mapScript";
-import {AccordionControl, Controls, FormControl, IControl} from "./controls";
+import {AccordionControl, Controls, FormControl, IControl, OverlayControl} from "./controls";
 import {OverlayMessage} from "./messages";
-import {OverlayControl} from "packages/theme/controls/OverlayControl";
-
 
 const debounce = (func: Function, wait: number) => {
     let timeout: NodeJS.Timeout;
@@ -44,7 +42,6 @@ const OverlayScript = ScriptService.builder((services) => {
     control.bind();
 });
 
-
 const menuScript = ScriptService.builder(() => {
     const menus = document.querySelectorAll('.menu.menu-expand');
 
@@ -73,7 +70,7 @@ const sliderScript = ScriptService.builder(() => {
     const sliders = document.querySelectorAll('.swiper');
 
     Array.from(sliders).forEach((slider: HTMLElement) => {
-        const swiper = new Swiper(slider, {
+        new Swiper(slider, {
             modules: [Navigation, Pagination],
 
             // Optional parameters
@@ -160,12 +157,6 @@ const footerContactFormScript = ScriptService.builder(() => {
             const calculateHeight = () => {
                 control.style.height = 'auto';
 
-                const lineHeight = parseFloat(window.getComputedStyle(control).lineHeight);
-                const paddingTop = parseFloat(window.getComputedStyle(control).paddingTop);
-                const paddingBottom = parseFloat(window.getComputedStyle(control).paddingBottom);
-
-                const minHeight = lineHeight + paddingTop + paddingBottom;
-
                 let height = control.scrollHeight;
 
                 control.style.height = height + 'px';
@@ -248,7 +239,6 @@ const cookiesPolicyScript = ScriptService.builder(() => {
 });
 
 const cookiesModalScript = ScriptService.builder((services) => {
-
     const messages = services.get(MessageBus);
 
     const hasCookie = !!Cookies.get('cconsent');
@@ -268,7 +258,7 @@ const cookiesModalScript = ScriptService.builder((services) => {
             return;
         }
 
-        const settings : Array<{id: string, required: boolean}> = JSON.parse(setingsJSON);
+        const settings: Array<{ id: string, required: boolean }> = JSON.parse(setingsJSON);
         if (!settings || !settings.length) {
             return;
         }
@@ -279,22 +269,18 @@ const cookiesModalScript = ScriptService.builder((services) => {
         const show = () => {
             messages.publishAsync(OverlayMessage.topic, new OverlayMessage(cookiesModal, {
                 show: true
-            }));
-
-            cookiesModal.classList.add('visible');
+            })).then(() => cookiesModal.classList.add('visible'));
         }
 
         const hide = () => {
             messages.publishAsync(OverlayMessage.topic, new OverlayMessage(cookiesModal, {
                 show: false
-            }));
-
-            cookiesModal.classList.remove('visible');
+            })).then(() => cookiesModal.classList.remove('visible'));
         }
 
         Array.from(acceptButtons).forEach((acceptButton) => {
             acceptButton.addEventListener('click', () => {
-                const cookieValue= {};
+                const cookieValue = {};
                 settings.forEach(x => cookieValue[x.id] = true);
 
                 Cookies.set('cconsent', JSON.stringify(cookieValue), 365);
@@ -305,7 +291,7 @@ const cookiesModalScript = ScriptService.builder((services) => {
 
         Array.from(rejectButtons).forEach((rejectButton) => {
             rejectButton.addEventListener('click', () => {
-                const cookieValue= {};
+                const cookieValue = {};
                 settings.forEach(x => cookieValue[x.id] = x.required);
 
                 Cookies.set('cconsent', JSON.stringify(cookieValue), 365);

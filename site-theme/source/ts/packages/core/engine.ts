@@ -1,4 +1,4 @@
-import {IServiceCollection, IServiceProvider, IServiceSupplier, ServiceCollection} from "./services";
+import {IServiceCollection, IServiceProvider, IServiceSupplier, Service, ServiceCollection} from "./services";
 import { MessageBus } from "./messagebus"
 
 interface IModule {
@@ -11,6 +11,7 @@ interface IHost {
     run(): void;
 }
 
+@Service("ScriptService")
 class ScriptService {
     private readonly _services: IServiceProvider;
     private readonly _callback: (services: IServiceProvider) => void;

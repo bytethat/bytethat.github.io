@@ -1,6 +1,5 @@
 import path from 'path';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
-// import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 const __dirname = path.resolve();
 
