@@ -15,7 +15,7 @@ type Registration<X, T extends Message<X>> = {
 class MessageBus {
     private subscribers: Map<Symbol, Registration<any, Message<any>>[]> = new Map();
 
-    public async publishAsync<X, T extends Message<X>>(topic: string, data?: T): Promise<void> {
+    public async publishAsync<X, T extends Message<X>>(topic: string, message?: T): Promise<void> {
         const key = Symbol.for(topic);
 
         const existing = this.subscribers.get(key);
@@ -25,10 +25,10 @@ class MessageBus {
         }
 
         await Promise.all(existing
-            .map(async x => x.callback(data)));
+            .map(async x => x.callback(message)));
     }
 
-    public subscribe<X, T extends Message<X>>(topic: string, identifier: any, callback: (data?: T) => void): void {
+    public subscribe<X, T extends Message<X>>(topic: string, identifier: any, callback: (message?: T) => void): void {
         const key = Symbol.for(topic);
         const registration = {
             identifier,

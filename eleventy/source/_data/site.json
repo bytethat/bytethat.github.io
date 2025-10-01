@@ -1,21 +1,23 @@
 {
-    "title": "ByteThat",
-    "slogan": "Your need to develop",
-    "description": "ByteThat is a software development company specializing in web and mobile applications.",
-    "url": "https://bytethat.gr",
-    "contact": {
-        "name": "ByteThat",
-        "email": "info@bytethat.gr",
-        "phone": "+30 210 94 31 646"
-    },
-    "social": {
-      "facebook": "TODO",
-      "twitter": "TODO",
-      "linkedin": "TODO",
-      "github": "https://github.com/bytethat",
-      "instagram": "TODO",
-      "youtube": "TODO",
-      "tiktok": "TODO"
-    }
-
+  "title": "ByteThat",
+  "slogan": "Your need to develop",
+  "description": "ByteThat is a software development company specializing in web and mobile applications.",
+  "url": "https://bytethat.gr",
+  "contact": {
+    "name": "ByteThat",
+    "email": "info@bytethat.gr",
+    "phone": "+30 210 94 31 646"
+  },
+  "social": {
+    "facebook": "TODO",
+    "twitter": "TODO",
+    "linkedin": "TODO",
+    "github": "https://github.com/bytethat",
+    "instagram": "TODO",
+    "youtube": "TODO",
+    "tiktok": "TODO"
+  },
+  "googleAnalytics": {
+    "trackingId": "G-ER4EZTMTQY"
+  }
 }

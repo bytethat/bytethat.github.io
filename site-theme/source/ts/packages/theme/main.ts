@@ -1,18 +1,12 @@
-import {
-    IModule,
-    IServiceCollection,
-    IServiceProvider,
-    ScriptService,
-    Cookies,
-    MessageBus
-} from '@bytethat/core';
+import {Cookies, IModule, IServiceCollection, IServiceProvider, MessageBus, ScriptService} from '@bytethat/core';
 
 import Swiper from 'swiper';
 import {Navigation, Pagination} from 'swiper/modules';
 
 import {mapScript} from "./mapScript";
 import {AccordionControl, Controls, FormControl, IControl, OverlayControl} from "./controls";
-import {OverlayMessage} from "./messages";
+import {OverlayMessage, CookiePolicyMessage} from "@bytethat/theme/messages";
+import {CookiePolicyHandler} from "@bytethat/theme/cookiePolicyHandler";
 
 const debounce = (func: Function, wait: number) => {
     let timeout: NodeJS.Timeout;
@@ -283,6 +277,10 @@ const cookiesModalScript = ScriptService.builder((services) => {
                 const cookieValue = {};
                 settings.forEach(x => cookieValue[x.id] = true);
 
+                messages.publishAsync(CookiePolicyMessage.topic, new CookiePolicyMessage(cookiesModal, {
+                    accepted: settings.map(x => x.id)
+                }));
+
                 Cookies.set('cconsent', JSON.stringify(cookieValue), 365);
 
                 hide();
@@ -293,6 +291,10 @@ const cookiesModalScript = ScriptService.builder((services) => {
             rejectButton.addEventListener('click', () => {
                 const cookieValue = {};
                 settings.forEach(x => cookieValue[x.id] = x.required);
+
+                messages.publishAsync(CookiePolicyMessage.topic, new CookiePolicyMessage(cookiesModal, {
+                    accepted: settings.filter(x => x.required).map(x => x.id)
+                }));
 
                 Cookies.set('cconsent', JSON.stringify(cookieValue), 365);
 
@@ -305,8 +307,56 @@ const cookiesModalScript = ScriptService.builder((services) => {
 
 });
 
+
+declare global {
+    interface Window {
+        dataLayer: unknown[];
+        gtag: (...args: unknown[]) => void;
+    }
+}
+
+const googleAnalyticsScript = ScriptService.builder((services) => {
+    const cookiePolicies = services.get(CookiePolicyHandler);
+
+    cookiePolicies.require('statistics', () => {
+        const trackingId: string = (window as any).analytics.google.trackingId;
+
+        if (!!!trackingId) {
+            return;
+        }
+
+        const script = document.createElement('script');
+        script.async = true;
+
+        script.setAttribute('src', `https://www.googletagmanager.com/gtag/js?id=${trackingId}`);
+        script.onload = () => {
+            debugger;
+
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = (...args: unknown[]) => { window.dataLayer.push(args); };
+
+            window.gtag('js', new Date());
+            window.gtag('config', trackingId);
+        }
+
+        debugger;
+
+        document.body.appendChild(script);
+    });
+
+});
+
 class ThemeModule implements IModule {
     configureServices(services: IServiceCollection): void {
+        let cached: CookiePolicyHandler;
+        services.add(CookiePolicyHandler, (services) => {
+            if (!!!cached) {
+                cached = new CookiePolicyHandler(services.get(MessageBus));
+            }
+
+            return cached;
+        });
+
         services.add(ScriptService, OverlayScript);
         services.add(ScriptService, menuScript);
         services.add(ScriptService, controlBootstrapScript);
@@ -316,6 +366,7 @@ class ThemeModule implements IModule {
         services.add(ScriptService, AnchorScrollToScript);
         services.add(ScriptService, cookiesPolicyScript);
         services.add(ScriptService, cookiesModalScript);
+        services.add(ScriptService, googleAnalyticsScript);
     }
 
     configure(services: IServiceProvider): void {
