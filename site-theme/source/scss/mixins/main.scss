@@ -1,0 +1,9 @@
+@import "rfs/scss.scss";
+
+@import "visually-hidden";
+
+@mixin text-outline($color: $white, $thickness: 0.05rem, $offset: 0.05rem) {
+  text-shadow: $offset $offset $thickness $color;
+  text-stroke: $thickness / 10  $color;
+  -webkit-text-stroke: $thickness / 10  $color;
+}

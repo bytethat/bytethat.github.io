@@ -8,7 +8,7 @@
 
 // core
 @import "variables";
-@import "mixins";
+@import "mixins/main";
 @import "root";
 @import "reboot";
 @import "container";
@@ -20,6 +20,8 @@
 @import "card";
 @import "accordion";
 @import "table";
+
+@import "helpers/main";
 
 // custom
 @import 'bytethat/main';
