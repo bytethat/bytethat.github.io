@@ -17,6 +17,12 @@ body {
     }
 }
 
+.skip-to-main-content {
+  position: absolute;
+  top: 0;
+  display: inline-block;
+  z-index: 201;
+}
 
 .overlay {
     --#{$prefix}overlay-bg: rgba(0, 0, 0, 0.5);

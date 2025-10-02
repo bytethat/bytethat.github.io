@@ -16,3 +16,9 @@
     overflow: hidden !important;
   }
 }
+
+@mixin visually-hidden-focusable() {
+  &:not(:focus):not(:focus-within) {
+    @include visually-hidden();
+  }
+}

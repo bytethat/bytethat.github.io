@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,9 +19,11 @@
         <div class="overlay"></div>
 
         <div class="site-container">
+            <a class="visually-hidden-focusable skip-to-main-content" href="#page-container">Skip to main content</a>
+
             {% include "header.njk" %}
 
-            <main class="page-container page-{{ page.fileSlug }}">
+            <main id="page-container" class="page-container page-{{ page.fileSlug }}">
                 {{ content | safe }}
             </main>
 
