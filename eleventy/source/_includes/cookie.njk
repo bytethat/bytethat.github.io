@@ -1,4 +1,4 @@
-<div class="cookie-consent-modal" settings="[{% for group in cookies.groups %} {{ ',' if not loop.first }}  { &quot;id&quot;: &quot;{{group.id}}&quot;, &quot;required&quot;: {{ 'true' if group.required else 'false' }} } {% endfor %}]">
+<aside class="cookie-consent-modal" settings="[{% for group in cookies.groups %} {{ ',' if not loop.first }}  { &quot;id&quot;: &quot;{{group.id}}&quot;, &quot;required&quot;: {{ 'true' if group.required else 'false' }} } {% endfor %}]">
     <div class="container-md center-container">
         <div class="content-container">
             <span class="title">Cookie Policy & Settings</span>
@@ -10,4 +10,4 @@
             <a class="learn-more" href="/cookies-policy/" class="learn-more">Learn more</a>
         </div>
     </div>
-</div>
+</aside>
