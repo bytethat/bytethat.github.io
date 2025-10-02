@@ -9,13 +9,13 @@
     "phone": "+30 210 94 31 646"
   },
   "social": {
-    "facebook": "TODO",
-    "twitter": "TODO",
-    "linkedin": "TODO",
+    "facebook": "facebook",
+    "twitter": "twitter",
+    "linkedin": "linkedin",
     "github": "https://github.com/bytethat",
-    "instagram": "TODO",
-    "youtube": "TODO",
-    "tiktok": "TODO"
+    "instagram": "instagram",
+    "youtube": "youtube",
+    "tiktok": "tiktok"
   },
   "googleAnalytics": {
     "trackingId": "G-ER4EZTMTQY"
