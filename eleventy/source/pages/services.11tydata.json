@@ -1,18 +1,4 @@
 {
-  "banners": [
-    {
-      "url": "#",
-      "title": "Slide 1 Heading",
-      "image": "/uploads/images/hero-slider/1.webp",
-      "description": "This is a description for Slide 1. It can be a bit longer to provide more context."
-    },
-    {
-      "url": "#",
-      "title": "Slide 2 Heading",
-      "image": "/uploads/images/hero-slider/2.webp",
-      "description": "This is a description for Slide 2. It can be a bit longer to provide more context."
-    }
-  ],
   "services": [
     {
       "url": "#",
@@ -41,46 +27,6 @@
       "image": "/uploads/images/services/4.webp",
       "intro": "We craft human-centered, responsive interfaces—grounded in research and UX best practices—that look great on every device and boost engagement.",
       "description": "We craft human-centered, responsive interfaces—grounded in research and UX best practices—that look great on every device and boost engagement. We start with discovery, user journeys, and rapid prototyping, validating with usability testing to remove friction before build. Our design systems ensure consistency, accessibility (WCAG 2.2), and speed across products, while micro-interactions and performance tuning drive conversion. We iterate with analytics and A/B testing, continually refining the experience to meet your business goals."
-    }
-  ],
-  "projects": [
-    {
-      "url": "#",
-      "title": "Project 1",
-      "image": "/uploads/images/project-1/list.webp",
-      "description": "This is a description for Project 1."
-    },
-    {
-      "url": "#",
-      "title": "Project 2",
-      "image": "/uploads/images/project-2/list.webp",
-      "description": "This is a description for Project 2."
-    },
-    {
-      "url": "#",
-      "title": "Project 3",
-      "image": "/uploads/images/project-3/list.webp",
-      "description": "This is a description for Project 3."
-    }
-  ],
-  "testimonials": [
-    {
-      "author": {
-        "name": "John Doe",
-        "role": "Head of IT Operations",
-        "company": "Contoso Ltd."
-      },
-      "image": "/uploads/images/testimonials/contoso.png",
-      "quote": "Bytethat has been a dependable partner throughout our project. Their professionalism, technical know-how, and adaptability ensured smooth cooperation and excellent results."
-    },
-    {
-      "author": {
-        "name": "Jane Smith",
-        "role": "Director of Digital Strategy",
-        "company": "Contoso Ltd."
-      },
-      "image": "/uploads/images/testimonials/contoso.png",
-      "quote": "Working with Bytethat was seamless. The team’s commitment, expertise, and responsiveness helped us achieve a high-quality solution on time."
     }
   ]
 }

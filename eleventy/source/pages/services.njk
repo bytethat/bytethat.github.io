@@ -1,0 +1,38 @@
+---
+title: services
+---
+
+<div class="region-area region-area-one">
+    <div class="container-lg">
+        <div class="inner-area inner-area-one">
+            <div class="stores">
+                <h1>Our Services</h1>
+                <p>We offer a wide range of services to meet your needs. Below is a selection of our most popular services. For more information, please contact us.</p>
+                <a href="/contact" class="button">Contact us</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="region-area region-area-seven">
+    <div class="inner-area inner-area-one">
+        <div class="services-lg">
+
+
+            {% for service in services %}
+
+            <div href="{{ service.url }}" class="service {% if loop.index is odd %}odd{% else %}even{% endif %}">
+                <div class="image">
+                    <img src="{{ service.image }}" alt="{{ service.title }}" />
+                </div>
+                <div class="body">
+                    <div class="content">
+                        <h3 class="title">{{ service.title }}</h3>
+                        <p>{{ service.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

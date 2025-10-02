@@ -1,15 +1,24 @@
 .page-home {
-    .region-area-one {
-        padding: 0;
+  .region-area-one {
+    padding: 0;
+  }
+
+  .region-area-two {
+    h1 {
+      margin-bottom: 1rem;
     }
 
-    .region-area-two {
-        h1 { margin-bottom: 1rem; }
-
-        p { line-height: $line-height-lg; }
+    p {
+      line-height: $line-height-lg;
     }
+  }
 
-    .region-area-three, .region-area-five {
-        @include dark-bg();
-    }
+  .region-area-three, .region-area-five {
+    @include dark-bg();
+  }
+
+  .region-area-seven {
+    --#{$prefix}region-gutter-x: 0;
+    --#{$prefix}region-gutter-y: 0;
+  }
 }
