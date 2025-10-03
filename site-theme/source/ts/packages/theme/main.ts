@@ -252,7 +252,7 @@ const cookiesModalScript = ScriptService.builder((services) => {
     }
 
     Array.from(cookiesModals).forEach((cookiesModal: HTMLElement) => {
-        const setingsJSON = cookiesModal.getAttribute('settings');
+        const setingsJSON = cookiesModal.getAttribute('data-settings');
         if (!setingsJSON) {
             return;
         }

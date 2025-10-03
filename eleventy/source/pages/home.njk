@@ -9,7 +9,7 @@ permalink: /
                     <div class="swiper-slide">
                         <figure class="slide-image">
                             <picture>
-                                <img src="{{ banner.image }}" alt="{{ banner.title }}" />
+                                <img src="{{ banner.image }}" alt="{{ banner.title }}">
                             </picture>
                         </figure>
 
@@ -54,9 +54,9 @@ permalink: /
 
             {% for service in services %}
 
-            <div href="{{ service.url }}" class="service {% if loop.index is odd %}odd{% else %}even{% endif %}">
+            <div class="service {% if loop.index is odd %}odd{% else %}even{% endif %}">
                 <div class="image">
-                    <img src="{{ service.image }}" alt="{{ service.title }}" />
+                    <img src="{{ service.image }}" alt="{{ service.title }}">
                 </div>
                 <div class="body">
                     <div class="content">
@@ -76,7 +76,7 @@ permalink: /
         <div class="inner-area inner-area-one">
             <div class="services">
                 {% for service in services %}
-                <div href="{{ service.url }}" class="card service">
+                <div class="card service">
                     <div class="card-body">
                         <h3 class="card-title">{{ service.title }}</h3>
                         <p>{{ service.intro }}</p>
@@ -92,14 +92,14 @@ permalink: /
 <div class="region-area region-area-three">
     <div class="container-xxl">
         <div class="inner-area inner-area-one">
-    
+
             <h2>Our work</h2>
 
             <div class="projects">
                 {% for project in projects %}
                 <a href="{{ project.url }}" class="card project">
                     <figure class="card-image">
-                        <img src="{{ project.image }}" alt="{{ project.title }}" />
+                        <img src="{{ project.image }}" alt="{{ project.title }}">
                     </figure>
                     <div class="card-body">
                         <h3 class="card-title">{{ project.title }}</h3>
@@ -123,7 +123,7 @@ permalink: /
                 {% for testimonial in testimonials %}
                 <div class="card testimonial">
                     <figure class="card-image">
-                        <img src="{{ testimonial.image }}" alt="{{ testimonial.author.company }}" />
+                        <img src="{{ testimonial.image }}" alt="{{ testimonial.author.company }}">
                     </figure>
                     <figure class="card-body">
                         <blockquote class="quote">
