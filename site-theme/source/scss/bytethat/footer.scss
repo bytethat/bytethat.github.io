@@ -41,6 +41,10 @@
   .contact-form-container {
     .title-container {
       text-align: center;
+        .subtitle {
+          display: block;
+          @extend h4;
+        }
     }
 
     .contact-form {
