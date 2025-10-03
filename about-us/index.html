@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> About Us | ByteThat - Your need to develop</title>
-        <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/x-icon">
         
         
             <meta name="description" content="ByteThat is a software development company specializing in web and mobile applications.">
@@ -85,28 +85,21 @@
                 <label for="name" class="form-label">Name / Surname</label>
                 <input name="name" id="name" type="text" class="form-control" placeholder="John Doe"
                     required 
-                    minlength="3"
-                    maxlength="5"
-                    data-validate="minlength(-1),maxlength(100)"
-                />
+                    maxlength="100"
+                >
             </div>
             <div class="form-feedback">
-                <span class="feedback valid name">This is a valid name!</span>
-
                 <span class="feedback invalid name name-required">Please enter your Name / Surname</span>
-                <span class="feedback invalid name name-min-length">min-length: X</span>
-                <span class="feedback invalid name name-max-length">max-length: Y</span>
+                <span class="feedback invalid name name-max-length">max-length: 100</span>
             </div>
         </div>
 
         <div class="form-group">
             <div class="input-wrapper">
                 <label for="email" class="form-label">Email address</label>
-                <input name="email" id="email" type="text" class="form-control" placeholder="name@example.com" required data-validate="email" />
+                <input name="email" id="email" type="text" class="form-control" placeholder="name@example.com" required data-validate="email">
             </div>
             <div class="form-feedback">
-                <span class="feedback valid email">This is a valid Email!</span>
-
                 <span class="feedback invalid email email-required">Please enter your Email</span>
                 <span class="feedback invalid email email-email">Invalid Email</span>
             </div>
@@ -119,11 +112,9 @@
                     required 
                     maxlength="20"
                     data-validate="pattern(^(?:\+|00)?\d+$)"
-                />
+                >
             </div>
             <div class="form-feedback">
-                <span class="feedback valid phone">This is a valid telephone!</span>
-
                 <span class="feedback invalid phone phone-required">Please enter your telephone</span>
                 <span class="feedback invalid phone phone-pattern">Please enter a valid telephone</span>
             </div>
@@ -132,7 +123,7 @@
         <div class="form-group">
             <div class="input-wrapper">
                 <label for="message" class="form-label">Your message</label>
-                <textarea name="message" id="message" type="text" class="form-control" placeholder="your message" rows="1"
+                <textarea name="message" id="message" class="form-control" placeholder="your message" rows="1"
                     required 
                     minlength="1"
                     maxlength="1000"
@@ -140,7 +131,6 @@
                 ></textarea>
             </div>
             <div class="form-feedback">
-
                 <span class="feedback invalid message message-required">Please enter your message</span>
             </div>
         </div>
@@ -152,14 +142,12 @@
                     <input name="consent" id="consent" type="checkbox" class="form-check"
                         required 
                         data-validate=""
-                    />
+                    >
                     <label for="consent" class="form-label">
                         You have to accept the privacy policy terms. <a class="view-terms" href="#terms-popup">Read the terms</a>
                     </label>
                 </div>
                 <div class="form-feedback">
-                    <span class="feedback valid consent">This is a valid consent!</span>
-
                     <span class="feedback invalid consent consent-required">You have to accept the terms before you proceed</span>
                 </div>
             </div>
@@ -221,7 +209,7 @@
         <div class="container-xl">
             <div class="inner-area inner-area-one">
                 <div class="copyright">
-                    <p>Copyright &copy; 2025 - created by <a href="https://bytethat.gr" target="_blank" rel="noreferrer">ByteThat</a></p>
+                    <p>Copyright &copy; 2025 - created by <a href="https://bytethat.gr" target="_blank" rel="noreferrer">ByteThat</a>. Αρ. Γ.Ε.ΜΗ: <a href="https://publicity.businessportal.gr/company/123456789012">123456789012</a></p>
                 </div>
             </div>
         </div>
@@ -229,7 +217,7 @@
 </footer>
         </div>
 
-        <aside class="cookie-consent-modal" settings="[   { &quot;id&quot;: &quot;necessary&quot;, &quot;required&quot;: true }  ,  { &quot;id&quot;: &quot;statistics&quot;, &quot;required&quot;: false } ]">
+        <aside class="cookie-consent-modal" data-settings="[   { &quot;id&quot;: &quot;necessary&quot;, &quot;required&quot;: true }  ,  { &quot;id&quot;: &quot;statistics&quot;, &quot;required&quot;: false } ]">
     <div class="container-md center-container">
         <div class="content-container">
             <span class="title">Cookie Policy & Settings</span>
@@ -238,7 +226,7 @@
         <div class="actions">
             <button class="button accept">Accept</button>
             <button class="button reject">Accept necessary</button>
-            <a class="learn-more" href="/cookies-policy/" class="learn-more">Learn more</a>
+            <a href="/cookies-policy/" class="learn-more">Learn more</a>
         </div>
     </div>
 </aside>
@@ -250,7 +238,6 @@
     };
 </script>
 
-        <!--<script src="/assets/js/bootstrap.js" type="text/javascript"></script>-->
-        <script src="/assets/js/main.js" type="text/javascript"></script>
+        <script src="/assets/js/main.js"></script>
     </body>
 </html>
