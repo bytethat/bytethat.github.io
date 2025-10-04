@@ -1,3 +1,4 @@
-$blue:          #180048;
-
-$link-color:    #343a40;
+@forward "variables" with (
+  $blue:          #180048,
+  $link-color:    #343a40
+);

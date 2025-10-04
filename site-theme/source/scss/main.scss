@@ -7,10 +7,8 @@
 @use "overrides";
 
 // core
-@use "variables" with (
-  $blue:          #180048,
-  $link-color:    #343a40
-);
+@use "variables";
+
 @use "mixins";
 @use "root";
 @use "reboot";

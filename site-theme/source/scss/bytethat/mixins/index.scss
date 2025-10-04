@@ -1,8 +1,10 @@
 @use "../../variables";
 
+@use "bootstrap/scss/functions";
+
 @mixin dark-bg {
   --#{variables.$prefix}default-font-color: #{variables.$white};
-  --#{variables.$prefix}default-font-color-rgb: #{to-rgb(variables.$white)};
+  --#{variables.$prefix}default-font-color-rgb: #{functions.to-rgb(variables.$white)};
 
   color: rgba(var(--#{variables.$prefix}default-font-color-rgb), 1);
   background-color: var(--#{variables.$prefix}primary);
