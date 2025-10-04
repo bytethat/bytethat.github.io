@@ -1,3 +1,5 @@
+@use "sass:map";
+
 .footer-container {
   --#{$prefix}default-font-color: #ffffff;
   --#{$prefix}default-font-color-rgb: 255, 255, 255;
@@ -28,7 +30,7 @@
       flex-direction: column;
       gap: 1rem;
 
-      @media (min-width: map-get($grid-breakpoints, sm)) {
+      @media (min-width: map.get($grid-breakpoints, sm)) {
         flex-direction: row;
       }
 
@@ -114,7 +116,7 @@
         }
       }
 
-      @media (min-width: map-get($grid-breakpoints, md)) {
+      @media (min-width: map.get($grid-breakpoints, md)) {
         max-width: 600px;
       }
     }

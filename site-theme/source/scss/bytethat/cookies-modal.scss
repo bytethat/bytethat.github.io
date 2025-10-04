@@ -1,3 +1,5 @@
+@use "sass:map";
+
 .cookie-consent-modal {
   --#{$prefix}modal-gutter-x: 0;
   --#{$prefix}modal-gutter-y: 1rem;
@@ -49,7 +51,7 @@
 
   &.visible { display: block; }
 
-  @media (min-width: map-get($grid-breakpoints, sm)) {
+  @media (min-width: map.get($grid-breakpoints, sm)) {
     font-size: 1rem;
 
     .center-container {
@@ -64,7 +66,7 @@
     }
   }
 
-  @media (min-width: map-get($grid-breakpoints, md)) {
+  @media (min-width: map.get($grid-breakpoints, md)) {
       --#{$prefix}modal-gutter-x: 0;
       --#{$prefix}modal-gutter-y: 2rem;
 

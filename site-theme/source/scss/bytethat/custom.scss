@@ -1,3 +1,5 @@
+@use "sass:map";
+
 .services {
   --#{$prefix}default-font-color: #{$font-color};
   --#{$prefix}default-font-color-rgb: #{to-rgb($font-color)};
@@ -9,7 +11,7 @@
   margin: 1rem 0;
   color: rgba(var(--#{$prefix}default-font-color-rgb), 1);
 
-  @media (min-width: map-get($grid-breakpoints, md)) {
+  @media (min-width: map.get($grid-breakpoints, md)) {
     flex-direction: row;
   }
 
@@ -17,11 +19,11 @@
     background-color: #{$light};
     border-bottom: 0.25em solid $red;
 
-    @media (min-width: map-get($grid-breakpoints, md)) {
+    @media (min-width: map.get($grid-breakpoints, md)) {
       flex: 1 1 calc(50% - 1rem);
     }
 
-    @media (min-width: map-get($grid-breakpoints, xl)) {
+    @media (min-width: map.get($grid-breakpoints, xl)) {
       flex: 1 1 calc(25% - 1rem);
     }
 
@@ -62,7 +64,7 @@
     }
   }
 
-  @media (min-width: map-get($grid-breakpoints, md)) {
+  @media (min-width: map.get($grid-breakpoints, md)) {
     .service {
       flex-direction: row;
 
@@ -81,11 +83,11 @@
   gap: 0.5em;
   margin: 1rem 0;
 
-  @media (min-width: map-get($grid-breakpoints, md)) {
+  @media (min-width: map.get($grid-breakpoints, md)) {
     grid-template-columns: 50% 50%;
   }
 
-  @media (min-width: map-get($grid-breakpoints, xxl)) {
+  @media (min-width: map.get($grid-breakpoints, xxl)) {
     grid-template-columns: repeat(3, 1fr);
   }
 
@@ -142,7 +144,7 @@
     transition: opacity 0.3s ease;
   }
 
-  @media (min-width: map-get($grid-breakpoints, md)) {
+  @media (min-width: map.get($grid-breakpoints, md)) {
     .swiper-button-prev, .swiper-button-next {
       opacity: 1;
     }
@@ -212,7 +214,7 @@
   margin: 1rem 0;
   color: rgba(var(--#{$prefix}default-font-color-rgb), 1);
 
-  @media (min-width: map-get($grid-breakpoints, lg)) {
+  @media (min-width: map.get($grid-breakpoints, lg)) {
     grid-template-columns: calc(50% - 2rem) calc(50% - 2rem);
   }
 
@@ -230,7 +232,7 @@
 
     margin: 0 auto;
 
-    @media (min-width: map-get($grid-breakpoints, sm)) {
+    @media (min-width: map.get($grid-breakpoints, sm)) {
       flex-direction: row;
     }
 

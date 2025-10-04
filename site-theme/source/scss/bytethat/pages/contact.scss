@@ -1,3 +1,5 @@
+@use "sass:map";
+
 // Contact page specific styles
 
 .page-contact {
@@ -27,7 +29,7 @@
         flex: 1;
     }
 
-    @media (min-width: map-get($grid-breakpoints, lg)) {
+    @media (min-width: map.get($grid-breakpoints, lg)) {
         flex-direction: row;
 
         .stores {
@@ -43,7 +45,7 @@
         }
     }
 
-    @media (min-width: map-get($grid-breakpoints, xl)) {
+    @media (min-width: map.get($grid-breakpoints, xl)) {
         .stores {
             width: 20%;
         }
