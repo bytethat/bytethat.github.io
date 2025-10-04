@@ -9,6 +9,8 @@ const files_config = {
         { source: "source/uploads", destination: "uploads" },
 
         { source: "../site-theme/dist/main.js", destination: "assets/js/main.js" },
+
+        { source: "../site-theme/dist/fonts.css", destination: "assets/styles/fonts.css" },
         { source: "../site-theme/dist/main.css", destination: "assets/styles/main.css" },
         { source: "node_modules/bootstrap/dist/js/bootstrap.js", destination: "assets/js/bootstrap.js" }
     ]
