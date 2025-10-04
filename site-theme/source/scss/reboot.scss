@@ -97,7 +97,7 @@ blockquote {
 
 b,
 strong {
-  font-weight: 700;
+  font-weight: #{$font-weight-semibold};
 }
 
 

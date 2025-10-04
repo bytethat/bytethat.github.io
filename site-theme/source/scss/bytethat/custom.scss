@@ -250,14 +250,14 @@
       margin: 0;
       font-size: clamp(1.05rem, 1rem + 0.6vw, 1.4rem); // larger text
       line-height: 1.55;
-      font-weight: 400;
+      font-weight: #{$font-weight-light};
       color: var(--#{$prefix}testimonial-text-color);
       font-style: italic;
 
       &:before, &:after {
         font-size: 2.5rem;
         line-height: 0;
-        font-weight: 700;
+        font-weight: #{$font-weight-semibold};
         font-style: normal;
         color: var(--#{$prefix}testimonial-accent);
         opacity: .15;
@@ -286,17 +286,13 @@
       flex-direction: column;
       line-height: 1.2;
 
-      .name {
-        font-weight: 600;
-      }
-
       .role {
         opacity: .7;
         font-size: .8rem;
       }
 
       .name {
-        font-weight: 600;
+        font-weight: #{$font-weight-semibold};
         line-height: 1.2;
         color: var(--#{$prefix}testimonial-accent);
       }
