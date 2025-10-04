@@ -45,7 +45,8 @@
 
       img {
         display: inline-block;
-        max-width: 100%;
+        width: 100%;
+        aspect-ratio: 16/10;
         margin: 0 auto;
       }
     }
@@ -95,6 +96,13 @@
     --#{$prefix}card-border-width: 0;
 
     transition: all 0.3s ease;
+
+    .card-image {
+      img {
+        width: 100%;
+        aspect-ratio: 16/10;
+      }
+    }
 
     .card-body {
       --#{$prefix}default-font-color: #ffffff;
@@ -228,6 +236,12 @@
 
     .card-image {
       max-width: 10rem;
+
+      img {
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: contain;
+      }
     }
 
     // Main testimonial text emphasized: bigger, readable line-height
