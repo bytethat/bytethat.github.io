@@ -1,6 +1,9 @@
+@use "bootstrap/scss/functions";
+@use "variables";
+
 .form {
-  --#{$prefix}form-valid-color: #{$green};
-  --#{$prefix}form-invalid-color: #{$red};
+  --#{variables.$prefix}form-valid-color: #{variables.$green};
+  --#{variables.$prefix}form-invalid-color: #{variables.$red};
 
   display: flex;
   flex-direction: column;
@@ -13,32 +16,32 @@
   }
 
   .form-control {
-    --#{$prefix}gutter-top: 0.375rem;
-    --#{$prefix}gutter-bottom: 0.375rem;
-    --#{$prefix}gutter-left: 0.75rem;
-    --#{$prefix}gutter-right: 1.75rem;
+    --#{variables.$prefix}gutter-top: 0.375rem;
+    --#{variables.$prefix}gutter-bottom: 0.375rem;
+    --#{variables.$prefix}gutter-left: 0.75rem;
+    --#{variables.$prefix}gutter-right: 1.75rem;
 
-    --#{$prefix}border-size: 1px;
-    --#{$prefix}border-radius: 4px;
-    --#{$prefix}border-color: rgba(var(--#{$prefix}default-font-color-rgb), 1);
+    --#{variables.$prefix}border-size: 1px;
+    --#{variables.$prefix}border-radius: 4px;
+    --#{variables.$prefix}border-color: rgba(var(--#{variables.$prefix}default-font-color-rgb), 1);
 
 
     display: block;
     width: 100%;
-    padding: var(--#{$prefix}gutter-top) var(--#{$prefix}gutter-right) var(--#{$prefix}gutter-bottom) var(--#{$prefix}gutter-left);
+    padding: var(--#{variables.$prefix}gutter-top) var(--#{variables.$prefix}gutter-right) var(--#{variables.$prefix}gutter-bottom) var(--#{variables.$prefix}gutter-left);
     box-sizing: border-box;
 
-    border: var(--#{$prefix}border-size) solid var(--#{$prefix}border-color);
-    border-radius: var(--#{$prefix}border-radius);
+    border: var(--#{variables.$prefix}border-size) solid var(--#{variables.$prefix}border-color);
+    border-radius: var(--#{variables.$prefix}border-radius);
 
     &:focus {
-      box-shadow: 0 0 .25rem var(--#{$prefix}border-color);
+      box-shadow: 0 0 .25rem var(--#{variables.$prefix}border-color);
     }
   }
 
   textarea.form-control {
-    height: calc((var(--#{$prefix}default-line-height) * var(--bt-default-font-size)) + var(--#{$prefix}gutter-top) + var(--#{$prefix}gutter-bottom) + (var(--#{$prefix}border-size) * 2));
-    min-height: calc((var(--#{$prefix}default-line-height) * var(--bt-default-font-size)) + var(--#{$prefix}gutter-top) + var(--#{$prefix}gutter-bottom) + (var(--#{$prefix}border-size) * 2));
+    height: calc((var(--#{variables.$prefix}default-line-height) * var(--bt-default-font-size)) + var(--#{variables.$prefix}gutter-top) + var(--#{variables.$prefix}gutter-bottom) + (var(--#{variables.$prefix}border-size) * 2));
+    min-height: calc((var(--#{variables.$prefix}default-line-height) * var(--bt-default-font-size)) + var(--#{variables.$prefix}gutter-top) + var(--#{variables.$prefix}gutter-bottom) + (var(--#{variables.$prefix}border-size) * 2));
     resize: vertical;
   }
 
@@ -51,22 +54,22 @@
     }
 
     &.switch {
-      --#{$prefix}form-check-switch-border-width: 1px;
-      --#{$prefix}form-check-switch-border-color: #{$gray-500};
+      --#{variables.$prefix}form-check-switch-border-width: 1px;
+      --#{variables.$prefix}form-check-switch-border-color: #{variables.$gray-500};
 
-      --#{$prefix}form-check-switch-bg: #{$gray-300};
+      --#{variables.$prefix}form-check-switch-bg: #{variables.$gray-300};
 
-      --#{$prefix}form-check-switch-checked-bg: #{$primary};
-      --#{$prefix}form-check-switch-checked-border-color: #{shift-color($primary, 20%)};
+      --#{variables.$prefix}form-check-switch-checked-bg: #{variables.$primary};
+      --#{variables.$prefix}form-check-switch-checked-border-color: #{functions.shift-color(variables.$primary, 20%)};
 
       display: inline-block;
       width: 2rem;
       height: 1rem;
       appearance: none;
-      border: var(--#{$prefix}form-check-switch-border-width) solid var(--#{$prefix}form-check-switch-border-color);
+      border: var(--#{variables.$prefix}form-check-switch-border-width) solid var(--#{variables.$prefix}form-check-switch-border-color);
       border-radius: 1rem;
 
-      background-color: var(--#{$prefix}form-switch-bg);
+      background-color: var(--#{variables.$prefix}form-switch-bg);
       background-repeat: no-repeat;
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e");;
       background-position: left center;
@@ -74,8 +77,8 @@
       cursor: pointer;
 
       &:checked {
-        background-color: var(--#{$prefix}form-check-switch-checked-bg);
-        border-color: var(--#{$prefix}form-check-switch-checked-border-color);
+        background-color: var(--#{variables.$prefix}form-check-switch-checked-bg);
+        border-color: var(--#{variables.$prefix}form-check-switch-checked-border-color);
 
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
         background-position: right center;
@@ -101,11 +104,11 @@
       font-size: 0.875em;
 
       &.invalid {
-        color: var(--#{$prefix}form-invalid-color);
+        color: var(--#{variables.$prefix}form-invalid-color);
       }
 
       &.valid {
-        color: var(--#{$prefix}form-valid-color);
+        color: var(--#{variables.$prefix}form-valid-color);
       }
     }
   }
@@ -114,19 +117,19 @@
     .form-control, .form-check {
       &:valid {
         &:focus {
-          box-shadow: 0 0 .25rem var(--#{$prefix}form-valid-color);
+          box-shadow: 0 0 .25rem var(--#{variables.$prefix}form-valid-color);
         }
 
-        border-color: var(--#{$prefix}form-valid-color);
+        border-color: var(--#{variables.$prefix}form-valid-color);
       }
 
       &:invalid {
         &:focus {
-          box-shadow: 0 0 .25rem var(--#{$prefix}form-invalid-color);
+          box-shadow: 0 0 .25rem var(--#{variables.$prefix}form-invalid-color);
         }
 
-        outline-color: var(--#{$prefix}form-invalid-color);
-        border-color: var(--#{$prefix}form-invalid-color);
+        outline-color: var(--#{variables.$prefix}form-invalid-color);
+        border-color: var(--#{variables.$prefix}form-invalid-color);
       }
     }
 
@@ -145,15 +148,15 @@
     border: none;
     border-radius: 4px;
 
-    background-color: var(--#{$prefix}button-bg);
-    color: var(--#{$prefix}button-color);
+    background-color: var(--#{variables.$prefix}button-bg);
+    color: var(--#{variables.$prefix}button-color);
     text-decoration: none;
     transition: background-color 0.3s ease;
     cursor: pointer;
 
     &:hover {
       text-decoration: none;
-      background-color: var(--#{$prefix}button-hover-bg);
+      background-color: var(--#{variables.$prefix}button-hover-bg);
     }
   }
 }

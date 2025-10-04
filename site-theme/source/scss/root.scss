@@ -1,46 +1,51 @@
+@use "sass:meta";
+@use "bootstrap/scss/functions";
+@use "rfs/scss";
+@use "variables";
+
 :root {
-    @each $color, $value in $colors {
-        --#{$prefix}#{$color}: #{$value};
+    @each $color, $value in variables.$colors {
+        --#{variables.$prefix}#{$color}: #{$value};
     }
 
-    @each $color, $value in $grays {
-        --#{$prefix}gray-#{$color}: #{$value};
+    @each $color, $value in variables.$grays {
+        --#{variables.$prefix}gray-#{$color}: #{$value};
     }
 
-    @each $color, $value in $theme-colors {
-        --#{$prefix}#{$color}: #{$value};
+    @each $color, $value in variables.$theme-colors {
+        --#{variables.$prefix}#{$color}: #{$value};
     }
 
     // typography
-    --#{$prefix}default-font-family: #{inspect($font-family-base)};
-    @include rfs($font-size-base, --#{$prefix}default-font-size);
-    --#{$prefix}default-font-weight: #{$font-weight-base};
-    --#{$prefix}default-line-height: #{$line-height-base};
+    --#{variables.$prefix}default-font-family: #{meta.inspect(variables.$font-family-base)};
+    @include scss.rfs(variables.$font-size-base, --#{variables.$prefix}default-font-size);
+    --#{variables.$prefix}default-font-weight: #{variables.$font-weight-base};
+    --#{variables.$prefix}default-line-height: #{variables.$line-height-base};
 
-    --#{$prefix}default-font-color: #{$font-color};
-    --#{$prefix}default-font-color-rgb: #{to-rgb($font-color)};
+    --#{variables.$prefix}default-font-color: #{variables.$font-color};
+    --#{variables.$prefix}default-font-color-rgb: #{functions.to-rgb(variables.$font-color)};
 
 
-    --#{$prefix}heading-color: #{$headings-color};
+    --#{variables.$prefix}heading-color: #{variables.$headings-color};
 
     // link
-    --#{$prefix}link-color: #{$link-color};
-    --#{$prefix}link-color-rgb: #{to-rgb($link-color)};
-    --#{$prefix}link-decoration: #{$link-decoration};
+    --#{variables.$prefix}link-color: #{variables.$link-color};
+    --#{variables.$prefix}link-color-rgb: #{functions.to-rgb(variables.$link-color)};
+    --#{variables.$prefix}link-decoration: #{variables.$link-decoration};
 
-    --#{$prefix}link-hover-color: #{$link-hover-color};
-    --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color)};
+    --#{variables.$prefix}link-hover-color: #{variables.$link-hover-color};
+    --#{variables.$prefix}link-hover-color-rgb: #{functions.to-rgb(variables.$link-hover-color)};
 
-    @if $link-hover-decoration != null {
-        --#{$prefix}link-hover-decoration: #{$link-hover-decoration};
+    @if variables.$link-hover-decoration != null {
+        --#{variables.$prefix}link-hover-decoration: #{variables.$link-hover-decoration};
     }
 
     // button
-    --#{$prefix}button-gutter-x: 1.5rem;
-    --#{$prefix}button-gutter-y: 0.75rem;
+    --#{variables.$prefix}button-gutter-x: 1.5rem;
+    --#{variables.$prefix}button-gutter-y: 0.75rem;
 
-    --#{$prefix}button-color: #{$button-color};
-    --#{$prefix}button-bg: #{$button-bg};
-    --#{$prefix}button-hover-bg: #{$button-hover-bg};
-    --#{$prefix}button-hover-bg-rgb: #{to-rgb($button-hover-bg)};
+    --#{variables.$prefix}button-color: #{variables.$button-color};
+    --#{variables.$prefix}button-bg: #{variables.$button-bg};
+    --#{variables.$prefix}button-hover-bg: #{variables.$button-hover-bg};
+    --#{variables.$prefix}button-hover-bg-rgb: #{functions.to-rgb(variables.$button-hover-bg)};
 }

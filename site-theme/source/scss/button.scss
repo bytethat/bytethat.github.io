@@ -1,17 +1,19 @@
+@use "variables";
+
 .button {
   display: inline-block;
-  padding: var(--#{$prefix}button-gutter-y) var(--#{$prefix}button-gutter-x);
+  padding: var(--#{variables.$prefix}button-gutter-y) var(--#{variables.$prefix}button-gutter-x);
   border: none;
   border-radius: 4px;
 
-  background-color: var(--#{$prefix}button-bg);
-  color: var(--#{$prefix}button-color);
+  background-color: var(--#{variables.$prefix}button-bg);
+  color: var(--#{variables.$prefix}button-color);
   text-decoration: none;
   transition: background-color 0.3s ease;
   cursor: pointer;
 
   &:hover {
     text-decoration: none;
-    background-color: var(--#{$prefix}button-hover-bg);
+    background-color: var(--#{variables.$prefix}button-hover-bg);
   }
 }

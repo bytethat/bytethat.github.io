@@ -1,0 +1,14 @@
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@use 'fonts';
+
+@use 'global';
+@use 'header';
+@use 'footer';
+@use 'cookies-modal';
+
+@use 'pages/home';
+@use 'pages/contact';
+@use "pages/cookies";
+@use "pages/services";
+
+@use 'custom';

@@ -1,3 +1,5 @@
+@use "variables";
+
 @mixin container($name, $breakpoint) {
   .container-#{$name} {
     --bt-gutter-x: 1.5rem;
@@ -19,7 +21,7 @@
   }
 }
 
-@each $name, $breakpoint in $grid-breakpoints {
+@each $name, $breakpoint in variables.$grid-breakpoints {
   @include container($name, $breakpoint);
 }
 

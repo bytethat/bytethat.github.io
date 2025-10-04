@@ -1,10 +1,12 @@
+@forward "visually-hidden";
+
 @use "sass:math";
 
-@import "rfs/scss.scss";
+@use "rfs/scss.scss";
 
-@import "visually-hidden";
+@use "../variables";
 
-@mixin text-outline($color: $white, $thickness: 0.05rem, $offset: 0.05rem) {
+@mixin text-outline($color: variables.$white, $thickness: 0.05rem, $offset: 0.05rem) {
   text-shadow: $offset $offset $thickness $color;
   text-stroke:  math.div($thickness, 10)  $color;
   -webkit-text-stroke: math.div($thickness, 10)  $color;

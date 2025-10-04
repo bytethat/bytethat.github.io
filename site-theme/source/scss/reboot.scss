@@ -1,3 +1,6 @@
+@use "rfs/scss";
+@use "variables";
+
 *,
 *::before,
 *::after {
@@ -15,16 +18,16 @@
 // null by default, thus nothing is generated.
 
 :root {
-    @include font-size(var(--#{$prefix}default-font-size));
+    @include scss.font-size(var(--#{variables.$prefix}default-font-size));
 }
 
 body { 
   // color: var(--#{$prefix}default-font-color);
-  color: rgba(var(--#{$prefix}default-font-color-rgb), 1);
-  font-family: var(--#{$prefix}default-font-family);
-  @include font-size(var(--#{$prefix}default-font-size));
-  font-weight: var(--#{$prefix}default-font-weight);
-  line-height: var(--#{$prefix}default-line-height);
+  color: rgba(var(--#{variables.$prefix}default-font-color-rgb), 1);
+  font-family: var(--#{variables.$prefix}default-font-family);
+  @include scss.font-size(var(--#{variables.$prefix}default-font-size));
+  font-weight: var(--#{variables.$prefix}default-font-weight);
+  line-height: var(--#{variables.$prefix}default-line-height);
   z-index: 0;
 }
 
@@ -37,42 +40,42 @@ body {
 
 %heading {
   margin-top: 0;
-  margin-bottom: #{$headings-margin-bottom}rem;
-  font-family: $headings-font-family;
-  font-style: $headings-font-style;
-  font-weight: $headings-font-weight;
-  line-height: $headings-line-height;
-  color: var(--#{$prefix}heading-color);
+  margin-bottom: #{variables.$headings-margin-bottom}rem;
+  font-family: variables.$headings-font-family;
+  font-style: variables.$headings-font-style;
+  font-weight: variables.$headings-font-weight;
+  line-height: variables.$headings-line-height;
+  color: var(--#{variables.$prefix}heading-color);
 }
 
 h1 {
   @extend %heading;
-  @include font-size($h1-font-size);
+  @include scss.font-size(variables.$h1-font-size);
 }
 
 h2 {
   @extend %heading;
-  @include font-size($h2-font-size);
+  @include scss.font-size(variables.$h2-font-size);
 }
 
 h3 {
   @extend %heading;
-  @include font-size($h3-font-size);
+  @include scss.font-size(variables.$h3-font-size);
 }
 
 h4 {
   @extend %heading;
-  @include font-size($h4-font-size);
+  @include scss.font-size(variables.$h4-font-size);
 }
 
 h5 {
   @extend %heading;
-  @include font-size($h5-font-size);
+  @include scss.font-size(variables.$h5-font-size);
 }
 
 h6 {
   @extend %heading;
-  @include font-size($h6-font-size);
+  @include scss.font-size(variables.$h6-font-size);
 }
 
 p {
@@ -97,19 +100,19 @@ blockquote {
 
 b,
 strong {
-  font-weight: #{$font-weight-semibold};
+  font-weight: #{variables.$font-weight-semibold};
 }
 
 
 // Links
 
 a {
-  color: rgba(var(--#{$prefix}link-color-rgb), var(--#{$prefix}link-opacity, 1));
-  text-decoration: $link-decoration;
+  color: rgba(var(--#{variables.$prefix}link-color-rgb), var(--#{variables.$prefix}link-opacity, 1));
+  text-decoration: variables.$link-decoration;
 
   &:hover {
-    --#{$prefix}link-color-rgb: var(--#{$prefix}link-hover-color-rgb);
-    text-decoration: $link-hover-decoration;
+    --#{variables.$prefix}link-color-rgb: var(--#{variables.$prefix}link-hover-color-rgb);
+    text-decoration: variables.$link-hover-decoration;
   }
 }
 

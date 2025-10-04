@@ -1,29 +1,33 @@
+@use "bootstrap/scss/functions";
+@use "../mixins";
+@use "../variables";
+
 @use "sass:map";
 
 .services {
-  --#{$prefix}default-font-color: #{$font-color};
-  --#{$prefix}default-font-color-rgb: #{to-rgb($font-color)};
+  --#{variables.$prefix}default-font-color: #{variables.$font-color};
+  --#{variables.$prefix}default-font-color-rgb: #{functions.to-rgb(variables.$font-color)};
 
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   gap: 1rem;
   margin: 1rem 0;
-  color: rgba(var(--#{$prefix}default-font-color-rgb), 1);
+  color: rgba(var(--#{variables.$prefix}default-font-color-rgb), 1);
 
-  @media (min-width: map.get($grid-breakpoints, md)) {
+  @media (min-width: map.get(variables.$grid-breakpoints, md)) {
     flex-direction: row;
   }
 
   .service {
-    background-color: #{$light};
-    border-bottom: 0.25em solid $red;
+    background-color: #{variables.$light};
+    border-bottom: 0.25em solid variables.$red;
 
-    @media (min-width: map.get($grid-breakpoints, md)) {
+    @media (min-width: map.get(variables.$grid-breakpoints, md)) {
       flex: 1 1 calc(50% - 1rem);
     }
 
-    @media (min-width: map.get($grid-breakpoints, xl)) {
+    @media (min-width: map.get(variables.$grid-breakpoints, xl)) {
       flex: 1 1 calc(25% - 1rem);
     }
 
@@ -64,7 +68,7 @@
     }
   }
 
-  @media (min-width: map.get($grid-breakpoints, md)) {
+  @media (min-width: map.get(variables.$grid-breakpoints, md)) {
     .service {
       flex-direction: row;
 
@@ -75,7 +79,7 @@
 }
 
 .projects {
-  --foo: var(--#{$prefix}container-xxl-breakpoint);
+  --foo: var(--#{variables.$prefix}container-xxl-breakpoint);
 
   display: grid;
   // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -83,19 +87,19 @@
   gap: 0.5em;
   margin: 1rem 0;
 
-  @media (min-width: map.get($grid-breakpoints, md)) {
+  @media (min-width: map.get(variables.$grid-breakpoints, md)) {
     grid-template-columns: 50% 50%;
   }
 
-  @media (min-width: map.get($grid-breakpoints, xxl)) {
+  @media (min-width: map.get(variables.$grid-breakpoints, xxl)) {
     grid-template-columns: repeat(3, 1fr);
   }
 
   .project {
-    --#{$prefix}card-spacer-x: 1rem;
-    --#{$prefix}card-spacer-y: 1rem;
+    --#{variables.$prefix}card-spacer-x: 1rem;
+    --#{variables.$prefix}card-spacer-y: 1rem;
 
-    --#{$prefix}card-border-width: 0;
+    --#{variables.$prefix}card-border-width: 0;
 
     transition: all 0.3s ease;
 
@@ -107,20 +111,20 @@
     }
 
     .card-body {
-      --#{$prefix}default-font-color: #ffffff;
-      --#{$prefix}default-font-color-rgb: 255, 255, 255;
+      --#{variables.$prefix}default-font-color: #ffffff;
+      --#{variables.$prefix}default-font-color-rgb: 255, 255, 255;
 
-      --#{$prefix}link-color: #{$gray-200};
-      --#{$prefix}link-color-rgb: #{to-rgb($gray-200)};
-      --#{$prefix}link-hover-color: #{$gray-500};
-      --#{$prefix}link-hover-color-rgb: #{to-rgb($gray-500)};
+      --#{variables.$prefix}link-color: #{variables.$gray-200};
+      --#{variables.$prefix}link-color-rgb: #{functions.to-rgb(variables.$gray-200)};
+      --#{variables.$prefix}link-hover-color: #{variables.$gray-500};
+      --#{variables.$prefix}link-hover-color-rgb: #{functions.to-rgb(variables.$gray-500)};
 
       position: absolute;
       bottom: 0;
       z-index: 1;
 
-      color: var(--#{$prefix}default-font-color);
-      @include text-outline(rgba($black, 0.3));
+      color: var(--#{variables.$prefix}default-font-color);
+      @include mixins.text-outline(rgba(variables.$black, 0.3));
     }
 
     &:hover {
@@ -132,7 +136,7 @@
 }
 
 .swiper {
-  --swiper-theme-color: #{$primary};
+  --swiper-theme-color: #{variables.$primary};
   --swiper-navigation-size: 2rem;
   --swiper-pagination-bullet-width: 2rem;
   --swiper-pagination-bullet-height: 0.125rem;
@@ -144,7 +148,7 @@
     transition: opacity 0.3s ease;
   }
 
-  @media (min-width: map.get($grid-breakpoints, md)) {
+  @media (min-width: map.get(variables.$grid-breakpoints, md)) {
     .swiper-button-prev, .swiper-button-next {
       opacity: 1;
     }
@@ -177,13 +181,13 @@
   }
 
   .slide-content {
-    --#{$prefix}default-font-color: #ffffff;
-    --#{$prefix}default-font-color-rgb: 255, 255, 255;
+    --#{variables.$prefix}default-font-color: #ffffff;
+    --#{variables.$prefix}default-font-color-rgb: 255, 255, 255;
 
-    --#{$prefix}link-color: #{$gray-200};
-    --#{$prefix}link-color-rgb: #{to-rgb($gray-200)};
-    --#{$prefix}link-hover-color: #{$gray-500};
-    --#{$prefix}link-hover-color-rgb: #{to-rgb($gray-500)};
+    --#{variables.$prefix}link-color: #{variables.$gray-200};
+    --#{variables.$prefix}link-color-rgb: #{functions.to-rgb(variables.$gray-200)};
+    --#{variables.$prefix}link-hover-color: #{variables.$gray-500};
+    --#{variables.$prefix}link-hover-color-rgb: #{functions.to-rgb(variables.$gray-500)};
 
     position: relative;
     display: flex;
@@ -194,27 +198,27 @@
     flex-direction: column;
     z-index: 1;
 
-    color: var(--#{$prefix}default-font-color);
-    @include text-outline(rgba($black, 0.3));
+    color: var(--#{variables.$prefix}default-font-color);
+    @include mixins.text-outline(rgba(variables.$black, 0.3));
   }
 }
 
 .testimonials {
-  --#{$prefix}default-font-color: #{$font-color};
-  --#{$prefix}default-font-color-rgb: #{to-rgb($font-color)};
+  --#{variables.$prefix}default-font-color: #{variables.$font-color};
+  --#{variables.$prefix}default-font-color-rgb: #{functions.to-rgb(variables.$font-color)};
 
-  --#{$prefix}testimonial-bg: #{$light};
-  --#{$prefix}testimonial-border: rgba(var(--#{$prefix}default-font-color-rgb), .1);
-  --#{$prefix}testimonial-radius: 1rem;
-  --#{$prefix}testimonial-logo-size: 3rem; // control logo size here
-  --#{$prefix}testimonial-text-color: var(--#{$prefix}default-font-color);
-  --#{$prefix}testimonial-accent: #{$primary};
+  --#{variables.$prefix}testimonial-bg: #{variables.$light};
+  --#{variables.$prefix}testimonial-border: rgba(var(--#{variables.$prefix}default-font-color-rgb), .1);
+  --#{variables.$prefix}testimonial-radius: 1rem;
+  --#{variables.$prefix}testimonial-logo-size: 3rem; // control logo size here
+  --#{variables.$prefix}testimonial-text-color: var(--#{variables.$prefix}default-font-color);
+  --#{variables.$prefix}testimonial-accent: #{variables.$primary};
   display: grid;
   gap: 4rem;
   margin: 1rem 0;
-  color: rgba(var(--#{$prefix}default-font-color-rgb), 1);
+  color: rgba(var(--#{variables.$prefix}default-font-color-rgb), 1);
 
-  @media (min-width: map.get($grid-breakpoints, lg)) {
+  @media (min-width: map.get(variables.$grid-breakpoints, lg)) {
     grid-template-columns: calc(50% - 2rem) calc(50% - 2rem);
   }
 
@@ -223,16 +227,16 @@
 
     // gap: 1.25rem;
     padding: 2rem 2rem 2.25rem;
-    background: var(--#{$prefix}testimonial-bg);
-    border: 1px solid var(--#{$prefix}testimonial-border);
-    border-radius: var(--#{$prefix}testimonial-radius);
+    background: var(--#{variables.$prefix}testimonial-bg);
+    border: 1px solid var(--#{variables.$prefix}testimonial-border);
+    border-radius: var(--#{variables.$prefix}testimonial-radius);
     box-shadow: 0 4px 8px rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .06);
     isolation: isolate;
     transition: box-shadow .25s ease, transform .25s ease;
 
     margin: 0 auto;
 
-    @media (min-width: map.get($grid-breakpoints, sm)) {
+    @media (min-width: map.get(variables.$grid-breakpoints, sm)) {
       flex-direction: row;
     }
 
@@ -252,16 +256,16 @@
       margin: 0;
       font-size: clamp(1.05rem, 1rem + 0.6vw, 1.4rem); // larger text
       line-height: 1.55;
-      font-weight: #{$font-weight-light};
-      color: var(--#{$prefix}testimonial-text-color);
+      font-weight: #{variables.$font-weight-light};
+      color: var(--#{variables.$prefix}testimonial-text-color);
       font-style: italic;
 
       &:before, &:after {
         font-size: 2.5rem;
         line-height: 0;
-        font-weight: #{$font-weight-semibold};
+        font-weight: #{variables.$font-weight-semibold};
         font-style: normal;
-        color: var(--#{$prefix}testimonial-accent);
+        color: var(--#{variables.$prefix}testimonial-accent);
         opacity: .15;
       }
 
@@ -294,9 +298,9 @@
       }
 
       .name {
-        font-weight: #{$font-weight-semibold};
+        font-weight: #{variables.$font-weight-semibold};
         line-height: 1.2;
-        color: var(--#{$prefix}testimonial-accent);
+        color: var(--#{variables.$prefix}testimonial-accent);
       }
     }
   }

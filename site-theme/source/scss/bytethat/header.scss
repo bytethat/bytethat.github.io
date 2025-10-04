@@ -1,10 +1,12 @@
+@use "../variables";
+
 @use "sass:map";
 
 .header-container {
     box-shadow: rgba(21, 0, 31, 0.2) 0px 3px 5px 0px;
 
     .region-area-one {
-        background-color: $light;
+        background-color: variables.$light;
 
         .inner-area-one {
             display: flex;
@@ -35,7 +37,7 @@
 .main-menu {
     &.menu-expand {
 
-        @media (max-width: map.get($grid-breakpoints, lg)) {
+        @media (max-width: map.get(variables.$grid-breakpoints, lg)) {
             .menu-list {
                     position: fixed;
                     display: block;
@@ -55,7 +57,7 @@
                     padding: 1em 1.5em; 
                 }
 
-                @media (min-width: map.get($grid-breakpoints, md)) {
+                @media (min-width: map.get(variables.$grid-breakpoints, md)) {
                     a { font-size: 1.5rem; }
                     // padding: 1.5em 2em;
                 }

@@ -1,17 +1,19 @@
+@use "variables";
+
 .table {
-  --#{$prefix}table-border-width: 1px;
-  --#{$prefix}table-border-color: #{$gray-500};
-  --#{$prefix}table-border-radius: 0.5rem;
+  --#{variables.$prefix}table-border-width: 1px;
+  --#{variables.$prefix}table-border-color: #{variables.$gray-500};
+  --#{variables.$prefix}table-border-radius: 0.5rem;
 
-  --#{$prefix}table-padding-x: 1rem;
-  --#{$prefix}table-padding-y: 1rem;
+  --#{variables.$prefix}table-padding-x: 1rem;
+  --#{variables.$prefix}table-padding-y: 1rem;
 
-  --#{$prefix}table-header-font-weight: 700;
+  --#{variables.$prefix}table-header-font-weight: 700;
 
-  border: var(--#{$prefix}table-border-width) solid var(--#{$prefix}table-border-color);
+  border: var(--#{variables.$prefix}table-border-width) solid var(--#{variables.$prefix}table-border-color);
 
   .table-cell {
-    padding: var(--#{$prefix}table-padding-y) var(--#{$prefix}table-padding-x);
+    padding: var(--#{variables.$prefix}table-padding-y) var(--#{variables.$prefix}table-padding-x);
   }
 
   .table-header, .table-row {
@@ -20,7 +22,7 @@
     .table-cell {
       flex: 1 1 0;
 
-      border-right: var(--#{$prefix}table-border-width) solid var(--#{$prefix}table-border-color);
+      border-right: var(--#{variables.$prefix}table-border-width) solid var(--#{variables.$prefix}table-border-color);
 
       &:last-of-type {
         border-right: none;
@@ -30,11 +32,11 @@
 
   .table-header {
     .table-cell {
-      font-weight: var(--#{$prefix}table-header-font-weight);
+      font-weight: var(--#{variables.$prefix}table-header-font-weight);
     }
   }
 
   .table-row {
-    border-top: var(--#{$prefix}table-border-width) solid var(--#{$prefix}table-border-color);
+    border-top: var(--#{variables.$prefix}table-border-width) solid var(--#{variables.$prefix}table-border-color);
   }
 }

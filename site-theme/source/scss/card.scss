@@ -1,21 +1,23 @@
-.card {
-    --#{$prefix}card-spacer-x: 1.5rem;
-    --#{$prefix}card-spacer-y: 1rem;
-    --#{$prefix}-card-title-spacer-y: calc(var(--#{$prefix}card-spacer-y) / 2);
+@use "variables";
 
-    --#{$prefix}card-border-width: 1px;
-    --#{$prefix}card-border-radius: 0.25rem;
-    --#{$prefix}card-border-color: rgba(var(--#{$prefix}default-font-color-rgb), 0.125);
+.card {
+    --#{variables.$prefix}card-spacer-x: 1.5rem;
+    --#{variables.$prefix}card-spacer-y: 1rem;
+    --#{variables.$prefix}-card-title-spacer-y: calc(var(--#{variables.$prefix}card-spacer-y) / 2);
+
+    --#{variables.$prefix}card-border-width: 1px;
+    --#{variables.$prefix}card-border-radius: 0.25rem;
+    --#{variables.$prefix}card-border-color: rgba(var(--#{variables.$prefix}default-font-color-rgb), 0.125);
 
     position: relative;
     display: flex;
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: var(--#{$prefix}body-bg);
+    background-color: var(--#{variables.$prefix}body-bg);
     background-clip: border-box;
-    border: var(--#{$prefix}card-border-width) solid var(--#{$prefix}card-border-color);
-    border-radius: var(--#{$prefix}card-border-radius);
+    border: var(--#{variables.$prefix}card-border-width) solid var(--#{variables.$prefix}card-border-color);
+    border-radius: var(--#{variables.$prefix}card-border-radius);
     overflow: hidden;
 
     .card-image {
@@ -34,11 +36,11 @@
         display: flex;
         flex-direction: column;
 
-        padding: var(--#{$prefix}card-spacer-y) var(--#{$prefix}card-spacer-x);
+        padding: var(--#{variables.$prefix}card-spacer-y) var(--#{variables.$prefix}card-spacer-x);
         min-width: 0;
     }
 
     .card-title {
-        margin-bottom: var(--#{$prefix}-card-title-spacer-y);
+        margin-bottom: var(--#{variables.$prefix}-card-title-spacer-y);
     }
 }

@@ -1,3 +1,7 @@
+@use "../../variables";
+
+@use "../mixins";
+
 .page-home {
   .region-area-one {
     padding: 0;
@@ -9,16 +13,16 @@
     }
 
     p {
-      line-height: $line-height-lg;
+      line-height: variables.$line-height-lg;
     }
   }
 
   .region-area-three, .region-area-five {
-    @include dark-bg();
+    @include mixins.dark-bg;
   }
 
   .region-area-seven {
-    --#{$prefix}region-gutter-x: 0;
-    --#{$prefix}region-gutter-y: 0;
+    --#{variables.$prefix}region-gutter-x: 0;
+    --#{variables.$prefix}region-gutter-y: 0;
   }
 }

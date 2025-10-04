@@ -1,3 +1,5 @@
+@use "bootstrap/scss/functions";
+
 // gray-color-variables
 $white:    #fff !default;
 $gray-100: #f8f9fa !default;
@@ -130,13 +132,13 @@ $headings-color:              inherit !default;
 $link-color:                              $primary !default;
 $link-decoration:                         none !default;
 $link-shade-percentage:                   20% !default;
-$link-hover-color:                        shift-color($link-color, $link-shade-percentage) !default;
+$link-hover-color:                        functions.shift-color($link-color, $link-shade-percentage) !default;
 $link-hover-decoration:                   underline !default;
 
 // button
 $button-color:               $light !default;
 $button-bg:                  $primary !default;
-$button-hover-bg:            shift-color($button-bg, $link-shade-percentage) !default;
+$button-hover-bg:            functions.shift-color($button-bg, $link-shade-percentage) !default;
 
 
 $grid-breakpoints: (

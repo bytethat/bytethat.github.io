@@ -1,27 +1,30 @@
-@import "vendor";
+@use "vendor";
 
 // @import "boostrap";
-@import "bootstrap/scss/functions";
+@use "bootstrap/scss/functions";
 
 // overrides must be imported before core so that variables can be overridden
-@import "overrides";
+@use "overrides";
 
 // core
-@import "variables";
-@import "mixins/main";
-@import "root";
-@import "reboot";
-@import "container";
+@use "variables" with (
+  $blue:          #180048,
+  $link-color:    #343a40
+);
+@use "mixins";
+@use "root";
+@use "reboot";
+@use "container";
 
 // components
-@import "menu";
-@import "button";
-@import "form";
-@import "card";
-@import "accordion";
-@import "table";
+@use "menu";
+@use "button";
+@use "form";
+@use "card";
+@use "accordion";
+@use "table";
 
-@import "helpers/main";
+@use "helpers";
 
 // custom
-@import 'bytethat/main';
+@use 'bytethat';

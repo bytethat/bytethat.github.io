@@ -1,6 +1,8 @@
+@use "variables";
+
 .accordion {
   --#{prefix}accordion-border-size: 1px;
-  --#{prefix}accordion-border-color: #{$gray-500};
+  --#{prefix}accordion-border-color: #{variables.$gray-500};
   --#{prefix}accordion-border-radius: 0.5rem;
 
   --#{prefix}accordion-padding-x: 1rem;
