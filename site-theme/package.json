@@ -8,8 +8,8 @@
     "start": "webpack-dev-server",
     "build:ts": "npx webpack --mode=production",
     "watch:ts": "npx webpack --watch --progress",
-    "build:scss": "sass --no-source-map --load-path=node_modules --quiet-deps source/scss/main.scss dist/main.css && postcss dist/main.css -u autoprefixer cssnano -o dist/main.css --no-map",
-    "watch:scss": "sass --watch --load-path=node_modules --quiet-deps source/scss/main.scss dist/main.css",
+    "build:scss": "sass --no-source-map --load-path=node_modules --quiet-deps source/scss/main.scss:dist/main.css source/scss/fonts.scss:dist/fonts.css && postcss dist/*.css -u autoprefixer cssnano --dir dist --no-map",
+    "watch:scss": "sass --watch --load-path=node_modules --quiet-deps source/scss/main.scss:dist/main.css source/scss/fonts.scss:dist/fonts.css",
     "build": "npm run build:ts && npm run build:scss",
     "dev": "npm run watch:ts & npm run watch:scss",
     "test": "echo \"Error: no test specified\" && exit 1"
