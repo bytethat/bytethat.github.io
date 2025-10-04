@@ -1,0 +1,8 @@
+@use "../../core";
+
+.page-services {
+  .region-area-seven {
+    --#{core.$prefix}region-gutter-x: 0;
+    --#{core.$prefix}region-gutter-y: 0;
+  }
+}

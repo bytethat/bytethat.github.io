@@ -1,29 +1,26 @@
-@use "bootstrap/scss/functions";
-@use "../reboot";
-
-@use "../variables";
+@use "../core";
 
 
 
 @use "sass:map";
 
 .footer-container {
-  --#{variables.$prefix}default-font-color: #ffffff;
-  --#{variables.$prefix}default-font-color-rgb: 255, 255, 255;
+  --#{core.$prefix}default-font-color: #ffffff;
+  --#{core.$prefix}default-font-color-rgb: 255, 255, 255;
 
-  --#{variables.$prefix}link-color: #{variables.$gray-200};
-  --#{variables.$prefix}link-color-rgb: #{functions.to-rgb(variables.$gray-200)};
-  --#{variables.$prefix}link-hover-color: #{variables.$gray-500};
-  --#{variables.$prefix}link-hover-color-rgb: #{functions.to-rgb(variables.$gray-500)};
+  --#{core.$prefix}link-color: #{core.$gray-200};
+  --#{core.$prefix}link-color-rgb: #{core.to-rgb(core.$gray-200)};
+  --#{core.$prefix}link-hover-color: #{core.$gray-500};
+  --#{core.$prefix}link-hover-color-rgb: #{core.to-rgb(core.$gray-500)};
 
   // button
-  --#{variables.$prefix}button-bg: #{variables.$light};
-  --#{variables.$prefix}button-color: #{variables.$primary};
-  --#{variables.$prefix}button-hover-bg: #{functions.shift-color(variables.$light, variables.$link-shade-percentage)};
+  --#{core.$prefix}button-bg: #{core.$light};
+  --#{core.$prefix}button-color: #{core.$primary};
+  --#{core.$prefix}button-hover-bg: #{core.shift-color(core.$light, core.$link-shade-percentage)};
 
   padding: 1em 0;
-  background-color: variables.$primary;
-  color: var(--#{variables.$prefix}default-font-color);
+  background-color: core.$primary;
+  color: var(--#{core.$prefix}default-font-color);
 
 
   .region-area {
@@ -37,7 +34,7 @@
       flex-direction: column;
       gap: 1rem;
 
-      @media (min-width: map.get(variables.$grid-breakpoints, sm)) {
+      @media (min-width: map.get(core.$grid-breakpoints, sm)) {
         flex-direction: row;
       }
 
@@ -65,15 +62,15 @@
         }
 
         .form-control, .form-check {
-          --#{variables.$prefix}gutter-top: 0.875rem;
-          --#{variables.$prefix}gutter-left: 0rem;
+          --#{core.$prefix}gutter-top: 0.875rem;
+          --#{core.$prefix}gutter-left: 0rem;
 
           background: transparent;
           border: none;
           border-radius: 0;
-          border-bottom: 0.2rem solid rgba(var(--#{variables.$prefix}default-font-color-rgb), 0.7);
+          border-bottom: 0.2rem solid rgba(var(--#{core.$prefix}default-font-color-rgb), 0.7);
           outline: none;
-          color: var(--#{variables.$prefix}default-font-color);
+          color: var(--#{core.$prefix}default-font-color);
 
           &::placeholder {
             color: transparent;
@@ -81,7 +78,7 @@
 
           &:focus {
             box-shadow: none;
-            border-bottom: 0.2rem solid rgba(var(--#{variables.$prefix}default-font-color-rgb), 1);
+            border-bottom: 0.2rem solid rgba(var(--#{core.$prefix}default-font-color-rgb), 1);
           }
 
           &#consent ~ .form-label {
@@ -93,18 +90,18 @@
           position: absolute;
           top: 0.875rem;
           left: 0;
-          color: rgba(var(--#{variables.$prefix}default-font-color-rgb), 1);
+          color: rgba(var(--#{core.$prefix}default-font-color-rgb), 1);
         }
       }
 
       &.validated {
         .form-control, .form-check {
           &:valid {
-            border-color: var(--#{variables.$prefix}form-valid-color);
+            border-color: var(--#{core.$prefix}form-valid-color);
           }
 
           &:invalid {
-            border-color: var(--#{variables.$prefix}form-invalid-color);
+            border-color: var(--#{core.$prefix}form-invalid-color);
           }
         }
       }
@@ -123,7 +120,7 @@
         }
       }
 
-      @media (min-width: map.get(variables.$grid-breakpoints, md)) {
+      @media (min-width: map.get(core.$grid-breakpoints, md)) {
         max-width: 600px;
       }
     }
@@ -132,13 +129,13 @@
   .social-icons {
 
     a {
-      color: var(--#{variables.$prefix}default-font-color);
+      color: var(--#{core.$prefix}default-font-color);
       margin: 0 0.5rem;
       font-size: 1.5rem;
       transition: color 0.3s;
 
       &:hover {
-        color: var(--#{variables.$prefix}link-hover-color);
+        color: var(--#{core.$prefix}link-hover-color);
       }
     }
   }
@@ -146,7 +143,7 @@
 
 .copyright {
   text-align: center;
-  font-size: variables.$font-size-sm;
+  font-size: core.$font-size-sm;
 
   p {
     margin: 0;

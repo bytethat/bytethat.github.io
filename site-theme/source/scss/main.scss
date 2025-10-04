@@ -1,28 +1,8 @@
-@use "vendor";
-
-// @import "boostrap";
-@use "bootstrap/scss/functions";
-
-// overrides must be imported before core so that variables can be overridden
-@use "overrides";
-
-// core
-@use "variables";
-
-@use "mixins";
-@use "root";
-@use "reboot";
-@use "container";
-
-// components
-@use "menu";
-@use "button";
-@use "form";
-@use "card";
-@use "accordion";
-@use "table";
-
-@use "helpers";
+// core with overrides
+@use "core" with (
+  $blue:          #180048,
+  $link-color:    #343a40
+);
 
 // custom
-@use 'bytethat';
+@use 'theme';

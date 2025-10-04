@@ -1,8 +1,0 @@
-@use "../../variables";
-
-.page-services {
-  .region-area-seven {
-    --#{variables.$prefix}region-gutter-x: 0;
-    --#{variables.$prefix}region-gutter-y: 0;
-  }
-}

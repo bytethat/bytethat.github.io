@@ -1,0 +1,9 @@
+@use "../../core";
+
+@mixin dark-bg {
+  --#{core.$prefix}default-font-color: #{core.$white};
+  --#{core.$prefix}default-font-color-rgb: #{core.to-rgb(core.$white)};
+
+  color: rgba(var(--#{core.$prefix}default-font-color-rgb), 1);
+  background-color: var(--#{core.$prefix}primary);
+}

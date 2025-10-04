@@ -1,4 +1,4 @@
-@use "../../variables";
+@use "../../core";
 
 @use "sass:map";
 
@@ -31,14 +31,14 @@
         flex: 1;
     }
 
-    @media (min-width: map.get(variables.$grid-breakpoints, lg)) {
+    @media (min-width: map.get(core.$grid-breakpoints, lg)) {
         flex-direction: row;
 
         .stores {
             width: 25%;
             height: 100%;
             overflow-y: auto;
-            border-right: 1px solid var(--#{variables.$prefix}border-color);
+            border-right: 1px solid var(--#{core.$prefix}border-color);
         }
 
         .map {
@@ -47,7 +47,7 @@
         }
     }
 
-    @media (min-width: map.get(variables.$grid-breakpoints, xl)) {
+    @media (min-width: map.get(core.$grid-breakpoints, xl)) {
         .stores {
             width: 20%;
         }

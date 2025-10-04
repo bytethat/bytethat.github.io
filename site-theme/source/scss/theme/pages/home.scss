@@ -1,4 +1,4 @@
-@use "../../variables";
+@use "../../core";
 
 @use "../mixins";
 
@@ -13,7 +13,7 @@
     }
 
     p {
-      line-height: variables.$line-height-lg;
+      line-height: core.$line-height-lg;
     }
   }
 
@@ -22,7 +22,7 @@
   }
 
   .region-area-seven {
-    --#{variables.$prefix}region-gutter-x: 0;
-    --#{variables.$prefix}region-gutter-y: 0;
+    --#{core.$prefix}region-gutter-x: 0;
+    --#{core.$prefix}region-gutter-y: 0;
   }
 }
